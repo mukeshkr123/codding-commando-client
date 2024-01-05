@@ -55,11 +55,14 @@ const MobileNav = ({ navLinks, user }) => {
             {user ? (
               <div className="flex w-full flex-col ">
                 <SheetClose asChild>
-                  <Link href={`/dashboard`}>
-                    <p className="text-lg font-semibold transition duration-300 hover:text-[#F5478E]">
-                      My Courses
-                    </p>
-                  </Link>
+                  <a
+                    href="/dashboard"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg font-semibold transition duration-300 hover:text-[#F5478E]"
+                  >
+                    My Courses
+                  </a>
                 </SheetClose>
                 <SheetClose asChild>
                   <div>

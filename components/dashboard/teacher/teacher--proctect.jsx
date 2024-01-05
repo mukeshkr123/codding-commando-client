@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 const TeacherProtectedLayout = ({ children }) => {
   const { userSession } = useSelector((state) => state?.user);
 
-  if (userSession && userSession.role !== "admins") {
+  if (userSession && userSession.role !== "admin") {
     redirect("/dashboard");
   }
 
