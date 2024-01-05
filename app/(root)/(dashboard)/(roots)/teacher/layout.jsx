@@ -1,13 +1,11 @@
-import { redirect } from "next/navigation";
+import TeacherProtectedLayout from "@/components/dashboard/teacher/teacher--proctect";
 
 const TeacherLayout = ({ children }) => {
-  const user = { name: "mukesh" };
-
-  if (!user) {
-    return redirect("/dashboard");
-  }
-
-  return <>{children}</>;
+  return (
+    <>
+      <TeacherProtectedLayout>{children}</TeacherProtectedLayout>
+    </>
+  );
 };
 
 export default TeacherLayout;

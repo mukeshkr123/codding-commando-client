@@ -12,11 +12,13 @@ import { SearchInput } from "../search/search-input";
 const defaultAvatar = "default-avatar-url";
 
 const NavbarRoutes = () => {
-  const userId = true;
   const pathname = usePathname();
   const { userAuth } = useSelector((state) => state?.user);
+  const { userSession } = useSelector((state) => state?.user);
 
-  const isTeacherPage = userId && pathname.startsWith("/teacher");
+  const isTeacher = userSession?.role === "admin";
+
+  const isTeacherPage = isTeacher && pathname.startsWith("/teacher");
   const isCoursePage = pathname?.includes("/courses");
   const isSearchPage = pathname === "/search";
 
@@ -45,7 +47,7 @@ const NavbarRoutes = () => {
                 Exit
               </>
             )
-          : userId
+          : isTeacher
             ? linkButton("/teacher/courses", "Teacher Mode")
             : null}
 

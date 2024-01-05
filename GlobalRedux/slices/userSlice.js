@@ -58,6 +58,29 @@ export const logoutAction = createAsyncThunk(
   }
 );
 
+// fetchUserSession Action
+export const fetchUserSession = createAsyncThunk(
+  "users/fetchUserSession",
+  async (accessToken, { rejectWithValue }) => {
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+      const { data } = await apiClient.get("/users/session", config);
+      return data?.user;
+    } catch (error) {
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "Internal server error";
+      toast.error(errorMessage);
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
+
 // get user from localStorage and place into store,
 const userLoggedIn =
   typeof localStorage !== "undefined"
@@ -69,6 +92,7 @@ const usersSlice = createSlice({
   name: "users",
   initialState: {
     userAuth: userLoggedIn,
+    userSession: null,
   },
   extraReducers: (builder) => {
     builder
@@ -101,6 +125,24 @@ const usersSlice = createSlice({
       })
       .addCase(loginUserAction.rejected, (state, action) => {
         state.appErr = action?.payload?.message || "Login failed";
+        state.serverErr = action?.error?.message;
+        state.loading = false;
+      });
+    builder
+      .addCase(fetchUserSession.pending, (state) => {
+        state.loading = true;
+        state.appErr = undefined;
+        state.serverErr = undefined;
+      })
+      .addCase(fetchUserSession.fulfilled, (state, action) => {
+        state.userSession = action.payload;
+        state.loading = false;
+        state.appErr = undefined;
+        state.serverErr = undefined;
+      })
+      .addCase(fetchUserSession.rejected, (state, action) => {
+        state.appErr =
+          action?.payload?.message || "Failed to fetch user session";
         state.serverErr = action?.error?.message;
         state.loading = false;
       });

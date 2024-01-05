@@ -87,10 +87,10 @@ export const DurationForm = ({ initialData, courseId }) => {
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.duration && "text-slate-500 italic"
+            !initialData?.duration && "text-slate-500 italic"
           )}
         >
-          {initialData.duration || "Nothing in duration"}
+          {initialData?.duration || "Nothing in duration"}
         </p>
       )}
       {isEditing && (

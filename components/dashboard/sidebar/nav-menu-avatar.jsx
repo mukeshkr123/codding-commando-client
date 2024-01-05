@@ -48,9 +48,9 @@ export const UserAvatar = ({ imageUrl, name }) => {
         <DropdownMenuItem className="cursor-pointer text-sm  font-medium">
           <Link href={`/dashboard`}>My Courses</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer text-sm  font-medium">
+        {/* <DropdownMenuItem className="cursor-pointer text-sm  font-medium">
           My Profile
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
         <DropdownMenuItem
           className="cursor-pointer text-sm font-medium"
           onClick={() => handleLogOut()}

@@ -8,7 +8,11 @@ export const MeetMentor = async () => {
       const { data } = await apiClient.get("/teachers");
       return data?.mentors;
     } catch (error) {
-      console.log(error);
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "Something went wrong";
+      console.log(errorMessage);
     }
   };
 
