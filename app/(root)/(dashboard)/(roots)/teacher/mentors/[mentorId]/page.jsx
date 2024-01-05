@@ -98,7 +98,7 @@ const MentorIdPage = ({ params }) => {
               mentorId={params.mentorId}
             />
           </div>
-          <div className="mt-12">
+          <div className="mt-1">
             <MentorImageForm
               initialData={mentorData}
               mentorId={params.mentorId}
