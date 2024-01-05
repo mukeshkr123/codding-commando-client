@@ -53,13 +53,8 @@ export default function Navbar() {
         </div>
 
         <div>
-          <UserAvatar />
+          <UserAvatar navLinks={navLinks} />
         </div>
-
-        {/* Mobile Nav */}
-        {/* <div className=" md:hidden ">
-          <MobileNav navLinks={navLinks} user={userAuth} />
-        </div> */}
       </div>
     </nav>
   );
