@@ -29,16 +29,17 @@ export default function AboutPage() {
               opportunities.
             </p>
           </div>
-          <div className="relative h-[50%]">
+          <div className="relative bottom-24 h-[65%]">
             <Image
-              src="/assets/images/background/making-png.png"
+              src="/making-sense.svg"
               alt="Making"
-              width={400}
-              height={400}
-              objectFit="cover"
-              className="h-full w-full rounded-t "
+              quality={100}
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+              }}
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#10001C] via-[#10001C] to-transparent opacity-70"></div>
           </div>
         </div>
       </section>

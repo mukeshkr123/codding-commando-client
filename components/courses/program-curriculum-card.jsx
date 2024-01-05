@@ -15,7 +15,7 @@ export const ProgramCurricullumCard = ({ title, description }) => {
         backdropFilter: "blur(16.549999237060547px)",
       }}
     >
-      <div className="flex w-full justify-between px-4 py-3">
+      <div className="flex w-full justify-between px-4 py-2.5">
         <div className="flex gap-3">
           <Image
             src="/assets/icons/vector-24.svg"

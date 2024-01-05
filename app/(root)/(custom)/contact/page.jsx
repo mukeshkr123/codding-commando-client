@@ -2,9 +2,9 @@ import { ContactForm } from "@/components/shared/form/contact-form";
 
 const ContactPage = () => {
   const backgroundStyles = {
-    backgroundImage: "url(/assets/images/background/making-png.png)",
+    backgroundImage: "url(/making-sense.svg)",
     backgroundPosition: "bottom",
-    backgroundSize: "100% 35%",
+    objectFit: "cover",
   };
 
   const gridStyles = {

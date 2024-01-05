@@ -1,46 +1,35 @@
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export const CourseCard = ({
-  title,
-  description,
-  duration,
-  imageUrl,
-  profilePicture, // to delete
-  _id,
-}) => {
+export const CourseCard = ({ _id, title, description, duration, imageUrl }) => {
   return (
-    <div
-      className="relative m-1 max-h-[20rem] max-w-[20rem] overflow-hidden rounded-[25px] border-2 border-[#000000] bg-[#10001c] bg-cover bg-bottom bg-no-repeat text-white sm:max-h-[36rem] sm:max-w-[26rem]"
-      style={{
-        backgroundImage: 'url("/assets/images/background/course-bg.svg")',
-      }}
-    >
-      <div className="flex flex-col gap-2 p-6">
-        <h2 className="text-2xl font-bold sm:text-3xl">{title}</h2>
-        <p className="text-base sm:text-lg">{description}</p>
+    <div className="relative m-1 max-w-xs overflow-hidden rounded-[25px] border-2 border-[#000000] bg-gradient-to-br from-[#10001c] to-[#0D0024] text-white md:max-w-sm">
+      <div className="flex flex-col gap-2 p-4">
+        <h2 className="text-lg font-bold md:text-xl">{title}</h2>
+        <p className="text-sm  md:text-lg">{description}</p>
       </div>
-      <div className="relative flex items-center gap-6">
+      <div className="relative flex items-end justify-between">
         <Image
-          src={profilePicture || "assets/images/courses/course1-profile.svg"} //  TODO : fix the issue of image
+          src={imageUrl || "assets/images/courses/course1-profile.svg"}
           alt={title}
           height={220}
           width={220}
-          className="w-[45%] sm:w-[55%]"
+          className="w-[65%] rounded-b-[25px] md:w-[62%]"
         />
-        <div className="mt-4 flex flex-col items-center gap-2 pl-2 sm:mt-14">
-          <p className="text-base font-bold text-[#F5478E] sm:text-lg">
-            {duration}
-          </p>
-          <Link href={`/courses/${_id}`}>
-            <button
-              className="rounded-[45px] bg-[#F5478E] px-6 text-lg font-bold text-black sm:px-9 sm:py-1.5"
-              style={{ boxShadow: "1.5px 1.5px white" }}
-            >
-              Learn
-            </button>
-          </Link>
+        <div className="absolute bottom-0 right-0 bg-gradient-to-t from-[#10001c] to-transparent p-4 md:mr-2">
+          <div className="flex flex-col items-center gap-2">
+            <p className="text-sm font-bold text-[#F5478E] md:text-lg">
+              {duration}
+            </p>
+
+            <Link href={`/courses/${_id}`}>
+              <Button className="rounded-full bg-gradient-to-r from-[#F5478E] to-[#FF7E5F] text-lg text-white shadow-md transition-all duration-300 hover:from-[#FF7E5F] hover:to-[#F5478E] md:px-6 md:text-xl">
+                Learn{" "}
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

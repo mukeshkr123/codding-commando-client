@@ -8,9 +8,9 @@ export default function CoursePage() {
       <section
         className="relative h-[690px] w-full max-w-full overflow-hidden bg-[#10001C] bg-no-repeat text-white"
         style={{
-          backgroundImage: 'url("/assets/images/background/demo-png.png")',
+          backgroundImage: 'url("/unlocking.png")',
           backgroundPosition: "bottom",
-          backgroundSize: "100% 70%",
+          objectFit: "cover",
         }}
       >
         <div

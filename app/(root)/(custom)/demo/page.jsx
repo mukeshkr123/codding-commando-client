@@ -2,9 +2,9 @@ import { DemoForm } from "@/components/shared/form/demo-form";
 
 const DemoPage = () => {
   const backgroundStyles = {
-    backgroundImage: "url(/assets/images/background/demo-png.png)",
+    backgroundImage: "url(/unlocking.png)",
     backgroundPosition: "bottom",
-    backgroundSize: "100% 60%",
+    objectFit: "cover",
   };
 
   const gridStyles = {
