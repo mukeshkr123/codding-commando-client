@@ -29,10 +29,12 @@ export const Actions = ({ disabled, mentorId, isPublished }) => {
       if (isPublished) {
         await apiClient.patch(`/mentors/${mentorId}/unpublish`, {}, config);
         toast.success("Mentor unpublished");
+        router.push("/teacher/mentors");
       } else {
         await apiClient.patch(`/mentors/${mentorId}/publish`, {}, config);
         toast.success("Mentor published");
         confetti.onOpen();
+        router.push("/teacher/mentors");
       }
       router.refresh();
     } catch {

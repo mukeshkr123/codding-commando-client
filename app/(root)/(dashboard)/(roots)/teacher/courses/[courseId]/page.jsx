@@ -9,6 +9,7 @@ import { DurationForm } from "@/components/dashboard/courses/courseId/basicdata/
 import { ModeForm } from "@/components/dashboard/courses/courseId/basicdata/mode-form";
 import { TitleForm } from "@/components/dashboard/courses/courseId/basicdata/title-form";
 import { CourseActions } from "@/components/dashboard/courses/courseId/course-actions";
+import { CourseBanner } from "@/components/dashboard/courses/courseId/course-banner";
 import { PaymentDetails } from "@/components/dashboard/courses/courseId/payments/payment-details";
 import { ProgramsForm } from "@/components/dashboard/courses/courseId/programs/ProgramsForm";
 import { StrategyForm } from "@/components/dashboard/courses/courseId/strategy/strategy-form";
@@ -114,6 +115,17 @@ const CourseIdPage = ({ params }) => {
               initialData={courseData}
               courseId={courseData?._id}
             />
+
+            <div className="mt-6">
+              <div className="flex items-center gap-x-2">
+                <IconBadge icon={LayoutDashboard} />
+                <h2 className="text-2xl">Course Banner</h2>
+              </div>
+              <CourseBanner
+                initialData={courseData}
+                courseId={courseData?._id}
+              />
+            </div>
           </div>
           <div className="space-y-6">
             <PaymentDetails

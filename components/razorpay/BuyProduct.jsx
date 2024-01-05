@@ -11,7 +11,7 @@ export const BuyProduct = ({ children, courseId }) => {
 
   const name = userAuth?.firstName + " " + userAuth?.lastName || " ";
   const email = userAuth?.email || " ";
-  const phone = userAuth?.phone || " ";
+  const phone = userAuth?.phone || " "; // TODO:
 
   const makePayment = async () => {
     if (!userAuth) {

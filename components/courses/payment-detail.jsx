@@ -1,4 +1,3 @@
-// PaymentDetails.js
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
@@ -9,6 +8,7 @@ export const PaymentDetails = ({
   title,
   description,
   fullPrice,
+  imageUrl,
   installments = "Three",
   courseId,
 }) => {
@@ -27,7 +27,7 @@ export const PaymentDetails = ({
         ></div>
         <div className="z-10 mt-4 flex h-1/2 w-full items-center justify-center bg-cover lg:mt-5">
           <Image
-            src="\assets\images\payment-img.svg"
+            src={imageUrl || `/assets/images/payment-img.svg`}
             alt="course-image"
             width={400}
             className="inset-1"

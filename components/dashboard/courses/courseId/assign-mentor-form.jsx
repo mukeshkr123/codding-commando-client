@@ -161,7 +161,7 @@ export function AssignMentorForm({ initialData, courseId }) {
               ))}
             </div>
           ) : (
-            <p>No mentor assign yet....</p>
+            <p className="pl-2 text-sm text-slate-700">Not yet assigned</p>
           )}
         </>
       )}
