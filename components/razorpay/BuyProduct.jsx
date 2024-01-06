@@ -5,7 +5,7 @@ import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
 import { ErrorToast } from "../error-toast";
 
-export const BuyProduct = ({ children, courseId }) => {
+export const BuyProduct = ({ children, courseId, method }) => {
   const router = useRouter();
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -25,10 +25,10 @@ export const BuyProduct = ({ children, courseId }) => {
     try {
       // Make an API call to create the order on the server
       const {
-        data: { order, name, email, phone },
+        data: { order, name, email, phone, price },
       } = await apiClient.post(
         `/courses/${courseId}/payment/create-order`,
-        {},
+        { method },
         config
       );
 
@@ -50,7 +50,8 @@ export const BuyProduct = ({ children, courseId }) => {
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_order_id: response.razorpay_order_id,
             razorpay_signature: response.razorpay_signature,
-            amount: order.amount,
+            amount: price,
+            method,
           };
 
           // Verify the payment on the server

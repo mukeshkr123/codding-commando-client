@@ -13,8 +13,8 @@ export const CourseList = () => {
   const { userSession } = useSelector((state) => state?.user);
 
   const isAlreadyEnrolled = (courseId) => {
-    return userSession.enrolledCourses.some(
-      (course) => course.courseId === courseId
+    return userSession?.enrolledCourses.some(
+      (course) => course?.courseId === courseId
     );
   };
 

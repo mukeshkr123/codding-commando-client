@@ -49,10 +49,15 @@ export const PaymentDetails = ({
         </h2>
 
         <div className="flex flex-col items-center justify-center gap-6 md:flex-row">
-          <BuyProduct courseId={courseId} method="One Time">
+          <BuyProduct courseId={courseId} method="fullPrice">
             <PaymentCard price={fullPrice} desc="One Time" /> {/* Method 1 */}
           </BuyProduct>
-          <PaymentCard title={`Or Pay In ${installments} Easy Installments`} />
+          <BuyProduct courseId={courseId} method="installment">
+            <PaymentCard
+              title={`Or Pay In ${installments} Easy Installments`}
+            />
+          </BuyProduct>
+
           {/* Method 2 */}
         </div>
 
