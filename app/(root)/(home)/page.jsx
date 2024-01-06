@@ -1,9 +1,9 @@
-import Image from "next/image";
+import { CourseSlider } from "@/components/course-slider";
 import { MeetMentor } from "@/components/shared/meet-mentor";
 import { chooseusData, trainingData } from "lib/data";
-import CourseSlider from "@/components/course-slider";
+import Image from "next/image";
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <>
       {/* Shaping  */}
@@ -107,7 +107,9 @@ export default function HomePage() {
             width={200}
             className="w-[65%] sm:hidden"
           />
-          <CourseSlider />
+          <div className="mt-16">
+            <CourseSlider />
+          </div>
         </div>
       </section>
       <MeetMentor />

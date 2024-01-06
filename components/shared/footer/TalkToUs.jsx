@@ -46,7 +46,6 @@ const TalkToUs = () => {
           <Image
             src="/assets/images/talk-us.svg"
             alt="Talk To Us Illustration"
-            layout="responsive"
             width={400}
             height={300}
             objectFit="cover"
