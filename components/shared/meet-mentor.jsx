@@ -38,7 +38,7 @@ export const MeetMentor = async () => {
         alt="Meet Your Mentor"
         height={200}
         width={200}
-        className="w-[70%] sm:hidden"
+        className="w-[60%] sm:hidden"
       />
 
       <div className="flex flex-col text-[#000] md:flex-row   md:space-x-20 xl:mt-28 xl:space-x-36">

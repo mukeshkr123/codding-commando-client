@@ -105,7 +105,7 @@ export default async function HomePage() {
             alt="Explore Our Programs"
             height={200}
             width={200}
-            className="w-[65%] sm:hidden"
+            className="w-[55%] sm:hidden"
           />
           <div className="mt-16">
             <CourseSlider />
