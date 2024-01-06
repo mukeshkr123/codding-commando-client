@@ -22,14 +22,18 @@ export const PaymentDetails = ({
           <p className="max-w-sm text-base lg:max-w-xl">{description}</p>
         </div>
         <div
-          className="absolute top-20 z-0 hidden h-full w-1/2 bg-no-repeat lg:right-0 lg:flex"
-          style={{ backgroundImage: 'url("/assets/images/grid.png")' }}
+          className="absolute  z-0 hidden h-full w-1/2 bg-no-repeat lg:right-0 lg:flex"
+          style={{
+            backgroundImage: 'url("/assets/images/grid.png")',
+            backgroundSize: "80%",
+            backgroundPosition: "right",
+          }}
         ></div>
-        <div className="z-10 mt-4 flex h-1/2 w-full items-center justify-center bg-cover lg:mt-5">
+        <div className="lg:absolute lg:right-6 lg:top-32">
           <Image
             src={imageUrl || `/assets/images/payment-img.svg`}
             alt="course-image"
-            width={400}
+            width={550}
             className="inset-1"
             height={350}
           />

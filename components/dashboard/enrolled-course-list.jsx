@@ -5,8 +5,8 @@ import { InfoCard } from "@/components/dashboard/infoCard";
 import { CourseCard } from "@/components/dashboard/search/cours-card"; // Corrected typo
 import apiClient from "lib/api-client";
 import { CheckCircle, Clock, Loader2 } from "lucide-react";
-import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { ErrorToast } from "../error-toast";
 
 export const EnrolledCourseList = () => {
   const [courses, setCourses] = useState([]);
@@ -24,8 +24,7 @@ export const EnrolledCourseList = () => {
       const { data } = await apiClient.get("/enrolled-courses", config);
       setCourses(data?.courses || []);
     } catch (error) {
-      console.error("Error fetching courses:", error);
-      toast.error("Something went wrong");
+      ErrorToast(error);
     } finally {
       setLoading(false);
     }

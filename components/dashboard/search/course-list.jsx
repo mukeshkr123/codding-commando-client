@@ -1,20 +1,42 @@
+"use client";
+
 import apiClient from "lib/api-client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CourseCard } from "./cours-card";
+import { ErrorToast } from "@/components/error-toast";
+import LoadingAnimation from "@/components/shared/loading-animation";
+import { useSelector } from "react-redux";
 
-async function getAllCourses() {
-  try {
-    const { data } = await apiClient.get("/get-all/courses");
-    return data?.courses;
-  } catch (error) {
-    const errorMessage =
-      error.response?.data?.message || error.message || "Something went wrong";
-    console.log(errorMessage);
+export const CourseList = () => {
+  const [courses, setCourses] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const { userSession } = useSelector((state) => state?.user);
+
+  const isAlreadyEnrolled = (courseId) => {
+    return userSession.enrolledCourses.some(
+      (course) => course.courseId === courseId
+    );
+  };
+
+  async function getAllCourses() {
+    try {
+      const { data } = await apiClient.get("/get-all/courses");
+      setCourses(data?.courses);
+    } catch (error) {
+      ErrorToast(error);
+    } finally {
+      setLoading(false);
+    }
   }
-}
 
-export const CourseList = async () => {
-  const courses = await getAllCourses();
+  useEffect(() => {
+    getAllCourses();
+  }, []);
+
+  if (loading) {
+    return <LoadingAnimation />;
+  }
+
   return (
     <div className="mt-4">
       <div className="grid gap-4  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 ">
@@ -26,6 +48,7 @@ export const CourseList = async () => {
             duration={course?.duration}
             imageUrl={course?.imageUrl}
             profilePicture={course?.profilePicture}
+            enrolled={isAlreadyEnrolled(course?._id)}
             key={course?._id}
           />
         ))}

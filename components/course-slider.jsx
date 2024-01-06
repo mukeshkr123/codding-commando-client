@@ -13,16 +13,21 @@ import {
 import apiClient from "lib/api-client";
 import Image from "next/image";
 import Link from "next/link";
+import { Loader2 } from "lucide-react";
+import { ErrorToast } from "./error-toast";
 
 export function CourseSlider() {
   const [banners, setBanners] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
   const fetchCourseBanners = async () => {
     try {
       const { data } = await apiClient.get("/banners");
       setBanners(data?.banners);
     } catch (error) {
-      console.error(error);
+      ErrorToast(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -33,6 +38,14 @@ export function CourseSlider() {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
   );
+
+  if (loading) {
+    return (
+      <div className="flex h-40 w-full items-center justify-center bg-light-white">
+        <Loader2 className="h-16 w-16 animate-spin text-pink-100" />
+      </div>
+    );
+  }
 
   if (!banners.length > 0) {
     return null;

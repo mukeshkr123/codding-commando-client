@@ -9,12 +9,8 @@ export const BuyProduct = ({ children, courseId }) => {
   const router = useRouter();
   const { userAuth } = useSelector((state) => state?.user);
 
-  const name = userAuth?.firstName + " " + userAuth?.lastName || " ";
-  const email = userAuth?.email || " ";
-  const phone = userAuth?.phone || " "; // TODO:
-
   const makePayment = async () => {
-    if (!userAuth) {
+    if (!userAuth && !userAuth?.accessToken) {
       router.push("/login");
       return;
     }
@@ -29,7 +25,7 @@ export const BuyProduct = ({ children, courseId }) => {
     try {
       // Make an API call to create the order on the server
       const {
-        data: { order },
+        data: { order, name, email, phone },
       } = await apiClient.post(
         `/courses/${courseId}/payment/create-order`,
         {},

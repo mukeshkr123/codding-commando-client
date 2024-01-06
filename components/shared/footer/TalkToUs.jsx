@@ -48,7 +48,7 @@ const TalkToUs = () => {
             alt="Talk To Us Illustration"
             width={400}
             height={300}
-            objectFit="cover"
+            // objectFit="cover"
             className="flex h-full w-full "
           />
         </div>

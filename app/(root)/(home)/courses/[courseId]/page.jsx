@@ -1,32 +1,44 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 import apiClient from "lib/api-client";
 import { CurriculumStrategyCard } from "@/components/shared/card/curriculum-strategy-card";
-import { redirect } from "next/navigation";
 import { PaymentDetails } from "@/components/courses/payment-detail";
 import { MentorDetails } from "@/components/courses/mentor-details";
 import { ProgramCurricullumList } from "@/components/courses/program-curriculum-list";
+import { Loader2 } from "lucide-react";
+import { ErrorToast } from "@/components/error-toast";
 
-const CoursePage = async ({ params }) => {
+const CoursePage = ({ params }) => {
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(true);
   async function getCourseById() {
     try {
       const { data } = await apiClient.get(`/course/${params.courseId}`);
-
-      return data?.course;
+      setResult(data?.course);
     } catch (error) {
-      const errorMessage =
-        error.response?.data?.message ||
-        error.message ||
-        "Something went wrong";
-      console.log(errorMessage);
+      ErrorToast(error);
+    } finally {
+      setLoading(false);
     }
   }
 
-  const result = await getCourseById();
+  useState(() => {
+    getCourseById();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center bg-dark-purple">
+        <Loader2 className="h-16 w-16 animate-spin text-pink-950" />
+      </div>
+    );
+  }
 
   if (!result) {
-    redirect(`/courses`);
+    return null;
   }
 
   return (

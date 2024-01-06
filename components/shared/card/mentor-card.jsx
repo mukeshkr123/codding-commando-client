@@ -5,7 +5,6 @@ import { useState } from "react";
 
 export const MentorCard = ({
   imageUrl,
-  alt,
   name,
   description,
   additionalDetails,

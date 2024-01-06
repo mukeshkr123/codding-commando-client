@@ -4,12 +4,12 @@ import { Banner } from "@/components/banner";
 import { ProgramActions } from "@/components/dashboard/courses/courseId/programs/program-actions";
 import { ProgramDescriptionForm } from "@/components/dashboard/courses/courseId/programs/program-description-form";
 import { ProgramTitleForm } from "@/components/dashboard/courses/courseId/programs/program-title-form";
+import { ErrorToast } from "@/components/error-toast";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
 import { ArrowLeft, LayoutDashboard, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
 const ProgramId = ({ params }) => {
@@ -33,8 +33,7 @@ const ProgramId = ({ params }) => {
       setProgramData(data?.program);
       setLoading(false);
     } catch (error) {
-      console.error("Error fetching program:", error);
-      toast.error("Something went wrong");
+      ErrorToast(error);
       setLoading(false);
     }
   };

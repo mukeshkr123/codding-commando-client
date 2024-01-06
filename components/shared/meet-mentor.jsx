@@ -1,22 +1,37 @@
+"use client";
+
 import Image from "next/image";
 import { MentorCard } from "./card/mentor-card";
 import apiClient from "lib/api-client";
+import { useEffect, useState } from "react";
+import { ErrorToast } from "../error-toast";
+import { Loader2 } from "lucide-react";
 
-export const MeetMentor = async () => {
+export const MeetMentor = () => {
+  const [mentors, setMentors] = useState(null);
+  const [loading, setLoading] = useState(true);
   const fetchMentors = async () => {
     try {
       const { data } = await apiClient.get("/teachers");
-      return data?.mentors;
+      setMentors(data?.mentors);
     } catch (error) {
-      const errorMessage =
-        error.response?.data?.message ||
-        error.message ||
-        "Something went wrong";
-      console.log(errorMessage);
+      ErrorToast(error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const mentors = await fetchMentors();
+  useEffect(() => {
+    fetchMentors();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex h-40 w-full items-center justify-center bg-light-white">
+        <Loader2 className="h-16 w-16 animate-spin text-pink-100" />
+      </div>
+    );
+  }
 
   return (
     <section

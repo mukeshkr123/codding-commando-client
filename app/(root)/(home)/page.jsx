@@ -98,7 +98,7 @@ export default async function HomePage() {
             alt="Explore Our Programs"
             height={200}
             width={200}
-            className="hidden w-[75%] sm:flex"
+            className="mb-10 hidden w-[75%] sm:flex"
           />
           <Image
             src="/assets/font-shadow/explore-prgram-sm.svg"
@@ -107,9 +107,7 @@ export default async function HomePage() {
             width={200}
             className="w-[55%] sm:hidden"
           />
-          <div className="mt-16">
-            <CourseSlider />
-          </div>
+          <CourseSlider />
         </div>
       </section>
       <MeetMentor />

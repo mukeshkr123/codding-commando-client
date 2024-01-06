@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
+import { ErrorToast } from "@/components/error-toast";
 
 export const ProgramDescriptionForm = ({
   initialData,
@@ -92,8 +93,7 @@ export const ProgramDescriptionForm = ({
         }
       );
     } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong");
+      ErrorToast(error);
     }
   };
 
