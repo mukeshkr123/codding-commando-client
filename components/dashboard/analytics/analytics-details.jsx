@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
 import { Loader2 } from "lucide-react";
+import Link from "next/link";
 // import { Chart } from "@/components/dashboard/analytics/chart";
 
 const AnalyticsDetails = () => {
@@ -45,9 +46,20 @@ const AnalyticsDetails = () => {
   return (
     <div className="p-6">
       <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
-        <DataCard label="Total Revenue" value={data?.totalPrice} shouldFormat />
-        <DataCard label="Total Sales" value={data?.totalSales} />
-        <DataCard label="Total Students" value={data?.totalStudents} />
+        <Link href={"/teacher/analytics/payments"}>
+          <DataCard
+            label="Total Revenue"
+            value={data?.totalPrice}
+            shouldFormat
+          />
+        </Link>
+        <Link href={"/teacher/analytics/payments"}>
+          <DataCard label="Total Sales" value={data?.totalSales} />
+        </Link>
+
+        <Link href={"/teacher/student"}>
+          <DataCard label="Total Students" value={data?.totalStudents} />
+        </Link>
       </div>
       {/* <Chart data={data} /> */}
     </div>

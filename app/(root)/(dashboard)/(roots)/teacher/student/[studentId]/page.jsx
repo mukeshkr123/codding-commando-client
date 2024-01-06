@@ -1,6 +1,7 @@
 "use client";
 
 import { CoursePaymentDetail } from "@/components/dashboard/students/course-payement-detail";
+import { StudentActions } from "@/components/dashboard/students/student-actions";
 import { StudentCourseCard } from "@/components/dashboard/students/student-course-card";
 import { StudentDetailCard } from "@/components/dashboard/students/studetail-card";
 import apiClient from "lib/api-client";
@@ -46,6 +47,8 @@ const StudentProfile = ({ params }) => {
     );
   }
 
+  console.log(studentData?.isBlocked);
+
   return (
     <div className="w-full p-6">
       <div className="flex items-center justify-between">
@@ -60,6 +63,12 @@ const StudentProfile = ({ params }) => {
           <h1 className="mt-2 text-2xl font-medium text-slate-800 ">
             Student Profile
           </h1>
+        </div>
+        <div>
+          <StudentActions
+            studentId={params.studentId}
+            isBlocked={studentData?.isBlocked}
+          />
         </div>
       </div>
       <div className="mt-6 grid grid-cols-1 gap-4 md:gap-0 md:gap-y-4 lg:grid-cols-2">
