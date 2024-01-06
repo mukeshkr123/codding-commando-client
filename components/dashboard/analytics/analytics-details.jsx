@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import { DataCard } from "@/components/dashboard/analytics/data-card";
 import toast from "react-hot-toast";
@@ -7,7 +6,14 @@ import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
-// import { Chart } from "@/components/dashboard/analytics/chart";
+import { Chart } from "./chart";
+
+const chartData = [
+  { name: "Category 1", total: 1000 },
+  { name: "Category 2", total: 1500 },
+  { name: "Category 3", total: 800 },
+  { name: "Category 3", total: 800 },
+];
 
 const AnalyticsDetails = () => {
   const [data, setData] = useState({});
@@ -45,23 +51,32 @@ const AnalyticsDetails = () => {
 
   return (
     <div className="p-6">
-      <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="mb-4 grid grid-cols-1 gap-6 md:grid-cols-2">
         <Link href={"/teacher/analytics/payments"}>
           <DataCard
             label="Total Revenue"
             value={data?.totalPrice}
             shouldFormat
+            color="bg-blue-500"
           />
         </Link>
         <Link href={"/teacher/analytics/payments"}>
-          <DataCard label="Total Sales" value={data?.totalSales} />
+          <DataCard
+            label="Total Sales"
+            value={data?.totalSales}
+            color="bg-red-500"
+          />
         </Link>
 
         <Link href={"/teacher/student"}>
-          <DataCard label="Total Students" value={data?.totalStudents} />
+          <DataCard
+            label="Total Students"
+            value={data?.totalStudents}
+            color="bg-green-500"
+          />
         </Link>
       </div>
-      {/* <Chart data={data} /> */}
+      <Chart data={chartData} />
     </div>
   );
 };

@@ -22,7 +22,6 @@ export const PaymentList = () => {
       };
       const { data } = await apiClient.get("/purchases", config);
       setData(data?.results);
-      console.log(data);
     } catch (error) {
       ErrorToast(error);
     } finally {

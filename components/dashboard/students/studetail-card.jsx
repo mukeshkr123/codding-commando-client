@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { formatCreatedAtDate } from "lib/format";
 import React from "react";
+import { FaUser } from "react-icons/fa";
 
 export const StudentDetailCard = ({ studentData }) => {
   return (
@@ -15,20 +16,17 @@ export const StudentDetailCard = ({ studentData }) => {
             />
 
             <AvatarFallback>
-              <h1 className="flex h-20 w-20 items-center justify-center rounded-full border-2 text-center text-4xl font-medium ">
-                {studentData?.firstName.trim(" ").charAt(0).toUpperCase() ||
-                  undefined}
-              </h1>
+              <FaUser className="h-20 w-20 text-gray-500" />
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col gap-1">
-            <h1 className="text-2xl font-semibold text-slate-700">
+            <h1 className="text-2xl font-semibold text-indigo-700">
               {studentData?.firstName} {studentData?.lastName}
             </h1>
-            <h2 className="text-sm text-slate-700">{studentData?.email}</h2>
-            <h3 className="text-sm text-slate-700">{studentData?.phone}</h3>
-            <h3 className="text-sm text-slate-700">
-              <span className="font-medium">Joined At:-</span>{" "}
+            <h2 className="text-sm text-gray-600">{studentData?.email}</h2>
+            <h3 className="text-sm text-gray-600">{studentData?.phone}</h3>
+            <h3 className="text-sm text-gray-600">
+              <span className="font-medium">Joined At:</span>{" "}
               {formatCreatedAtDate(studentData?.createdAt)}
             </h3>
           </div>

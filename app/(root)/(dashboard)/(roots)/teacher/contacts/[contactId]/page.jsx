@@ -10,6 +10,13 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import {
+  FiUser,
+  FiMail,
+  FiPhone,
+  FiClock,
+  FiMessageSquare,
+} from "react-icons/fi"; // You can use a different icon library
 
 const ContactPage = ({ params }) => {
   const [data, setData] = useState(null);
@@ -57,22 +64,37 @@ const ContactPage = ({ params }) => {
         <p className="text-xl">Go Back</p>
       </Link>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 ">
-        <div className="mt-8 max-w-sm">
+      <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div>
           <h1 className="text-2xl font-medium text-slate-700">User Detail</h1>
           <Card className="mt-4 flex flex-col gap-2 p-4 text-base text-slate-700 shadow-md">
-            <p>
-              Name: {data?.firstName} {data?.lastName}
-            </p>
-            <p>Email: {data?.email}</p>
-            <p>Phone: {data?.phone}</p>
-            <p>Date: {formatCreatedAtDate(data?.createdAt)}</p>
+            <div className="flex items-center gap-2">
+              <FiUser className="text-blue-500" size={18} />
+              <p>
+                Name: {data?.firstName} {data?.lastName}
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <FiMail className="text-blue-500" size={18} />
+              <p>Email: {data?.email}</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <FiPhone className="text-blue-500" size={18} />
+              <p>Phone: {data?.phone}</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <FiClock className="text-blue-500" size={18} />
+              <p>Date: {formatCreatedAtDate(data?.createdAt)}</p>
+            </div>
           </Card>
         </div>
-        <div className="mt-8 max-w-sm">
+        <div>
           <h1 className="text-2xl font-medium text-slate-700">Message</h1>
           <Card className="mt-4 flex min-h-[155px] flex-col gap-2 p-4 text-base text-slate-700 shadow-md">
-            <p>{data?.message}</p>
+            <div className="flex items-center gap-2">
+              <FiMessageSquare className="text-blue-500" size={18} />
+              <p>{data?.message}</p>
+            </div>
           </Card>
         </div>
       </div>

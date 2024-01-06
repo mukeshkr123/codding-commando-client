@@ -1,5 +1,4 @@
-"use client";
-
+// Import necessary components and styles
 import apiClient from "lib/api-client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -11,7 +10,6 @@ import ConfirmModal from "@/components/modals/confirm-modal";
 import { ErrorToast } from "@/components/error-toast";
 
 export const StudentActions = ({ studentId, isBlocked }) => {
-  console.log(isBlocked);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
@@ -31,10 +29,11 @@ export const StudentActions = ({ studentId, isBlocked }) => {
           {},
           config
         );
-        toast.success("User Unblocked");
+        toast.success("User Unblocked ");
         router.refresh();
       } else {
         await apiClient.patch(`/users/students/${studentId}/block`, {}, config);
+        toast.success("User Blocked ");
         toast(
           "This student has been blocked; as a result, they are unable to access the dashboard or course materials.",
           {
@@ -51,15 +50,21 @@ export const StudentActions = ({ studentId, isBlocked }) => {
   };
 
   return (
-    <div className="mr-2 flex items-center gap-x-2">
+    <div className="flex items-center gap-x-4">
       <ConfirmModal
         onConfirm={onClick}
-        description={`You are going to ${
-          isBlocked ? "Unblock" : "Block"
-        } this user!`}
+        description={`You are about to ${
+          isBlocked ? "unblock" : "block"
+        } this user. This action ${
+          isBlocked ? "enables" : "restricts"
+        } access to the dashboard and course materials.`}
       >
-        <Button disabled={isLoading} variant="destructive" size="sm">
-          {isBlocked ? "Unblock" : "Block"}
+        <Button
+          disabled={isLoading}
+          variant={isBlocked ? "primary" : "destructive"}
+          size="sm"
+        >
+          {isBlocked ? "Unblock User" : "Block User"}
         </Button>
       </ConfirmModal>
     </div>
