@@ -98,10 +98,12 @@ export default function AboutPage() {
           </div>
           <div className="mt-4 md:w-1/2 lg:mt-0 lg:flex ">
             <Image
-              src={"/assets/images/mission-svg.svg"}
+              src={"/vision.jpg"}
               alt={"Our  Vision"}
               width={400}
-              height={300}
+              height={400}
+              className="rounded-[15%] border-2 border-black
+              "
             />
           </div>
         </div>
