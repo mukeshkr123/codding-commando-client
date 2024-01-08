@@ -52,7 +52,7 @@ export const LoginForm = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="w-full">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
-            <div className="flex items-center justify-center border-b">
+            <div className="flex items-center border-b">
               <CgProfile className="mr-2" />
               <LoginInput
                 label="Email"

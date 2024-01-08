@@ -54,7 +54,7 @@ export function CourseSlider() {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="ml-1 flex max-w-[20rem] flex-col items-center justify-center sm:max-w-md md:max-w-lg lg:max-w-lg xl:max-w-[100%]"
+      className="w-[82%] md:w-[90%]  "
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
