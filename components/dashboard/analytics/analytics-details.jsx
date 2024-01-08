@@ -8,13 +8,6 @@ import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { Chart } from "./chart";
 
-const chartData = [
-  { name: "Category 1", total: 1000 },
-  { name: "Category 2", total: 1500 },
-  { name: "Category 3", total: 800 },
-  { name: "Category 3", total: 800 },
-];
-
 const AnalyticsDetails = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
@@ -76,7 +69,7 @@ const AnalyticsDetails = () => {
           />
         </Link>
       </div>
-      <Chart data={chartData} />
+      <Chart data={data?.courseRevenue} />
     </div>
   );
 };

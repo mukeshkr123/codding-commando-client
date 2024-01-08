@@ -1,6 +1,5 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 const PaymentSuccessPage = ({ searchParams: { orderid, paymentid } }) => {
@@ -29,11 +28,11 @@ const PaymentSuccessPage = ({ searchParams: { orderid, paymentid } }) => {
           </p>
         </div>
 
-        <Link href="/dashboard">
+        <a href="/dashboard" target="_blank" rel="noopener noreferrer">
           <Button className="mt-8 rounded-md bg-blue-500 px-4 py-2 transition duration-300 hover:bg-blue-600">
             Go to Dashboard
           </Button>
-        </Link>
+        </a>
       </div>
     </div>
   );
