@@ -10,7 +10,6 @@ import {
 } from "recharts";
 
 export const Chart = ({ data }) => {
-  console.log(data);
   return (
     <Card className="mt-8 rounded-md bg-white p-4 shadow-md">
       <h2 className="mb-4 text-xl font-semibold text-gray-800">
