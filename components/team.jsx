@@ -36,7 +36,7 @@ const TeamData = [
     _id: 6,
     name: "Akash Umang",
     description: "Ui/Ux Designer",
-    imageUrl: "/assets/images/teams/profile-6.svg",
+    imageUrl: "/assets/images/teams/profile-5.svg",
   },
   {
     _id: 7,

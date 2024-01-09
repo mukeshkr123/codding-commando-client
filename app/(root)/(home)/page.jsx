@@ -2,6 +2,7 @@ import { CourseSlider } from "@/components/course-slider";
 import { MeetMentor } from "@/components/shared/meet-mentor";
 import { chooseusData, trainingData } from "lib/data";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function HomePage() {
   return (
@@ -23,20 +24,24 @@ export default async function HomePage() {
             having more then 10 years experience.
           </p>
           <div className="md4:space-x-6 flex flex-col space-y-4 py-3 md:flex-row md:space-y-0 md:py-0 xl:space-x-7">
-            <button
-              className="w-44  rounded-[45px] bg-[#F5478E] py-2 font-semibold transition-transform hover:scale-105 focus:border-blue-300 focus:outline-none focus:ring md:text-xl md:font-bold xl:px-2 xl:py-3"
-              style={{ boxShadow: "1.5px 1.5px white" }}
-            >
-              <p>Talk To Us</p>
-            </button>
-            <button
-              className="w-60 rounded-[45px] border border-white bg-transparent px-4 py-2 font-semibold transition-transform hover:scale-105 focus:border-blue-300 focus:outline-none focus:ring xl:py-3"
-              style={{
-                boxShadow: "2.5px 3.5px 6px 0.5px rgba(234, 56, 152, 1)",
-              }}
-            >
-              <p>Get Job-Ready Skills</p>
-            </button>
+            <Link href="/contact">
+              <button
+                className="w-44  rounded-[45px] bg-[#F5478E] py-2 font-semibold transition-transform hover:scale-105 focus:border-blue-300 focus:outline-none focus:ring md:text-xl md:font-bold xl:px-2 xl:py-3"
+                style={{ boxShadow: "1.5px 1.5px white" }}
+              >
+                <p>Talk To Us</p>
+              </button>
+            </Link>
+            <Link href="/courses">
+              <button
+                className="w-60 rounded-[45px] border border-white bg-transparent px-4 py-2 font-semibold transition-transform hover:scale-105 focus:border-blue-300 focus:outline-none focus:ring xl:py-3"
+                style={{
+                  boxShadow: "2.5px 3.5px 6px 0.5px rgba(234, 56, 152, 1)",
+                }}
+              >
+                <p>Get Job-Ready Skills</p>
+              </button>
+            </Link>
           </div>
         </div>
         <div

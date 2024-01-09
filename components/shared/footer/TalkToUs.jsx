@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const TalkToUs = () => {
   return (
@@ -23,21 +24,24 @@ const TalkToUs = () => {
           </p>
 
           <div className="flex flex-col items-center space-y-4 py-4 md:flex-row md:items-start md:space-x-6 md:space-y-0">
-            <button
-              className="w-44 rounded-[45px] bg-[#F5478E] py-2 font-semibold transition-transform hover:scale-105 focus:border-blue-300 focus:outline-none focus:ring md:text-xl md:font-bold xl:px-2 xl:py-3"
-              style={{ boxShadow: "1.5px 1.5px white" }}
-            >
-              <p>Talk To Us</p>
-            </button>
-
-            <button
-              className="w-60 rounded-[45px] border border-white bg-transparent px-4 py-2 font-semibold transition-transform hover:scale-105 focus:border-blue-300 focus:outline-none focus:ring xl:py-3"
-              style={{
-                boxShadow: "2.5px 3.5px 6px 0.5px rgba(234, 56, 152, 1)",
-              }}
-            >
-              <p>Know About Us</p>
-            </button>
+            <Link href="/contact">
+              <button
+                className="w-44 rounded-[45px] bg-[#F5478E] py-2 font-semibold transition-transform hover:scale-105 focus:border-blue-300 focus:outline-none focus:ring md:text-xl md:font-bold xl:px-2 xl:py-3"
+                style={{ boxShadow: "1.5px 1.5px white" }}
+              >
+                <p>Talk To Us</p>
+              </button>
+            </Link>
+            <Link href="/about">
+              <button
+                className="w-60 rounded-[45px] border border-white bg-transparent px-4 py-2 font-semibold transition-transform hover:scale-105 focus:border-blue-300 focus:outline-none focus:ring xl:py-3"
+                style={{
+                  boxShadow: "2.5px 3.5px 6px 0.5px rgba(234, 56, 152, 1)",
+                }}
+              >
+                <p>Know About Us</p>
+              </button>
+            </Link>
           </div>
         </div>
 
