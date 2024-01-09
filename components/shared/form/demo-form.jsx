@@ -27,7 +27,7 @@ export const DemoForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     reset,
   } = useForm({
     resolver: zodResolver(formSchema),
@@ -124,6 +124,7 @@ export const DemoForm = () => {
                   />
                   <div className="flex justify-end">
                     <button
+                      disabled={isSubmitting}
                       className="rounded-3xl bg-bg_pink px-10 py-2 font-bold text-white transition-transform hover:scale-105 focus:border-blue-300 focus:shadow-none focus:outline-none focus:ring xl:px-12"
                       type="submit"
                       style={{ boxShadow: "1.5px 1.5px white" }}

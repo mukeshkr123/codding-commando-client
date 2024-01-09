@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "lib/utils";
 import { Badge } from "../../ui/badge";
+import { formatCreatedAtDate } from "lib/format";
 
 export const columns = [
   {
@@ -29,27 +30,36 @@ export const columns = [
     },
   },
   {
-    accessorKey: "price",
+    accessorKey: "duration",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Price
+          Duration
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
-    cell: ({ row }) => {
-      const price = parseFloat(row.getValue("price") || "0");
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(price);
-
-      return <div>{formatted}</div>;
+    cell: ({ row }) => <div>{row.getValue("duration")}</div>,
+  },
+  {
+    accessorKey: "createdAt",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Created At
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
     },
+    cell: ({ row }) => (
+      <div>{formatCreatedAtDate(row.getValue("createdAt"))}</div>
+    ),
   },
   {
     accessorKey: "isPublished",

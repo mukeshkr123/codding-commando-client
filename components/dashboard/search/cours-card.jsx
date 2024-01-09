@@ -12,14 +12,14 @@ export const CourseCard = ({
   enrolled,
 }) => {
   return (
-    <div className="relative m-1 max-w-xs overflow-hidden rounded-[25px] border-2 border-[#000000] bg-gradient-to-br from-[#10001c] to-[#0D0024] text-white">
+    <div className="relative m-1 flex max-w-xs flex-col justify-between overflow-hidden rounded-[25px] border-2 border-[#000000] bg-gradient-to-br from-[#10001c]  to-[#0D0024] text-white">
       <div className="flex flex-col gap-2 p-4">
         <h2 className="text-lg font-bold">{title}</h2>
         <p className="text-sm ">{description}</p>
       </div>
       <div className="relative flex items-end justify-between">
         <Image
-          src={"assets/images/courses/course1-profile.svg"} // TODO: To fix
+          src={imageUrl || "assets/images/courses/course1-profile.svg"} // TODO: To fix
           alt={title}
           height={180}
           width={180}
