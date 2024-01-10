@@ -16,7 +16,10 @@ const formSchema = z.object({
   firstName: z.string().min(2, { message: "First Name is required" }),
   lastName: z.string().min(2, { message: "Last Name is required" }),
   email: z.string().email({ message: "Email is required" }),
-  phone: z.string().min(10, { message: "Phone is required" }),
+  phone: z
+    .string()
+    .min(10, { message: "Invalid Phone Number" })
+    .max(10, { message: "Invalid Phone Number" }),
   message: z.string(),
 });
 
@@ -109,6 +112,7 @@ export const ContactForm = () => {
                   <FormInput
                     label="Phone No"
                     type="tel"
+                    pattern="[0-9]{10}"
                     placeholder="Phone No"
                     register={register("phone")}
                     error={errors.phone}
