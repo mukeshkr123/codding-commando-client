@@ -6,7 +6,7 @@ import InstallMentPriceForm from "./installment-price-form";
 import toast from "react-hot-toast";
 import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
-import PaymentCourseImage from "./couse-payment-imageForm";
+import { PaymentCourseImage } from "./couse-payment-imageForm";
 import { PaymentDescriptionForm } from "./payment-description-form";
 
 export const PaymentDetails = ({ initialData, courseId }) => {

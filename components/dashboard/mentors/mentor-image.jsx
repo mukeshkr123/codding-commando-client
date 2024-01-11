@@ -6,36 +6,74 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { FileUpload } from "@/components/file-upload";
 import { useSelector } from "react-redux";
 import apiClient from "lib/api-client";
+import { Input } from "@/components/ui/input";
+import { ErrorToast } from "@/components/error-toast";
 
 export const MentorImageForm = ({ initialData, mentorId }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
+  const [image, setImage] = useState(null);
 
   const toggleEdit = () => setIsEditing((current) => !current);
-
   const router = useRouter();
 
-  const onSubmit = async (values) => {
+  const handleImageChange = (e) => {
+    const selectedImage = e.target.files[0];
+    setImage(selectedImage);
+  };
+
+  const handleUpdate = async (value) => {
     try {
+      const data = {
+        imageUrl: value,
+      };
+
       const config = {
         headers: {
           Authorization: `Bearer ${userAuth?.accessToken}`,
         },
       };
-      await apiClient.patch(`/mentors/${mentorId}`, values, config);
+
+      await apiClient.patch(`/mentors/${mentorId}`, data, config);
       toast.success("Mentor updated");
       toggleEdit();
       router.refresh();
-    } catch {
-      toast.error("Something went wrong");
+    } catch (error) {
+      ErrorToast(error);
+    } finally {
+      setImage(null);
+    }
+  };
+
+  const handleUpload = async () => {
+    if (!image) {
+      toast.error("Please select an image");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", image);
+
+    try {
+      const { data } = await apiClient.post("/upload", formData, {
+        headers: {
+          Authorization: `Bearer ${userAuth?.accessToken}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      handleUpdate(data?.imageUrl);
+    } catch (error) {
+      ErrorToast(error);
+    } finally {
+      setImage(null);
     }
   };
 
   return (
-    <div className="mt-6 rounded-md border bg-slate-100 p-4">
+    <div className="mt-6  rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
         Mentor image
         <Button onClick={toggleEdit} variant="ghost">
@@ -70,17 +108,23 @@ export const MentorImageForm = ({ initialData, mentorId }) => {
           </div>
         ))}
       {isEditing && (
-        <div>
-          <FileUpload
-            endpoint="mentorImage"
-            onChange={(url) => {
-              if (url) {
-                onSubmit({ imageUrl: url });
-              }
-            }}
-          />
-          <div className="mt-4 text-xs text-muted-foreground">
-            16:9 aspect ratio recommended
+        <div className="mt-6  bg-slate-100 p-4">
+          <div className="flex flex-col gap-4">
+            <Input
+              type="file"
+              onChange={handleImageChange}
+              className=" cursor-pointer"
+            />
+            <Button
+              className="bg-blue-500 text-white hover:bg-blue-600"
+              onClick={handleUpload}
+            >
+              Upload Image
+            </Button>
+          </div>
+
+          <div className="mt-4 text-sm text-gray-500">
+            Recommended aspect ratio: 16:9
           </div>
         </div>
       )}

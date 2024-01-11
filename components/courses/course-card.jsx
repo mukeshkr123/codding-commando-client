@@ -5,7 +5,7 @@ import React from "react";
 
 export const CourseCard = ({ _id, title, description, duration, imageUrl }) => {
   return (
-    <div className="relative m-1 max-w-xs overflow-hidden rounded-[25px] border-2 border-[#000000] bg-gradient-to-br from-[#10001c] to-[#0D0024] text-white md:max-w-sm">
+    <div className="relative m-1 flex max-w-xs flex-col justify-between overflow-hidden rounded-[25px] border-2 border-[#000000] bg-gradient-to-br from-[#10001c] to-[#0D0024] text-white md:max-w-sm">
       <div className="flex flex-col gap-2 p-4">
         <h2 className="text-lg font-bold md:text-xl">{title}</h2>
         <p className="text-sm  md:text-lg">{description}</p>
