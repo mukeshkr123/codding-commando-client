@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 
 import {
   FaFacebook,
@@ -8,6 +10,8 @@ import {
 } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
+import { ErrorToast } from "@/components/error-toast";
+import apiClient from "lib/api-client";
 
 const FollowLinks = [
   {
@@ -42,35 +46,27 @@ const UseFullLinks = [
     href: "/terms",
   },
   {
-    title: "Pricing",
-    href: "/pricing",
-  },
-  {
     title: "Demo",
     href: "/demo",
   },
 ];
 
-const Courses = [
-  {
-    title: "Complete SalesForce",
-    href: "/courses",
-  },
-  {
-    title: "Mastering Apex",
-    href: "/courses",
-  },
-  {
-    title: "Mastering LWC",
-    href: "/courses",
-  },
-  {
-    title: "Java",
-    href: "/courses",
-  },
-];
-
 const Footer = () => {
+  const [links, setLinks] = useState(null);
+  const fetchLinks = async () => {
+    try {
+      const { data } = await apiClient.get("/links-courses");
+
+      setLinks(data?.links);
+    } catch (error) {
+      ErrorToast(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchLinks();
+  }, []);
+
   return (
     <div className="flex w-full flex-col gap-6 bg-dark-purple p-8 lg:flex-row">
       <Link href="/" className="lg:mr-4">
@@ -99,8 +95,38 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex w-full flex-col gap-6 lg:flex-row">
-          <FooterItem title="Courses" items={Courses} />
-          <FooterItem title="Contact us" items={Courses} />
+          {/* <FooterItem title="Trending Courses" items={Courses} /> */}
+
+          <div className="flex flex-col gap-1 lg:w-1/2">
+            <h1 className="pb-2 text-lg font-semibold text-[#EBEBEB]">
+              Trending Courses
+            </h1>
+            {links &&
+              links?.map((item) => (
+                <Link
+                  href={`/courses/${item?._id}`}
+                  key={item?._id}
+                  className=" text-sm text-gray-600 sm:text-base"
+                >
+                  {item?.title}
+                </Link>
+              ))}
+          </div>
+
+          <div className="flex flex-col gap-1 lg:w-1/2">
+            <h1 className="pb-2 text-lg font-semibold text-[#EBEBEB]">
+              Contact us
+            </h1>
+            <p className="text-sm  text-gray-600 sm:text-base">
+              J485+59J, Shivpuri Rd, South{" "}
+            </p>
+            <p className="text-sm  text-gray-600 sm:text-base">
+              Shivpuri, Shivpuri, Rajbansi{" "}
+            </p>
+            <p className="text-sm  text-gray-600 sm:text-base">
+              Nagar, Patna, Bihar 800029
+            </p>
+          </div>
         </div>
       </div>
     </div>
