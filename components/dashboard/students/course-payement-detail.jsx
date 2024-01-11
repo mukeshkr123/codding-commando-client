@@ -1,36 +1,36 @@
 import { Card } from "@/components/ui/card";
 import { formatCreatedAtDate } from "lib/format";
 import React from "react";
-import { FaFileAlt, FaDownload } from "react-icons/fa";
-import jsPDF from "jspdf";
+import { FaFileAlt } from "react-icons/fa";
+// import jsPDF from "jspdf";
 import "jspdf-autotable";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 
 export const CoursePaymentDetail = ({ studentData }) => {
-  const handleDownload = () => {
-    // eslint-disable-next-line new-cap
-    const pdf = new jsPDF();
-    pdf.text("Payment History", 20, 10);
+  // const handleDownload = () => {
+  //   // eslint-disable-next-line new-cap
+  //   const pdf = new jsPDF();
+  //   pdf.text("Payment History", 20, 10);
 
-    const tableData = studentData?.paymentHistory.map((history) => [
-      history?.courseId?.title,
-      history?.paymentType,
-      history?.payment_id,
-      history?.order_id,
-      formatCreatedAtDate(history?.purchasedAt),
-    ]);
+  //   const tableData = studentData?.paymentHistory.map((history) => [
+  //     history?.courseId?.title,
+  //     history?.paymentType,
+  //     history?.payment_id,
+  //     history?.order_id,
+  //     formatCreatedAtDate(history?.purchasedAt),
+  //   ]);
 
-    pdf.autoTable({
-      head: [
-        ["Course", "Payment Type", "Payment ID", "Order ID", "Purchase Date"],
-      ],
-      body: tableData,
-      startY: 20,
-      theme: "striped",
-    });
+  //   pdf.autoTable({
+  //     head: [
+  //       ["Course", "Payment Type", "Payment ID", "Order ID", "Purchase Date"],
+  //     ],
+  //     body: tableData,
+  //     startY: 20,
+  //     theme: "striped",
+  //   });
 
-    pdf.save("payment_history.pdf");
-  };
+  //   pdf.save("payment_history.pdf");
+  // };
 
   return (
     <Card className="max-w-sm p-4 lg:max-w-md xl:max-w-lg">
@@ -68,13 +68,13 @@ export const CoursePaymentDetail = ({ studentData }) => {
               </p>
             </div>
           ))}
-          <Button
+          {/* <Button
             className="flex items-center rounded bg-indigo-500 px-4 py-2 font-bold text-white hover:bg-indigo-700"
             onClick={handleDownload}
           >
             <FaDownload className="mr-2" />
             Download Payment History
-          </Button>
+          </Button> */}
         </div>
       ) : (
         <div className="mt-4 flex w-full justify-center">

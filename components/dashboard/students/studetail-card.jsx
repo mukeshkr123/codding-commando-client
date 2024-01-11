@@ -6,7 +6,7 @@ import { FaUser } from "react-icons/fa";
 
 export const StudentDetailCard = ({ studentData }) => {
   return (
-    <Card className="max-w-sm lg:max-w-md lg:p-4 xl:max-w-lg">
+    <Card className=" max-w-sm lg:max-w-md lg:p-4 xl:max-w-lg">
       {studentData && (
         <div className="flex justify-between gap-4 p-4 md:justify-normal md:gap-10">
           <Avatar>

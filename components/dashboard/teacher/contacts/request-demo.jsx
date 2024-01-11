@@ -50,7 +50,7 @@ export const ContactDetails = () => {
           <BellRing className="h-9 w-9" />
           {unSeenItems?.length > 0 && (
             <div className="absolute -right-2 -top-1 rounded-full bg-red-500 px-2 text-white">
-              {unSeenItems.length}+
+              {unSeenItems.length}
             </div>
           )}
         </div>
