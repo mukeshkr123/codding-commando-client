@@ -10,7 +10,6 @@ export const registerAction = createAsyncThunk(
   async (registerData, { rejectWithValue }) => {
     try {
       const { data } = await apiClient.post("/users/register", registerData);
-      toast.success(data.message);
       return data;
     } catch (error) {
       const errorMessage =

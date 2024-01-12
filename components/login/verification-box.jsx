@@ -17,12 +17,13 @@ const VerificationBox = ({ email }) => {
   const [timer, setTimer] = useState(60);
   const inputRefs = [useRef(), useRef(), useRef(), useRef()];
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const { registered } = useSelector((state) => state?.user);
 
   const handleChange = (index, value) => {
     setError(false);
-    if (/^\d*$/.test(value)) {
+    if (/^\d*$/.test(value) && value.length <= 1) {
       const newCode = [...verificationCode];
       newCode[index] = value;
       setVerificationCode(newCode);
@@ -45,11 +46,14 @@ const VerificationBox = ({ email }) => {
     };
 
     try {
+      setIsLoading(true);
       await apiClient.post("/users/activate", registerData);
       toast.success("Registered successfully");
       router.push("/login");
     } catch (error) {
       ErrorToast(error);
+    } finally {
+      setIsLoading(false);
     }
     setError(false);
   };
@@ -95,9 +99,8 @@ const VerificationBox = ({ email }) => {
       >
         <h2 className="text-3xl font-semibold">Verify Your Account</h2>
         <p>
-          We emailed you the 4-digit code to{" "}
-          {registered?.user?.email || "example@gmail.com"}. Enter the code below
-          to confirm your email address.
+          We have sent an activation code to your given email or phone. Please
+          enter the verification code to create an account.
         </p>
         <div className="mt-2 flex items-center justify-center gap-2 text-center">
           {[0, 1, 2, 3].map((index) => (
@@ -110,6 +113,7 @@ const VerificationBox = ({ email }) => {
               className={`h-16 w-16 rounded-lg border-2 ${
                 isError ? "border-red-500" : "border-pink-500"
               } text-center text-5xl font-semibold text-slate-700 outline-none focus:border-pink-700`}
+              maxLength={1} // Set the maximum length to 1
             />
           ))}
         </div>
@@ -120,6 +124,7 @@ const VerificationBox = ({ email }) => {
           <Button
             className="mt-2 h-12 w-[60%] rounded-3xl bg-pink-500 text-xl font-semibold text-white transition duration-300 ease-in-out hover:bg-pink-600"
             onClick={handleVerify}
+            disabled={isLoading}
           >
             Verify
           </Button>
