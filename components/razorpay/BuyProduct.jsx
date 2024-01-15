@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import apiClient from "lib/api-client";
+// import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
-import { ErrorToast } from "../error-toast";
+// import { ErrorToast } from "../error-toast";
 
 export const BuyProduct = ({ children, courseId, method }) => {
-  const router = useRouter();
-  const { userAuth } = useSelector((state) => state?.user);
+  // const router = useRouter();
+  // const { userAuth } = useSelector((state) => state?.user);
 
   // const makePayment = async () => {
   //   if (!userAuth && !userAuth?.accessToken) {
@@ -84,7 +84,7 @@ export const BuyProduct = ({ children, courseId, method }) => {
 
   return (
     <div
-    //  onClick={makePayment} // TODO: later implemet this
+    //  onClick={makePayment} // TODO: later implement
     >
       {children}
     </div>
