@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 // import apiClient from "lib/api-client";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 // import { ErrorToast } from "../error-toast";
 
 export const BuyProduct = ({ children, courseId, method }) => {
