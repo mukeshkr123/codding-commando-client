@@ -82,5 +82,11 @@ export const BuyProduct = ({ children, courseId, method }) => {
     }
   };
 
-  return <div onClick={makePayment}>{children}</div>;
+  return (
+    <div
+    //  onClick={makePayment} // TODO: later implemet this
+    >
+      {children}
+    </div>
+  );
 };

@@ -23,7 +23,7 @@ export const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isLoading },
     reset,
   } = useForm({
     resolver: zodResolver(loginSchema),
@@ -53,7 +53,7 @@ export const LoginForm = () => {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
             <div className="flex items-center border-b">
-              <CgProfile className="mr-2" />
+              <CgProfile className="mb-4" />
               <LoginInput
                 label="Email"
                 placeholder="Email"
@@ -69,7 +69,7 @@ export const LoginForm = () => {
 
           <div className="flex flex-col">
             <div className="flex items-center border-b">
-              <MdLockOutline />
+              <MdLockOutline className="mb-4" />
               <LoginInput
                 label="Password"
                 placeholder="Password"
@@ -94,6 +94,7 @@ export const LoginForm = () => {
               className="rounded-3xl bg-bg_pink px-10 py-2 font-bold text-white transition-transform hover:scale-105 focus:border-blue-300 focus:shadow-none focus:outline-none focus:ring xl:px-12"
               type="submit"
               style={{ boxShadow: "1.5px 1.5px white" }}
+              disabled={isLoading}
             >
               Submit
             </button>

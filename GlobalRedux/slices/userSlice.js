@@ -3,6 +3,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import apiClient from "../../lib/api-client";
 import toast from "react-hot-toast";
+import { ErrorToast } from "@/components/error-toast";
 
 // register Action
 export const registerAction = createAsyncThunk(
@@ -29,15 +30,10 @@ export const loginUserAction = createAsyncThunk(
     try {
       const { data } = await apiClient.post("/users/login", loginData);
       localStorage.setItem("userInfo", JSON.stringify(data.user));
-      toast.success(data.message);
+      toast.success("Logged In");
       return data;
     } catch (error) {
-      const errorMessage =
-        error.response?.data?.message ||
-        error.message ||
-        "Internal Server Error";
-      toast.error(errorMessage);
-      return rejectWithValue(error?.response?.data);
+      ErrorToast(error);
     }
   }
 );

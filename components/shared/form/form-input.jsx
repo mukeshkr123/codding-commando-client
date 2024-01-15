@@ -9,7 +9,7 @@ export const FormInput = ({ label, type, placeholder, register, error }) => {
       <input
         {...register}
         {...inputProps}
-        className={`w-full appearance-none border-b border-white bg-transparent px-3 py-2 leading-tight text-white placeholder:text-white focus:shadow-none focus:outline-none ${
+        className={`w-full appearance-none border-b border-white bg-transparent px-3 py-2 leading-tight text-white placeholder:gray-500 focus:shadow-none focus:outline-none ${
           error ? "border-red-500" : ""
         }`}
         type={type}

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import { SignUpInput } from "./sign-up-input";
 import VerificationBox from "./verification-box";
+import { useRouter } from "next/navigation";
 
 const signUpSchema = yup.object({
   FirstName: yup.string().min(2, "First Name is required!"),
@@ -36,6 +37,7 @@ const fieldNames = [
 
 export const SignUpForm = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -61,7 +63,11 @@ export const SignUpForm = () => {
     dispatch(registerAction(data));
   };
 
-  const { registered } = useSelector((state) => state?.user);
+  const { registered, userAuth } = useSelector((state) => state?.user);
+
+  if (userAuth) {
+    router.push("/");
+  }
 
   useEffect(() => {
     reset();

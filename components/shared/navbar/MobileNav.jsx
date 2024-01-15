@@ -20,7 +20,7 @@ import toast from "react-hot-toast";
 const MobileNav = ({ navLinks, user }) => {
   const handleLogout = () => {
     dispatch(logoutAction());
-    toast.success("Logout Success");
+    toast.success("Logged Out");
   };
 
   const dispatch = useDispatch();

@@ -50,6 +50,7 @@ const VerificationBox = ({ email }) => {
       await apiClient.post("/users/activate", registerData);
       toast.success("Registered successfully");
       router.push("/login");
+      window.location.reload();
     } catch (error) {
       ErrorToast(error);
     } finally {

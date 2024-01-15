@@ -23,7 +23,7 @@ export const NavMenu = () => {
   const handleLogOut = () => {
     dispatch(logoutAction());
     router.push("/");
-    toast.success("Logged out successfully");
+    toast.success("Logged Out ");
   };
   return (
     <DropdownMenu className>

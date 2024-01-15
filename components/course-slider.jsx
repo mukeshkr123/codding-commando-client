@@ -54,7 +54,7 @@ export function CourseSlider() {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-[82%] md:w-[90%]  "
+      className="w-[82%] md:w-[92%]  "
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >

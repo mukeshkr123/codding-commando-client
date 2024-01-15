@@ -1,34 +1,27 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import {
-  FaFacebook,
-  FaInstagram,
-  FaTelegram,
-  FaWhatsapp,
-} from "react-icons/fa";
-import Link from "next/link";
-import Image from "next/image";
 import { ErrorToast } from "@/components/error-toast";
 import apiClient from "lib/api-client";
+import Image from "next/image";
+import Link from "next/link";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const FollowLinks = [
   {
-    icon: <FaTelegram aria-label="Telegram" className="text-lg sm:text-xl" />,
-    href: "https://www.instagram.com/coding.commando/",
+    icon: (
+      <FaInstagram aria-label="Instagram" className="text-lg sm:text-2xl" />
+    ),
+    href: "https://www.linkedin.com/company/coding-commando/",
   },
   {
-    icon: <FaInstagram aria-label="Instagram" className="text-lg sm:text-xl" />,
-    href: "https://www.instagram.com/coding.commando/",
+    icon: <FaFacebook aria-label="Facebook" className="text-lg sm:text-2xl" />,
+    href: "https://www.facebook.com/codingcomando",
   },
   {
-    icon: <FaFacebook aria-label="Facebook" className="text-lg sm:text-xl" />,
-    href: "",
-  },
-  {
-    icon: <FaWhatsapp aria-label="WhatsApp" className="text-lg sm:text-xl" />,
-    href: "",
+    icon: <FaTwitter aria-label="Twitter" className="text-lg sm:text-2xl" />,
+    href: "https://twitter.com/Coding_Commando",
   },
 ];
 
@@ -84,10 +77,10 @@ const Footer = () => {
             <h1 className="pb-2  text-lg font-semibold text-[#EBEBEB] ">
               Follow Links
             </h1>
-            <div className="flex gap-2">
+            <div className="flex gap-2 justify-center  w-full ">
               {FollowLinks &&
                 FollowLinks.map((link) => (
-                  <Link href="/" key={link.href} className="text-white">
+                  <Link href={link.href} key={link.href} className="text-white">
                     {link.icon}
                   </Link>
                 ))}

@@ -1,25 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import Image from "next/image";
-import apiClient from "lib/api-client";
-import toast from "react-hot-toast";
 import { Wahooo } from "@/components/Wahooo";
-import { FormInput } from "./form-input";
-import { FormTextarea } from "./TextArea";
 import { ErrorToast } from "@/components/error-toast";
+import { zodResolver } from "@hookform/resolvers/zod";
+import apiClient from "lib/api-client";
+import Image from "next/image";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import * as z from "zod";
+import { FormTextarea } from "./TextArea";
+import { FormInput } from "./form-input";
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: "First Name is required" }),
   lastName: z.string().min(2, { message: "Last Name is required" }),
   email: z.string().email({ message: "Email is required" }),
-  phone: z
-    .string()
-    .min(10, { message: "Invalid Phone Number" })
-    .max(10, { message: "Invalid Phone Number" }),
+  phone: z.string().refine((value) => /^\d{10}$/.test(value), {
+    message: "Invalid Phone Number",
+  }),
   message: z.string(),
 });
 
@@ -111,7 +110,7 @@ export const ContactForm = () => {
                 <div className="w-full lg:w-1/2">
                   <FormInput
                     label="Phone No"
-                    type="tel"
+                    type="text"
                     pattern="[0-9]{10}"
                     placeholder="Phone No"
                     register={register("phone")}
