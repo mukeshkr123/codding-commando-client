@@ -3,7 +3,6 @@
 import { Pencil, PlusCircle, ImageIcon } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useSelector } from "react-redux";
@@ -17,7 +16,6 @@ export const CourseBanner = ({ initialData, courseId }) => {
   const [image, setImage] = useState(null);
 
   const toggleEdit = () => setIsEditing((current) => !current);
-  const router = useRouter();
 
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
@@ -39,7 +37,7 @@ export const CourseBanner = ({ initialData, courseId }) => {
       await apiClient.patch(`/courses/update/${courseId}`, data, config);
       toast.success("Course updated");
       toggleEdit();
-      router.refresh();
+      window.location.reload();
     } catch (error) {
       ErrorToast(error);
     } finally {

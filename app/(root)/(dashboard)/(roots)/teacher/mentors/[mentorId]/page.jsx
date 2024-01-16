@@ -5,11 +5,12 @@ import { Actions } from "@/components/dashboard/courses/actions";
 import { MentorDescriptionForm } from "@/components/dashboard/mentors/description-form";
 import { MentorImageForm } from "@/components/dashboard/mentors/mentor-image";
 import { MentorNameForm } from "@/components/dashboard/mentors/mentor-name-form";
+// import { SelectRole } from "@/components/dashboard/mentors/select-role";
+import { ErrorToast } from "@/components/error-toast";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
 import { LayoutDashboard, Loader2 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
-import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const MentorIdPage = ({ params }) => {
@@ -17,31 +18,29 @@ const MentorIdPage = ({ params }) => {
   const [loading, setLoading] = useState(true);
   const { userAuth } = useSelector((state) => state?.user);
 
-  const fetchmentorData = useMemo(
-    () => async () => {
-      try {
-        const config = {
-          headers: {
-            Authorization: `Bearer ${userAuth?.accessToken}`,
-          },
-        };
-        const { data } = await apiClient.get(
-          `/mentors/${params.mentorId}`,
-          config
-        );
-        setMentorData(data?.mentor);
-      } catch (error) {
-        toast.error("Something went wrong");
-      } finally {
-        setLoading(false);
-      }
-    },
-    [params.mentorId, userAuth?.accessToken]
-  );
+  const fetchmentorData = async () => {
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userAuth?.accessToken}`,
+        },
+      };
+
+      const { data } = await apiClient.get(
+        `/mentors/${params.mentorId}`,
+        config
+      );
+      setMentorData(data?.mentor);
+    } catch (error) {
+      ErrorToast(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     fetchmentorData();
-  }, [fetchmentorData]);
+  }, []);
 
   const requiredFields = [
     mentorData?.name,
@@ -97,6 +96,8 @@ const MentorIdPage = ({ params }) => {
               initialData={mentorData}
               mentorId={params.mentorId}
             />
+            {/* <SelectRole initialData={mentorData} mentorId={params.mentorId} /> */}
+            {/* TODO: complete this later  */}
           </div>
           <div className="mt-10">
             <MentorImageForm

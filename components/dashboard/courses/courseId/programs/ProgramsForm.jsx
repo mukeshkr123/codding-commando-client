@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "lib/utils";
 import * as z from "zod";
+import { ErrorToast } from "@/components/error-toast";
 
 const formSchema = z.object({
   title: z.string().min(1),
@@ -60,9 +61,9 @@ export const ProgramsForm = ({ initialData, courseId }) => {
       );
       toast.success("Program created");
       toggleCreating();
-      router.refresh();
-    } catch {
-      toast.error("Something went wrong");
+      window.location.reload();
+    } catch (error) {
+      ErrorToast(error);
     }
   };
 

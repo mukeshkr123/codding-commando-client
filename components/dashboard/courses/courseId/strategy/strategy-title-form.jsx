@@ -2,9 +2,8 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Pencil } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 
 import {
   Form,
@@ -30,8 +29,6 @@ export const StrategyTitleForm = ({ initialData, courseId, strategyId }) => {
 
   const toggleEdit = () => setIsEditing((current) => !current);
 
-  const router = useRouter();
-
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: initialData,
@@ -47,30 +44,18 @@ export const StrategyTitleForm = ({ initialData, courseId, strategyId }) => {
         },
       };
 
-      toast.promise(
-        apiClient.patch(
-          `/courses/${courseId}/strategy/${strategyId}/update`,
-          values,
-          config
-        ),
-        {
-          loading: "Updating course...",
-          success: "Course updated",
-          error: "Something went wrong",
-        }
+      await apiClient.patch(
+        `/courses/${courseId}/strategy/${strategyId}/update`,
+        values,
+        config
       );
 
       toggleEdit();
+      window.location.reload();
     } catch (error) {
       toast.error("Something went wrong");
     }
   };
-
-  useEffect(() => {
-    if (isEditing) {
-      router.refresh();
-    }
-  }, [isEditing, router]);
 
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">

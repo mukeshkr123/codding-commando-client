@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { Pencil } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 
 import {
   Form,
@@ -33,8 +32,6 @@ export const AboutForm = ({ initialData, courseId }) => {
 
   const toggleEdit = () => setIsEditing((current) => !current);
 
-  const router = useRouter();
-
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -52,17 +49,10 @@ export const AboutForm = ({ initialData, courseId }) => {
         },
       };
 
-      toast.promise(
-        apiClient.patch(`/courses/update/${courseId}`, values, config),
-        {
-          loading: "Updating course...",
-          success: "Course updated",
-          error: "Something went wrong",
-        }
-      );
-
+      await apiClient.patch(`/courses/update/${courseId}`, values, config);
+      toast.success("Course updated");
       toggleEdit();
-      router.refresh();
+      window.location.reload();
     } catch (error) {
       toast.error("Something went wrong");
     }

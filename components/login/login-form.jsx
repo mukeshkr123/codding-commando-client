@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginUserAction } from "GlobalRedux/slices/userSlice";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
 import { MdLockOutline } from "react-icons/md";
@@ -17,7 +17,7 @@ const loginSchema = z.object({
 });
 
 export const LoginForm = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const dispatch = useDispatch();
 
   const {
@@ -35,8 +35,9 @@ export const LoginForm = () => {
   };
 
   const { userAuth } = useSelector((state) => state?.user);
-  if (userAuth) {
-    router.push("/");
+  if (userAuth !== undefined && userAuth) {
+    window.location.href = "/";
+    // router.push("/");
   }
 
   return (

@@ -1,8 +1,6 @@
 "use client";
 
-import * as React from "react";
-import { Check, ChevronsUpDown, Pencil } from "lucide-react";
-import { cn } from "lib/utils";
+import { ErrorToast } from "@/components/error-toast";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -17,9 +15,11 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import apiClient from "lib/api-client";
+import { cn } from "lib/utils";
+import { Check, ChevronsUpDown, Pencil } from "lucide-react";
+import * as React from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
 
 export function AssignMentorForm({ initialData, courseId }) {
   const [open, setOpen] = React.useState(false);
@@ -29,7 +29,6 @@ export function AssignMentorForm({ initialData, courseId }) {
   const { userAuth } = useSelector((state) => state?.user);
 
   const toggleEdit = () => setIsEditing((current) => !current);
-  const router = useRouter();
 
   const fetchMentors = async () => {
     try {
@@ -90,13 +89,9 @@ export function AssignMentorForm({ initialData, courseId }) {
         config
       );
       toast.success("Mentor assigned ");
-      router.refresh();
+      window.location.reload();
     } catch (error) {
-      const errorMessage =
-        error.response?.data?.message ||
-        error.message ||
-        "Something went wrong";
-      toast.error(errorMessage);
+      ErrorToast(error);
     }
   };
 
@@ -116,12 +111,9 @@ export function AssignMentorForm({ initialData, courseId }) {
         config
       );
       toast.success("Mentor Unassigned successfully!");
+      window.location.reload();
     } catch (error) {
-      const errorMessage =
-        error.response?.data?.message ||
-        error.message ||
-        "Something went wrong";
-      toast.error(errorMessage);
+      ErrorToast(error);
     }
   };
 

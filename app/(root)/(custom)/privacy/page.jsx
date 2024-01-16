@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Privacy = () => {
@@ -46,12 +47,6 @@ const Privacy = () => {
         "We may update this Privacy Policy periodically to reflect changes in our practices. We will notify you of any material changes by posting the updated policy on the Website.",
       ],
     },
-    {
-      title: "Contact Us",
-      content: [
-        "If you have any questions, concerns, or requests regarding this Privacy Policy, please contact us at [join@codingcommando.in](mailto:join@codingcommando.in).",
-      ],
-    },
   ];
 
   return (
@@ -76,6 +71,16 @@ const Privacy = () => {
             ))}
           </section>
         ))}
+
+        <h2 className="mb-3 mt-2 text-xl font-semibold">Contact Us</h2>
+        <p>
+          If you have any questions, concerns, or requests regarding this
+          Privacy Policy, please contact us at{" "}
+          <Link href="mailto:join@codingcommando.in">
+            join@codingcommando.in
+          </Link>
+          .
+        </p>
 
         <p className="mt-6 max-w-5xl">
           By using Coding Commando&apos;s e-learning platform, you acknowledge

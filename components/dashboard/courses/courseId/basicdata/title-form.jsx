@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { Pencil } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import apiClient from "lib/api-client";
 import {
@@ -22,7 +21,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 export const TitleForm = ({ initialData, courseId }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
-  const router = useRouter();
 
   const toggleEdit = () => setIsEditing((current) => !current);
 
@@ -50,7 +48,7 @@ export const TitleForm = ({ initialData, courseId }) => {
       await apiClient.patch(`/courses/update/${courseId}`, values, config);
       toast.success("Course updated");
       toggleEdit();
-      router.refresh();
+      window.location.reload();
     } catch (error) {
       toast.error("Something went wrong");
     }

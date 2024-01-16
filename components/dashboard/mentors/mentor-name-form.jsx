@@ -1,11 +1,11 @@
-import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { Pencil } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import * as z from "zod";
 
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -14,9 +14,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useSelector } from "react-redux";
 import apiClient from "lib/api-client";
+import { useSelector } from "react-redux";
+import { ErrorToast } from "@/components/error-toast";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -29,8 +29,6 @@ export const MentorNameForm = ({ initialData, mentorId }) => {
   const { userAuth } = useSelector((state) => state?.user);
 
   const toggleEdit = () => setIsEditing((current) => !current);
-
-  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -47,23 +45,14 @@ export const MentorNameForm = ({ initialData, mentorId }) => {
         },
       };
 
-      toast.promise(apiClient.patch(`/mentors/${mentorId}`, values, config), {
-        loading: "Updating course...",
-        success: "Course updated",
-        error: "Something went wrong",
-      });
-
+      await apiClient.patch(`/mentors/${mentorId}`, values, config);
+      toast.success("Mentor updated");
       toggleEdit();
+      window.location.reload();
     } catch (error) {
-      toast.error("Something went wrong");
+      ErrorToast(error);
     }
   };
-
-  useEffect(() => {
-    if (isEditing) {
-      router.refresh();
-    }
-  }, [isEditing, router]);
 
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">

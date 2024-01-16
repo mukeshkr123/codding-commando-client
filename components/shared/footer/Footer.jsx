@@ -6,15 +6,19 @@ import { ErrorToast } from "@/components/error-toast";
 import apiClient from "lib/api-client";
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTwitter,
+} from "react-icons/fa";
 
 const FollowLinks = [
   {
-    icon: (
-      <FaInstagram aria-label="Instagram" className="text-lg sm:text-2xl" />
-    ),
-    href: "https://www.linkedin.com/company/coding-commando/",
+    icon: <FaInstagram aria-label="Twitter" className="text-lg sm:text-2xl" />,
+    href: "https://www.instagram.com/coding.commando?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
   },
+
   {
     icon: <FaFacebook aria-label="Facebook" className="text-lg sm:text-2xl" />,
     href: "https://www.facebook.com/codingcomando",
@@ -22,6 +26,12 @@ const FollowLinks = [
   {
     icon: <FaTwitter aria-label="Twitter" className="text-lg sm:text-2xl" />,
     href: "https://twitter.com/Coding_Commando",
+  },
+  {
+    icon: (
+      <FaLinkedinIn aria-label="Instagram" className="text-lg sm:text-2xl" />
+    ),
+    href: "https://www.linkedin.com/company/coding-commando/",
   },
 ];
 

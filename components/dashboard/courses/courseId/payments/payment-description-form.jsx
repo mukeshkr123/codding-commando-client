@@ -44,7 +44,7 @@ export const PaymentDescriptionForm = ({ initialData, courseId }) => {
 
   const { isSubmitting, isValid } = form.formState;
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (value) => {
     try {
       const config = {
         headers: {
@@ -52,16 +52,15 @@ export const PaymentDescriptionForm = ({ initialData, courseId }) => {
         },
       };
 
-      toast.promise(
-        apiClient.patch(`/courses/${courseId}/payment-details`, values, config),
-        {
-          loading: "Updating course...",
-          success: "Course updated",
-          error: "Something went wrong",
-        }
+      await apiClient.patch(
+        `/courses/${courseId}/payment-details`,
+        value,
+        config
       );
 
       toggleEdit();
+
+      window.location.reload();
     } catch (error) {
       toast.error("Something went wrong");
     }

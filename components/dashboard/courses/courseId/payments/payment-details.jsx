@@ -3,11 +3,11 @@ import { CircleDollarSign } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import FullPriceForm from "./full-price-form";
 import InstallMentPriceForm from "./installment-price-form";
-import toast from "react-hot-toast";
 import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
 import { PaymentCourseImage } from "./couse-payment-imageForm";
 import { PaymentDescriptionForm } from "./payment-description-form";
+import { ErrorToast } from "@/components/error-toast";
 
 export const PaymentDetails = ({ initialData, courseId }) => {
   const [paymentData, setPaymentData] = useState([]);
@@ -26,7 +26,7 @@ export const PaymentDetails = ({ initialData, courseId }) => {
       );
       setPaymentData(data?.paymentDetail);
     } catch (error) {
-      toast.error("Something went wrong");
+      ErrorToast(error);
     }
   };
 

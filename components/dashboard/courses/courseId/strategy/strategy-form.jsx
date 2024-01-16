@@ -3,7 +3,6 @@ import { PlusCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 
 import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
@@ -20,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "lib/utils";
 import * as z from "zod";
 import { StrategiesList } from "./strategy-list";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   title: z.string().min(1),
@@ -29,7 +29,6 @@ export const StrategyForm = ({ initialData, courseId }) => {
   const [isCreating, setIsCreating] = useState(false);
   // const [isUpdating, setIsUpdating] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
-
   const router = useRouter();
 
   const toggleCreating = () => {
@@ -60,7 +59,7 @@ export const StrategyForm = ({ initialData, courseId }) => {
       );
       toast.success("Program created");
       toggleCreating();
-      router.refresh();
+      window.location.reload();
     } catch {
       toast.error("Something went wrong");
     }

@@ -1,15 +1,14 @@
 "use client";
 
-import { Pencil, PlusCircle, ImageIcon } from "lucide-react";
+import { ErrorToast } from "@/components/error-toast";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import apiClient from "lib/api-client";
+import { ImageIcon, Pencil, PlusCircle } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { useSelector } from "react-redux";
-import apiClient from "lib/api-client";
-import { Input } from "@/components/ui/input";
-import { ErrorToast } from "@/components/error-toast";
 
 export const CourseImage = ({ initialData, courseId }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -17,7 +16,6 @@ export const CourseImage = ({ initialData, courseId }) => {
   const [image, setImage] = useState(null);
 
   const toggleEdit = () => setIsEditing((current) => !current);
-  const router = useRouter();
 
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
@@ -39,7 +37,7 @@ export const CourseImage = ({ initialData, courseId }) => {
       await apiClient.patch(`/courses/update/${courseId}`, data, config);
       toast.success("Course updated");
       toggleEdit();
-      router.refresh();
+      window.location.reload();
     } catch (error) {
       ErrorToast(error);
     } finally {

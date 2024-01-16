@@ -35,6 +35,7 @@ const StrategyIdPage = ({ params }) => {
       setLoading(false);
     } catch (error) {
       ErrorToast(error);
+    } finally {
       setLoading(false);
     }
   };

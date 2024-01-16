@@ -36,26 +36,26 @@ export const UserAvatar = ({ imageUrl, name }) => {
 
   return (
     <DropdownMenu className>
-      <DropdownMenuTrigger className="border-none outline-none">
+      <DropdownMenuTrigger className=" ml-2 border-none outline-none">
         <Avatar className="h-10 w-10 cursor-pointer hover:border-2">
           <AvatarImage src={imageUrl} />
-          <AvatarFallback className="text-lg font-medium">
-            {name?.trim(" ").charAt(0).toUpperCase() || "P"}
+          <AvatarFallback className="text-lg  bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-300 to-blue-400 text-[#252525] font-bold">
+            {name?.trim(" ").charAt(0).toUpperCase()}
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className=" mr-2 flex flex-col gap-1 px-2">
-        <DropdownMenuItem className="cursor-pointer text-sm  font-medium">
+        <DropdownMenuItem className="cursor-pointer text-sm  font-medium sm:text-base">
           <Link href={`/dashboard`}>My Courses</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer text-sm  font-medium">
+        <DropdownMenuItem className="cursor-pointer text-sm  sm:text-base font-medium">
           <Link href={`/`}>Home</Link>
         </DropdownMenuItem>
         {/* <DropdownMenuItem className="cursor-pointer text-sm  font-medium">
           My Profile
         </DropdownMenuItem> */}
         <DropdownMenuItem
-          className="cursor-pointer text-sm font-medium"
+          className="cursor-pointer text-sm font-medium sm:text-base"
           onClick={() => handleLogOut()}
         >
           LogOut

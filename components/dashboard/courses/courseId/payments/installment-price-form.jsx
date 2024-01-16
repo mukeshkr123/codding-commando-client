@@ -51,16 +51,15 @@ const InstallMentPriceForm = ({ initialData, courseId }) => {
         },
       };
 
-      toast.promise(
-        apiClient.patch(`/courses/${courseId}/payment-details`, value, config),
-        {
-          loading: "Updating course...",
-          success: "Course updated",
-          error: "Something went wrong",
-        }
+      await apiClient.patch(
+        `/courses/${courseId}/payment-details`,
+        value,
+        config
       );
 
       toggleEdit();
+
+      window.location.reload();
     } catch (error) {
       toast.error("Something went wrong");
     }

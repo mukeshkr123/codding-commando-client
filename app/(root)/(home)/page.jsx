@@ -153,7 +153,7 @@ export default async function HomePage() {
           </div>
         </div>
         {/* Training  */}
-        <div className="w-full px-2 py-4 pb-20">
+        <div className="w-full px-2 py-4 pb-10">
           <div className="flex flex-col items-center justify-center space-y-4">
             <Image
               src="/assets/font-shadow/training-svg.svg"
