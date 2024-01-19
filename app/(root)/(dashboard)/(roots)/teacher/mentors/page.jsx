@@ -12,7 +12,7 @@ const MentorPage = () => {
   const [data, setData] = useState([]);
   const { userAuth } = useSelector((state) => state?.user);
   const [loading, setLoading] = useState(true);
-
+  us;
   const fetchData = async () => {
     try {
       const config = {

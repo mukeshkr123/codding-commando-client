@@ -19,7 +19,10 @@ const signUpSchema = yup.object({
     .string()
     .email("Please enter a valid Email!")
     .min(2, "Email is required!"),
-  Phone: yup.string().min(13, "Phone is required!"),
+  Phone: yup
+    .string()
+    .min(10, "Invalid phone number!")
+    .max(10, "Invalid phone number!"),
   Password: yup.string().min(6, "Password is required!"),
   ConfirmPassword: yup
     .string()
@@ -43,14 +46,9 @@ export const SignUpForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
-    setValue,
   } = useForm({
     resolver: yupResolver(signUpSchema),
   });
-
-  const handlePhoneFocus = () => {
-    setValue("Phone", "+91");
-  };
 
   const onSubmit = ({ FirstName, LastName, Email, Phone, Password }) => {
     const data = {
@@ -111,7 +109,6 @@ export const SignUpForm = () => {
                         ? "password"
                         : "text"
                     }
-                    onFocus={field === "Phone" ? handlePhoneFocus : undefined}
                     error={errors[field]}
                   />
                   {errors[field] && (

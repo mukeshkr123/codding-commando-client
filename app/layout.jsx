@@ -10,7 +10,7 @@ const syne = Syne({
 });
 
 export const metadata = {
-  title: "Coddding commando",
+  title: "Coding commando",
   description: "A Learning management web app",
   icons: {
     icon: ["/favicon.ico?v=4"],

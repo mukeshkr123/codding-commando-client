@@ -121,7 +121,7 @@ const Footer = () => {
               Contact us
             </h1>
             <p className="text-sm  text-gray-600 sm:text-base">
-              J485+59J, Shivpuri Rd, South{" "}
+              Shivpuri Rd, South{" "}
             </p>
             <p className="text-sm  text-gray-600 sm:text-base">
               Shivpuri, Shivpuri, Rajbansi{" "}

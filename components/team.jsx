@@ -23,7 +23,7 @@ const TeamData = [
   {
     _id: 4,
     name: "Aakarshan",
-    description: "BDA",
+    description: "BDS",
     imageUrl: "/assets/images/teams/profile-3.svg",
   },
   {
