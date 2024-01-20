@@ -45,6 +45,14 @@ const UseFullLinks = [
     href: "/privacy",
   },
   {
+    title: "Pricing",
+    href: "/pricing",
+  },
+  {
+    title: "Refund Policy",
+    href: "/refund-policy",
+  },
+  {
     title: "Terms & Conditions",
     href: "/terms",
   },
@@ -87,7 +95,7 @@ const Footer = () => {
             <h1 className="pb-2  text-lg font-semibold text-[#EBEBEB] ">
               Follow Links
             </h1>
-            <div className="flex gap-2 justify-center  w-full ">
+            <div className="flex w-full gap-2 ">
               {FollowLinks &&
                 FollowLinks.map((link) => (
                   <Link href={link.href} key={link.href} className="text-white">
