@@ -1,54 +1,76 @@
-import * as React from "react";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Pencil } from "lucide-react";
+import Select from "react-select";
+import { useSelector } from "react-redux";
+import { ErrorToast } from "@/components/error-toast";
+import apiClient from "lib/api-client";
+import toast from "react-hot-toast";
 
-// Assume there's an API utility function for making requests
-// Replace 'apiUpdateRole' with the actual function you use to make the API call
+export function SelectRole({ initialData, mentorId }) {
+  const { userAuth } = useSelector((state) => state?.user);
+  const [selectedRole, setSelectedRole] = useState(initialData?.role || null);
+  const [isEditing, setIsEditing] = useState(false);
 
-export function SelectRole() {
-  const [selectedRole, setSelectedRole] = React.useState(null);
+  const toggleEdit = () => setIsEditing((current) => !current);
 
-  const handleAssignClick = async () => {
-    if (selectedRole) {
-      try {
-        console.log("Role  updated");
-      } catch (error) {
-        console.error("Error updating role:", error);
-      }
-    } else {
-      console.warn("Please select a role before assigning");
+  const Roles = [
+    { label: "Mentor", value: "mentor" },
+    { label: "Member", value: "member" },
+  ];
+
+  const handleRoleChange = (selectedOption) => {
+    setSelectedRole(selectedOption?.value || null);
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const value = { role: selectedRole };
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userAuth?.accessToken}`,
+        },
+      };
+
+      await apiClient.patch(`/mentors/${mentorId}`, value, config);
+      toggleEdit();
+      toast.success("Updated");
+      window.location.reload();
+    } catch (error) {
+      ErrorToast(error);
     }
   };
 
   return (
-    <div className="bg-slate-100 mt-6 p-4 flex flex-col gap-4">
-      <h2 className="font-medium">Role </h2>
-      <div className="flex items-center gap-6">
-        <Select>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue
-              placeholder="Select a Role"
-              onChange={(value) => setSelectedRole(value)}
-            />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Role</SelectLabel>
-              <SelectItem value="mentor">Mentor</SelectItem>
-              <SelectItem value="member">Member</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <Button onClick={handleAssignClick}>Assign</Button>
+    <div className="mt-6 w-full rounded-md border bg-slate-100 p-4 md:mb-16">
+      <div className="flex items-center justify-between px-2 font-medium">
+        Role
+        <Button onClick={toggleEdit} variant="ghost">
+          {isEditing ? (
+            <>Cancel</>
+          ) : (
+            <>
+              <Pencil className="mr-2 h-4 w-4" />
+              Assign Role
+            </>
+          )}
+        </Button>
       </div>
+
+      {isEditing && (
+        <div className="flex items-center gap-4 px-2">
+          <Select
+            value={Roles.find((role) => role.value === selectedRole)}
+            onChange={handleRoleChange}
+            options={Roles}
+            className="w-48"
+          />
+          <Button onClick={handleSubmit}>Assign</Button>
+        </div>
+      )}
+
+      {!isEditing && <p className="px-2 text-sm">{initialData?.role}</p>}
     </div>
   );
 }

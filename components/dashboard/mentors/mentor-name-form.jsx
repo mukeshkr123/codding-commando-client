@@ -45,8 +45,10 @@ export const MentorNameForm = ({ initialData, mentorId }) => {
         },
       };
 
+      console.log("values", values);
+
       await apiClient.patch(`/mentors/${mentorId}`, values, config);
-      toast.success("Mentor updated");
+      toast.success("Updated");
       toggleEdit();
       window.location.reload();
     } catch (error) {

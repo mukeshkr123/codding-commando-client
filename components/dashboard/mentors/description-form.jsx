@@ -19,6 +19,7 @@ import { cn } from "lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
+import { ErrorToast } from "@/components/error-toast";
 
 const formSchema = z.object({
   description: z.string().min(1, {
@@ -50,11 +51,11 @@ export const MentorDescriptionForm = ({ initialData, mentorId }) => {
       };
 
       await apiClient.patch(`/mentors/${mentorId}`, values, config);
-      toast.success("Mentor updated");
+      toast.success("Updated");
       toggleEdit();
       window.location.reload();
     } catch (error) {
-      toast.error("Something went wrong");
+      ErrorToast(error);
     }
   };
 

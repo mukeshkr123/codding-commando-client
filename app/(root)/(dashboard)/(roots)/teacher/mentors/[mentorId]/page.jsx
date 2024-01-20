@@ -5,7 +5,7 @@ import { Actions } from "@/components/dashboard/courses/actions";
 import { MentorDescriptionForm } from "@/components/dashboard/mentors/description-form";
 import { MentorImageForm } from "@/components/dashboard/mentors/mentor-image";
 import { MentorNameForm } from "@/components/dashboard/mentors/mentor-name-form";
-// import { SelectRole } from "@/components/dashboard/mentors/select-role";
+import { SelectRole } from "@/components/dashboard/mentors/select-role";
 import { ErrorToast } from "@/components/error-toast";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
@@ -96,10 +96,9 @@ const MentorIdPage = ({ params }) => {
               initialData={mentorData}
               mentorId={params.mentorId}
             />
-            {/* <SelectRole initialData={mentorData} mentorId={params.mentorId} /> */}
-            {/* TODO: complete this later  */}
+            <SelectRole initialData={mentorData} mentorId={params.mentorId} />
           </div>
-          <div className="mt-10">
+          <div className="md:mt-12">
             <MentorImageForm
               initialData={mentorData}
               mentorId={params.mentorId}
