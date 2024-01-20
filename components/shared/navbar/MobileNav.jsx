@@ -17,7 +17,7 @@ import { logoutAction } from "../../../GlobalRedux/slices/userSlice";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 
-const MobileNav = ({ navLinks, user }) => {
+const MobileNav = ({ navLinks, userAuth }) => {
   const handleLogout = () => {
     dispatch(logoutAction());
     toast.success("Logged Out");
@@ -52,7 +52,7 @@ const MobileNav = ({ navLinks, user }) => {
               </SheetClose>
             ))}
 
-            {user ? (
+            {userAuth ? (
               <div className="flex w-full flex-col ">
                 <SheetClose asChild>
                   <a

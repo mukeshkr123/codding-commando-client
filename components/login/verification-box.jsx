@@ -7,7 +7,6 @@ import { Button } from "../ui/button";
 import { registerAction } from "GlobalRedux/slices/userSlice";
 import apiClient from "lib/api-client";
 import { ErrorToast } from "../error-toast";
-import { useRouter } from "next/navigation";
 
 const VerificationBox = ({ email }) => {
   const dispatch = useDispatch();
@@ -16,7 +15,6 @@ const VerificationBox = ({ email }) => {
   const [isResendClicked, setResendClicked] = useState(false);
   const [timer, setTimer] = useState(60);
   const inputRefs = [useRef(), useRef(), useRef(), useRef()];
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const { registered } = useSelector((state) => state?.user);
