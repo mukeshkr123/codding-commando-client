@@ -29,8 +29,6 @@ const MentorPage = () => {
     }
   };
 
-  console.log(data);
-
   useEffect(() => {
     fetchData();
   }, []);

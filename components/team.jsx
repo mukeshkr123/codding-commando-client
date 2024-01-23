@@ -1,67 +1,57 @@
-import Image from "next/image";
-import React from "react";
+"use client";
 
-const TeamData = [
-  {
-    _id: 1,
-    name: "Prateek Prasoon",
-    description: "Founder",
-    imageUrl: "/assets/images/teams/profile-1.svg",
-  },
-  {
-    _id: 2,
-    name: "Rohit Mishra",
-    description: "Training Module Head, Mentor",
-    imageUrl: "/assets/images/teams/profile-2.svg",
-  },
-  {
-    _id: 3,
-    name: "Nitesh",
-    description: "Mentor",
-    imageUrl: "/assets/images/teams/profile-7.svg",
-  },
-  {
-    _id: 4,
-    name: "Aakarshan",
-    description: "BDS",
-    imageUrl: "/assets/images/teams/profile-3.svg",
-  },
-  {
-    _id: 5,
-    name: "Shalinee Kumari",
-    description: "Public Relation Officer",
-    imageUrl: "/assets/images/teams/profile-4.svg",
-  },
-  {
-    _id: 6,
-    name: "Akash Umang",
-    description: "Ui/Ux Designer",
-    imageUrl: "/assets/images/teams/profile-5.svg",
-  },
-  {
-    _id: 7,
-    name: "Rajnish Kumar",
-    description: "Admission Counsellor",
-    imageUrl: "/assets/images/teams/profile-6.svg",
-  },
-];
+import apiClient from "lib/api-client";
+import { Loader2 } from "lucide-react";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
 
 export const TeamList = () => {
-  return (
-    <div className="grid grid-cols-2 justify-center gap-4 py-6 sm:gap-16 md:grid-cols-3 md:gap-8 xl:grid-cols-4 xl:gap-24">
-      {TeamData.map(({ _id, name, description, imageUrl }) => (
-        <div
-          key={_id}
-          className="flex w-full flex-col items-center justify-center space-y-6 py-4 md:py-0"
-        >
-          <Image src={imageUrl} alt="profile" width={170} height={170} />
+  const [teamData, setTeamData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-          <div className="text-center">
-            <h1 className="text-2xl font-bold">{name}</h1>
-            <p className="text-lg">{description}</p>
+  const fetchData = async () => {
+    try {
+      const { data } = await apiClient.get("/members");
+      setTeamData(data?.members);
+    } catch {
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex h-40 w-full items-center justify-center">
+        <Loader2 className="h-16 w-16 animate-spin text-pink-100" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="mb-8 mt-6 grid  grid-cols-2 gap-x-2 gap-y-6 px-4 md:mb-12 md:grid-cols-3 xl:grid-cols-4">
+      {teamData &&
+        teamData?.map((member) => (
+          <div
+            key={member?._id}
+            className="flex max-w-xs  flex-col items-center gap-y-2 text-center "
+          >
+            <Image
+              src={member?.imageUrl}
+              alt="Profile"
+              width={150}
+              height={150}
+            />
+            <h1 className=" mt-4 text-xl font-bold md:text-2xl">
+              {" "}
+              {member?.name}
+            </h1>
+            <p className=" text-base md:text-lg">{member?.description}</p>
           </div>
-        </div>
-      ))}
+        ))}
     </div>
   );
 };

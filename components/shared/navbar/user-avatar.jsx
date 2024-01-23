@@ -29,7 +29,6 @@ const UserAvatar = ({ navLinks }) => {
         await apiClient.get("/validate-session", config);
       } catch (error) {
         dispatch(logoutAction());
-        console.log("error", error);
       }
     };
 

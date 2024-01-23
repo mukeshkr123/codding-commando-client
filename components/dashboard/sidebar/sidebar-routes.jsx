@@ -34,7 +34,7 @@ const teacherRoutes = [
   },
   {
     icon: UserCheck,
-    label: "Mentors",
+    label: "Team Members",
     href: "/teacher/mentors",
   },
   {

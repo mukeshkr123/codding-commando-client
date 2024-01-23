@@ -4,7 +4,6 @@ import Image from "next/image";
 import { MentorCard } from "./card/mentor-card";
 import apiClient from "lib/api-client";
 import { useEffect, useState } from "react";
-import { ErrorToast } from "../error-toast";
 import { Loader2 } from "lucide-react";
 
 export const MeetMentor = () => {
@@ -14,8 +13,7 @@ export const MeetMentor = () => {
     try {
       const { data } = await apiClient.get("/teachers");
       setMentors(data?.mentors);
-    } catch (error) {
-      ErrorToast(error);
+    } catch  {
     } finally {
       setLoading(false);
     }
@@ -35,7 +33,7 @@ export const MeetMentor = () => {
 
   return (
     <section
-      className="flex w-full flex-col items-center justify-center bg-light-white bg-cover px-8 py-4 pb-14 pt-16 text-center xl:pb-20 "
+      className="flex w-full flex-col items-center justify-center bg-light-white bg-cover px-8 py-4 pb-8 pt-16 text-center xl:pb-20 "
       style={{
         backgroundImage: 'url("assets/vector/mentor-bg-svg.svg")',
       }}
@@ -56,7 +54,7 @@ export const MeetMentor = () => {
         className="w-[60%] sm:hidden"
       />
 
-      <div className="mt-10 grid grid-cols-1 sm:mt-20 sm:grid-cols-2 sm:gap-10 ">
+      <div className="mt-4 grid grid-cols-1 sm:mt-20 sm:grid-cols-2 sm:gap-10 ">
         {mentors &&
           mentors.map((mentor) => <MentorCard key={mentor.id} {...mentor} />)}
       </div>

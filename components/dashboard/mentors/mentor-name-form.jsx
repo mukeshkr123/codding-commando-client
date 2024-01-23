@@ -45,8 +45,6 @@ export const MentorNameForm = ({ initialData, mentorId }) => {
         },
       };
 
-      console.log("values", values);
-
       await apiClient.patch(`/mentors/${mentorId}`, values, config);
       toast.success("Updated");
       toggleEdit();

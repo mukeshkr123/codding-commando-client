@@ -109,14 +109,14 @@ export default function AboutPage() {
         </div>
       </div>
       <MeetMentor />
-      <section className="w-full bg-light-white  py-8 sm:px-0 ">
+      <section className="w-full bg-light-white sm:px-0 ">
         <div
           className="flex w-full flex-col items-center justify-center bg-contain bg-no-repeat px-4"
           style={{
             backgroundImage: 'url("assets/vector/team-vector.svg")',
           }}
         >
-          <div className="flex  w-full items-center justify-center py-8 md:py-8 lg:py-10 xl:py-12 ">
+          <div className="flex w-full items-center justify-center py-8 md:py-8 lg:py-10 xl:py-12 ">
             <Image
               src="/assets/font-shadow/team.svg"
               alt="Our Team"

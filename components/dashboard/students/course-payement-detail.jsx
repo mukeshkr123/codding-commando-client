@@ -27,6 +27,10 @@ export const CoursePaymentDetail = ({ studentData }) => {
                 {history?.paymentType}
               </p>
               <p>
+                <span className="font-semibold">Amount: </span>₹
+                {history?.amount}
+              </p>
+              <p>
                 <span className="font-semibold">Payment ID:</span>{" "}
                 {history?.payment_id}
               </p>
