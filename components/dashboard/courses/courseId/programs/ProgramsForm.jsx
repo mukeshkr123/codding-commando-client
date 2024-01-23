@@ -139,14 +139,14 @@ export const ProgramsForm = ({ initialData, courseId }) => {
         <div
           className={cn(
             "text-sm mt-2",
-            !initialData.program_curriculum.length && "text-slate-500 italic"
+            !initialData?.program_curriculum.length && "text-slate-500 italic"
           )}
         >
-          {!initialData.program_curriculum.length && "No Programs"}
+          {!initialData?.program_curriculum.length && "No Programs"}
           <ProgramsList
             onEdit={onEdit}
             // onReorder={onReorder}
-            items={initialData.program_curriculum || []}
+            items={initialData?.program_curriculum || []}
           />
         </div>
       )}

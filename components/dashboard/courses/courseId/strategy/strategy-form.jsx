@@ -137,14 +137,14 @@ export const StrategyForm = ({ initialData, courseId }) => {
         <div
           className={cn(
             "text-sm mt-2",
-            !initialData.strategy.length && "text-slate-500 italic"
+            !initialData?.strategy.length && "text-slate-500 italic"
           )}
         >
-          {!initialData.strategy.length && "No Programs"}
+          {!initialData?.strategy.length && "No Programs"}
           <StrategiesList
             onEdit={onEdit}
             // onReorder={onReorder}
-            items={initialData.strategy || []}
+            items={initialData?.strategy || []}
           />
         </div>
       )}

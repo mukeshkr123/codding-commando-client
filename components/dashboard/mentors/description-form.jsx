@@ -78,10 +78,10 @@ export const MentorDescriptionForm = ({ initialData, mentorId }) => {
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.description && "text-slate-500 italic"
+            !initialData?.description && "text-slate-500 italic"
           )}
         >
-          {initialData.description || "No description"}
+          {initialData?.description || "No description"}
         </p>
       )}
       {isEditing && (

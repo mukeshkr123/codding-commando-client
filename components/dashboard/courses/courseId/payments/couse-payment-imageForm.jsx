@@ -80,13 +80,13 @@ export const PaymentCourseImage = ({ initialData, courseId }) => {
         Course image
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing && <>Cancel</>}
-          {!isEditing && !initialData.imageUrl && (
+          {!isEditing && !initialData?.imageUrl && (
             <>
               <PlusCircle className="mr-2 h-4 w-4" />
               Add an image
             </>
           )}
-          {!isEditing && initialData.imageUrl && (
+          {!isEditing && initialData?.imageUrl && (
             <>
               <Pencil className="mr-2 h-4 w-4" />
               Edit image
@@ -95,7 +95,7 @@ export const PaymentCourseImage = ({ initialData, courseId }) => {
         </Button>
       </div>
       {!isEditing &&
-        (!initialData.imageUrl ? (
+        (!initialData?.imageUrl ? (
           <div className="flex h-60 items-center justify-center rounded-md bg-slate-200">
             <ImageIcon className="h-10 w-10 text-slate-500" />
           </div>
@@ -105,7 +105,7 @@ export const PaymentCourseImage = ({ initialData, courseId }) => {
               alt="Upload"
               fill
               className="rounded-md object-cover"
-              src={initialData.imageUrl}
+              src={initialData?.imageUrl}
             />
           </div>
         ))}

@@ -77,10 +77,10 @@ export const AboutForm = ({ initialData, courseId }) => {
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.about && "text-slate-500 italic"
+            !initialData?.about && "text-slate-500 italic"
           )}
         >
-          {initialData.about || "Nothing about course"}
+          {initialData?.about || "Nothing about course"}
         </p>
       )}
       {isEditing && (

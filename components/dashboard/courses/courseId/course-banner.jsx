@@ -76,13 +76,13 @@ export const CourseBanner = ({ initialData, courseId }) => {
         Course image
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing && <>Cancel</>}
-          {!isEditing && !initialData.banner && (
+          {!isEditing && !initialData?.banner && (
             <>
               <PlusCircle className="mr-2 h-4 w-4" />
               Add an image
             </>
           )}
-          {!isEditing && initialData.banner && (
+          {!isEditing && initialData?.banner && (
             <>
               <Pencil className="mr-2 h-4 w-4" />
               Edit image
@@ -91,7 +91,7 @@ export const CourseBanner = ({ initialData, courseId }) => {
         </Button>
       </div>
       {!isEditing &&
-        (!initialData.banner ? (
+        (!initialData?.banner ? (
           <div className="flex h-60 items-center justify-center rounded-md bg-slate-200">
             <ImageIcon className="h-10 w-10 text-slate-500" />
           </div>
@@ -101,7 +101,7 @@ export const CourseBanner = ({ initialData, courseId }) => {
               alt="Upload"
               fill
               className="rounded-md object-cover"
-              src={initialData.banner}
+              src={initialData?.banner}
             />
           </div>
         ))}

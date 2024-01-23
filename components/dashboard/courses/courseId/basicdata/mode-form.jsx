@@ -77,10 +77,10 @@ export const ModeForm = ({ initialData, courseId }) => {
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.mode && "text-slate-500 italic"
+            !initialData?.mode && "text-slate-500 italic"
           )}
         >
-          {initialData.mode || "Nothing in mode"}
+          {initialData?.mode || "Nothing in mode"}
         </p>
       )}
       {isEditing && (
