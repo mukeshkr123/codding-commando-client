@@ -1,4 +1,4 @@
-import { BuyProduct } from "@/components/razorpay/BuyProduct";
+// import { BuyProduct } from "@/components/razorpay/BuyProduct";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
@@ -8,7 +8,7 @@ export const CourseCard = ({
   description,
   duration,
   imageUrl,
-  courseId,
+  // courseId,
   enrolled,
 }) => {
   return (
@@ -33,11 +33,11 @@ export const CourseCard = ({
                 Continue
               </Button>
             ) : (
-              <BuyProduct courseId={courseId}>
-                <Button className="rounded-full bg-gradient-to-r from-[#F5478E] to-[#FF7E5F] text-sm text-white shadow-md transition-all duration-300 hover:from-[#FF7E5F] hover:to-[#F5478E]">
-                  Buy now
-                </Button>
-              </BuyProduct>
+              // <BuyProduct courseId={courseId}>
+              <Button className="rounded-full bg-gradient-to-r from-[#F5478E] to-[#FF7E5F] text-sm text-white shadow-md transition-all duration-300 hover:from-[#FF7E5F] hover:to-[#F5478E]">
+                Buy now
+              </Button>
+              // </BuyProduct>
             )}
           </div>
         </div>

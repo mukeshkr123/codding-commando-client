@@ -74,23 +74,27 @@ const AnalyticsDetails = () => {
 
   return (
     <div className="p-6">
-      <div className="mb-4 flex gap-1">
-        <RangePicker onChange={handleDateChange} value={dates} />
-        <Button
-          onClick={handleShowButtonClick}
-          className="bg-blue-500 hover:bg-blue-600"
-          disabled={dates?.length !== 2}
-        >
-          Show
-        </Button>
-        <Button
-          onClick={handleClearButtonClick}
-          className="bg-gray-500 hover:bg-gray-600"
-          disabled={dates?.length === 0}
-        >
-          Clear
-        </Button>
+      <div className="flex flex-col justify-between md:flex-row ">
+        <h1 className="pb-2 text-xl font-semibold md:text-3xl"> Analytics</h1>
+        <div className="mb-4 flex gap-1 md:gap-2">
+          <RangePicker onChange={handleDateChange} value={dates} />
+          <Button
+            onClick={handleShowButtonClick}
+            className="bg-blue-500 hover:bg-blue-600"
+            disabled={dates?.length !== 2}
+          >
+            Show
+          </Button>
+          <Button
+            onClick={handleClearButtonClick}
+            className="bg-gray-500 hover:bg-gray-600"
+            disabled={dates?.length === 0}
+          >
+            Clear
+          </Button>
+        </div>
       </div>
+
       <div className="mb-4 grid grid-cols-1 gap-6 md:grid-cols-2">
         <Link href={"/teacher/analytics/payments"}>
           <DataCard

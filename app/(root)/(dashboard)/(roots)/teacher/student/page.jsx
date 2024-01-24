@@ -44,7 +44,7 @@ const MentorPage = () => {
 
   return (
     <div className="p-6">
-      <DataTable columns={columns} data={data} />
+      <DataTable columns={columns} data={data} inputEnabled={true} />
     </div>
   );
 };
