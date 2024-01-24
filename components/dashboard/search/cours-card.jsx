@@ -19,7 +19,7 @@ export const CourseCard = ({
       </div>
       <div className="relative flex items-end justify-between">
         <Image
-          src={imageUrl || "assets/images/courses/course1-profile.svg"} // TODO: To fix
+          src={imageUrl || "assets/images/courses/course1-profile.svg"}
           alt={title}
           height={180}
           width={180}

@@ -1,6 +1,4 @@
-// Import necessary components and styles
 import apiClient from "lib/api-client";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -10,7 +8,6 @@ import ConfirmModal from "@/components/modals/confirm-modal";
 import { ErrorToast } from "@/components/error-toast";
 
 export const StudentActions = ({ studentId, isBlocked }) => {
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
   const config = {
@@ -30,7 +27,7 @@ export const StudentActions = ({ studentId, isBlocked }) => {
           config
         );
         toast.success("User Unblocked ");
-        router.refresh();
+        window.location.reload();
       } else {
         await apiClient.patch(`/users/students/${studentId}/block`, {}, config);
         toast.success("User Blocked ");
@@ -41,7 +38,7 @@ export const StudentActions = ({ studentId, isBlocked }) => {
           }
         );
       }
-      router.refresh();
+      window.location.reload();
     } catch (error) {
       ErrorToast(error);
     } finally {
@@ -61,7 +58,7 @@ export const StudentActions = ({ studentId, isBlocked }) => {
       >
         <Button
           disabled={isLoading}
-          variant={isBlocked ? "primary" : "destructive"}
+          variant={isBlocked ? " " : "destructive"}
           size="sm"
         >
           {isBlocked ? "Unblock User" : "Block User"}

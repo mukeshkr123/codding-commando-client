@@ -66,12 +66,12 @@ const MentorIdPage = ({ params }) => {
   return (
     <>
       {!mentorData?.isPublished && (
-        <Banner label="This mentor is unpublished. It will not be visible to the students." />
+        <Banner label="This member is unpublished. It will not be visible to the students." />
       )}
       <div className="p-6">
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-y-2">
-            <h1 className="text-2xl font-medium">Mentor Setup</h1>
+            <h1 className="text-2xl font-medium">Member Setup</h1>
             <span className="text-sm text-slate-700">
               Complete all fields {completionText}
             </span>
@@ -86,7 +86,7 @@ const MentorIdPage = ({ params }) => {
           <div>
             <div className="flex items-center gap-x-2">
               <IconBadge icon={LayoutDashboard} />
-              <h2 className="text-2xl">Customize your Mentor Details</h2>
+              <h2 className="text-2xl">Customize your Member Details</h2>
             </div>
             <MentorNameForm
               initialData={mentorData}

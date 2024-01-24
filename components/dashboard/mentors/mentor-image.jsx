@@ -35,7 +35,7 @@ export const MentorImageForm = ({ initialData, mentorId }) => {
       };
 
       await apiClient.patch(`/mentors/${mentorId}`, data, config);
-      toast.success("Mentor updated");
+      toast.success("Member updated");
       toggleEdit();
       window.location.reload();
     } catch (error) {
@@ -73,7 +73,7 @@ export const MentorImageForm = ({ initialData, mentorId }) => {
   return (
     <div className="mt-6  rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
-        Mentor image
+        Member image
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing && <>Cancel</>}
           {!isEditing && !initialData?.imageUrl && (

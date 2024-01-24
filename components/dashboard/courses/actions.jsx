@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import ConfirmModal from "@/components/modals/confirm-modal";
 import { useConfettiStore } from "hooks/use-confetti-store";
 import { useSelector } from "react-redux";
+import { ErrorToast } from "@/components/error-toast";
 
 export const Actions = ({ disabled, mentorId, isPublished }) => {
   const router = useRouter();
@@ -28,11 +29,11 @@ export const Actions = ({ disabled, mentorId, isPublished }) => {
 
       if (isPublished) {
         await apiClient.patch(`/mentors/${mentorId}/unpublish`, {}, config);
-        toast.success("Mentor unpublished");
+        toast.success("Member unpublished");
         router.push("/teacher/mentors");
       } else {
         await apiClient.patch(`/mentors/${mentorId}/publish`, {}, config);
-        toast.success("Mentor published");
+        toast.success("Member published");
         confetti.onOpen();
         router.push("/teacher/mentors");
       }
@@ -50,11 +51,11 @@ export const Actions = ({ disabled, mentorId, isPublished }) => {
 
       await apiClient.delete(`/mentors/${mentorId}`, config);
 
-      toast.success("Mentors deleted");
+      toast.success("Member deleted");
       router.refresh();
       router.push(`/teacher/mentors`);
-    } catch {
-      toast.error("Something went wrong");
+    } catch (error) {
+      ErrorToast(error);
     } finally {
       setIsLoading(false);
     }

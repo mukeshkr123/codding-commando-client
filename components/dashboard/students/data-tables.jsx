@@ -19,7 +19,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+// import { Input } from "@/components/ui/input";
 
 export function DataTable({ columns, data }) {
   const [sorting, setSorting] = React.useState([]);
@@ -42,7 +42,7 @@ export function DataTable({ columns, data }) {
 
   return (
     <div>
-      <div className="flex items-center justify-between py-4">
+      {/* <div className="flex items-center justify-between py-4">
         <Input
           placeholder="Find Students...."
           value={table.getColumn("firstName")?.getFilterValue() ?? ""}
@@ -51,7 +51,7 @@ export function DataTable({ columns, data }) {
           }
           className="max-w-sm"
         />
-      </div>
+      </div> */}
       <div className="rounded-md border">
         <Table>
           <TableHeader>
