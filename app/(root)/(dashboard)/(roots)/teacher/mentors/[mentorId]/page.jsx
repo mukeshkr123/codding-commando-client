@@ -2,6 +2,7 @@
 
 import { Banner } from "@/components/banner";
 import { Actions } from "@/components/dashboard/courses/actions";
+import { AditionalDetailForm } from "@/components/dashboard/mentors/additional-detail-form";
 import { MentorDescriptionForm } from "@/components/dashboard/mentors/description-form";
 import { MentorImageForm } from "@/components/dashboard/mentors/mentor-image";
 import { MentorNameForm } from "@/components/dashboard/mentors/mentor-name-form";
@@ -63,6 +64,8 @@ const MentorIdPage = ({ params }) => {
     );
   }
 
+  console.log(mentorData);
+
   return (
     <>
       {!mentorData?.isPublished && (
@@ -103,6 +106,12 @@ const MentorIdPage = ({ params }) => {
               initialData={mentorData}
               mentorId={params.mentorId}
             />
+            {mentorData?.role === "mentor" && (
+              <AditionalDetailForm
+                initialData={mentorData}
+                mentorId={params.mentorId}
+              />
+            )}
           </div>
         </div>
       </div>

@@ -3,11 +3,18 @@
 import Image from "next/image";
 import { useState } from "react";
 
+const additionalDetails = [
+  { _id: 1, title: "Founder at Cloudprism Solutions" },
+  { _id: 2, title: "Founder at Coding Commando" },
+  { _id: 3, title: "Salesforce Certified Trainer" },
+  { _id: 4, title: "Having industry experience of more than 09 years" },
+];
+
 export const MentorCard = ({
   imageUrl,
   name,
   description,
-  additionalDetails,
+  // additionalDetails,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (

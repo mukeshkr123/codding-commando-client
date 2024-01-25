@@ -1,6 +1,7 @@
 // import { BuyProduct } from "@/components/razorpay/BuyProduct";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export const CourseCard = ({
@@ -8,7 +9,7 @@ export const CourseCard = ({
   description,
   duration,
   imageUrl,
-  // courseId,
+  courseId,
   enrolled,
 }) => {
   return (
@@ -34,9 +35,11 @@ export const CourseCard = ({
               </Button>
             ) : (
               // <BuyProduct courseId={courseId}>
-              <Button className="rounded-full bg-gradient-to-r from-[#F5478E] to-[#FF7E5F] text-sm text-white shadow-md transition-all duration-300 hover:from-[#FF7E5F] hover:to-[#F5478E]">
-                Buy now
-              </Button>
+              <Link href={`/courses/${courseId}`}>
+                <Button className="rounded-full bg-gradient-to-r from-[#F5478E] to-[#FF7E5F] text-sm text-white shadow-md transition-all duration-300 hover:from-[#FF7E5F] hover:to-[#F5478E]">
+                  Buy now
+                </Button>
+              </Link>
               // </BuyProduct>
             )}
           </div>

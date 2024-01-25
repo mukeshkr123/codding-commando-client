@@ -13,7 +13,7 @@ export const MeetMentor = () => {
     try {
       const { data } = await apiClient.get("/teachers");
       setMentors(data?.mentors);
-    } catch  {
+    } catch {
     } finally {
       setLoading(false);
     }
@@ -30,6 +30,8 @@ export const MeetMentor = () => {
       </div>
     );
   }
+
+  // const additionalDetails = [];
 
   return (
     <section

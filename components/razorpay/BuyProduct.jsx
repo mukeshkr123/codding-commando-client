@@ -15,8 +15,8 @@ export const BuyProduct = ({ children, courseId, method }) => {
       return;
     }
 
-    // const key = "rzp_test_SsZQw7VSzw5bCq"; // for test
-    const key = "rzp_live_7GoHndZWogG4iX"; // for live
+    const key = "rzp_test_SsZQw7VSzw5bCq"; // for test
+    // const key = "rzp_live_7GoHndZWogG4iX"; // for live
     const config = {
       headers: {
         Authorization: `Bearer ${userAuth?.accessToken}`,
@@ -24,7 +24,6 @@ export const BuyProduct = ({ children, courseId, method }) => {
     };
 
     try {
-      // Make an API call to create the order on the server
       const {
         data: { order, name, email, phone, price },
       } = await apiClient.post(
