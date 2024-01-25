@@ -58,7 +58,7 @@ export const StudentActions = ({ studentId, isBlocked }) => {
       >
         <Button
           disabled={isLoading}
-          variant={isBlocked ? " " : "destructive"}
+          variant={isBlocked ? "default" : "destructive"}
           size="sm"
         >
           {isBlocked ? "Unblock User" : "Block User"}
