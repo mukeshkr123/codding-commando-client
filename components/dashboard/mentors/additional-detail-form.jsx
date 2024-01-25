@@ -22,8 +22,8 @@ import { useSelector } from "react-redux";
 import { ErrorToast } from "@/components/error-toast";
 
 const formSchema = z.object({
-  description: z.string().min(1, {
-    message: "Description is required",
+  additionInfo: z.string().min(1, {
+    message: "additionInfo is required",
   }),
 });
 
@@ -36,7 +36,7 @@ export const AditionalDetailForm = ({ initialData, mentorId }) => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      description: initialData?.description || "",
+      additionInfo: initialData?.additionInfo || "",
     },
   });
 
@@ -69,7 +69,7 @@ export const AditionalDetailForm = ({ initialData, mentorId }) => {
           ) : (
             <>
               <Pencil className="mr-2 h-4 w-4" />
-              Edit description
+              Edit additionInfo
             </>
           )}
         </Button>
@@ -78,10 +78,10 @@ export const AditionalDetailForm = ({ initialData, mentorId }) => {
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData?.description && "text-slate-500 italic"
+            !initialData?.additionInfo && "text-slate-500 italic"
           )}
         >
-          {initialData?.description || "No description"}
+          {initialData?.additionInfo || "No additionInfo"}
         </p>
       )}
       {isEditing && (
@@ -92,7 +92,7 @@ export const AditionalDetailForm = ({ initialData, mentorId }) => {
           >
             <FormField
               control={form.control}
-              name="description"
+              name="additionInfo"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>

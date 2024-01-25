@@ -31,8 +31,6 @@ export const MeetMentor = () => {
     );
   }
 
-  // const additionalDetails = [];
-
   return (
     <section
       className="flex w-full flex-col items-center justify-center bg-light-white bg-cover px-8 py-4 pb-8 pt-16 text-center xl:pb-20 "
