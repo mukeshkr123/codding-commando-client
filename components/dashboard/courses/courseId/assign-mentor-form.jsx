@@ -40,7 +40,7 @@ export function AssignMentorForm({ initialData, courseId }) {
       const { data } = await apiClient.get("/mentors", config);
       setMentors(data.mentors);
     } catch (error) {
-      toast.error("Something went wrong");
+      // toast.error("Something went wrong");
     }
   };
 

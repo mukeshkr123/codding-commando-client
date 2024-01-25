@@ -2,7 +2,7 @@
 
 import apiClient from "lib/api-client";
 import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { DataTable } from "@/components/dashboard/mentors/data-tables";
 import { columns } from "@/components/dashboard/mentors/columns";
@@ -23,7 +23,7 @@ const MentorPage = () => {
 
       setData(response.data?.mentors);
     } catch (error) {
-      toast.error("something went wrong");
+      // toast.error("something went wrong");
     } finally {
       setLoading(false);
     }

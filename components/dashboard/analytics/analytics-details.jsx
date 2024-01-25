@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { DataCard } from "@/components/dashboard/analytics/data-card";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
 import { Loader2 } from "lucide-react";
@@ -38,7 +38,7 @@ const AnalyticsDetails = () => {
       const { data } = await apiClient(url, config);
       setData(data?.data);
     } catch (error) {
-      toast.error("Something went wrong");
+      // toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }

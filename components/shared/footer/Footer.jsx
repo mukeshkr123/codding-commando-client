@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { ErrorToast } from "@/components/error-toast";
+// import { ErrorToast } from "@/components/error-toast";
 import apiClient from "lib/api-client";
 import Image from "next/image";
 import Link from "next/link";
@@ -70,7 +70,7 @@ const Footer = () => {
 
       setLinks(data?.links);
     } catch (error) {
-      ErrorToast(error);
+      // ErrorToast(error);
     }
   };
 

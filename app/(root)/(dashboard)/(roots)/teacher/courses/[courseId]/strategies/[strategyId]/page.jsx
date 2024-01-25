@@ -5,7 +5,7 @@ import { StrategyActions } from "@/components/dashboard/courses/courseId/strateg
 import { StrategyDescriptionForm } from "@/components/dashboard/courses/courseId/strategy/strategy-description-form";
 import { StrategyImageForm } from "@/components/dashboard/courses/courseId/strategy/strategy-image-form";
 import { StrategyTitleForm } from "@/components/dashboard/courses/courseId/strategy/strategy-title-form";
-import { ErrorToast } from "@/components/error-toast";
+// import { ErrorToast } from "@/components/error-toast";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
 import { ArrowLeft, LayoutDashboard, Loader2 } from "lucide-react";
@@ -34,7 +34,7 @@ const StrategyIdPage = ({ params }) => {
       setStrategy(data?.strategy);
       setLoading(false);
     } catch (error) {
-      ErrorToast(error);
+      // ErrorToast(error);
     } finally {
       setLoading(false);
     }

@@ -7,7 +7,7 @@ import { MentorDescriptionForm } from "@/components/dashboard/mentors/descriptio
 import { MentorImageForm } from "@/components/dashboard/mentors/mentor-image";
 import { MentorNameForm } from "@/components/dashboard/mentors/mentor-name-form";
 import { SelectRole } from "@/components/dashboard/mentors/select-role";
-import { ErrorToast } from "@/components/error-toast";
+// import { ErrorToast } from "@/components/error-toast";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
 import { LayoutDashboard, Loader2 } from "lucide-react";
@@ -33,7 +33,7 @@ const MentorIdPage = ({ params }) => {
       );
       setMentorData(data?.mentor);
     } catch (error) {
-      ErrorToast(error);
+      // ErrorToast(error);
     } finally {
       setLoading(false);
     }
@@ -63,8 +63,6 @@ const MentorIdPage = ({ params }) => {
       </div>
     );
   }
-
-  console.log(mentorData);
 
   return (
     <>

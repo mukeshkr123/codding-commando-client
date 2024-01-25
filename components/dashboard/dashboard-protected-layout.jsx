@@ -4,7 +4,7 @@ import { fetchUserSession } from "GlobalRedux/slices/userSlice";
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ErrorToast } from "../error-toast";
+// import { ErrorToast } from "../error-toast";
 
 const ProtectDashboardLayout = ({ children }) => {
   const { userAuth, userSession } = useSelector((state) => state?.user);
@@ -20,7 +20,7 @@ const ProtectDashboardLayout = ({ children }) => {
         try {
           dispatch(fetchUserSession(userAuth?.accessToken));
         } catch (error) {
-          ErrorToast(error);
+          // ErrorToast(error);
         }
       }
     };

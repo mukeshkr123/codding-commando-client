@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { CourseCard } from "./course-card";
 import apiClient from "lib/api-client";
-import { ErrorToast } from "../error-toast";
+// import { ErrorToast } from "../error-toast";
 
 export const CourseList = () => {
   const [courses, setCourse] = useState([]);
@@ -13,7 +13,7 @@ export const CourseList = () => {
       const { data } = await apiClient.get("/get-all/courses");
       setCourse(data?.courses);
     } catch (error) {
-      ErrorToast(error);
+      // ErrorToast(error);
     }
   };
 

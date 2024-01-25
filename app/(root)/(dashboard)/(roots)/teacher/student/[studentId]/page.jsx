@@ -8,7 +8,7 @@ import apiClient from "lib/api-client";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { FaArrowLeft } from "react-icons/fa";
 
@@ -31,7 +31,7 @@ const StudentProfile = ({ params }) => {
 
       setStudentData(data.user);
     } catch (error) {
-      toast.error(error?.message);
+      // toast.error(error?.message);
     } finally {
       setLoading(false);
     }

@@ -1,6 +1,6 @@
 "use client";
 
-import { ErrorToast } from "@/components/error-toast";
+// import { ErrorToast } from "@/components/error-toast";
 import LoadingAnimation from "@/components/shared/loading-animation";
 import { Card } from "@/components/ui/card";
 import apiClient from "lib/api-client";
@@ -34,7 +34,7 @@ const ContactPage = ({ params }) => {
       const response = await apiClient.get(`/send/${params.contactId}`, config);
       setData(response.data.contact);
     } catch (error) {
-      ErrorToast(error);
+      // ErrorToast(error);
     } finally {
       setLoading(false);
     }

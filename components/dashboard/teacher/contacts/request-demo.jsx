@@ -5,7 +5,7 @@ import { BellRing, Loader2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { ContactDataTable } from "./contact-data-tables";
 import ContactColumns from "./contact-columns";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { DatePicker } from "antd";
 import { Button } from "@/components/ui/button";
@@ -33,7 +33,7 @@ export const ContactDetails = () => {
       const { data } = await apiClient.get(url, config);
       setData(data?.contacts);
     } catch (error) {
-      toast.error("Something went wrong");
+      // toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }

@@ -7,7 +7,7 @@ import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
 import { PaymentCourseImage } from "./couse-payment-imageForm";
 import { PaymentDescriptionForm } from "./payment-description-form";
-import { ErrorToast } from "@/components/error-toast";
+// import { ErrorToast } from "@/components/error-toast";
 
 export const PaymentDetails = ({ initialData, courseId }) => {
   const [paymentData, setPaymentData] = useState([]);
@@ -26,7 +26,7 @@ export const PaymentDetails = ({ initialData, courseId }) => {
       );
       setPaymentData(data?.paymentDetail);
     } catch (error) {
-      ErrorToast(error);
+      // ErrorToast(error);
     }
   };
 

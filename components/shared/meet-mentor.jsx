@@ -54,7 +54,7 @@ export const MeetMentor = () => {
         className="w-[60%] sm:hidden"
       />
 
-      <div className="mt-4 grid grid-cols-1 sm:mt-20 sm:grid-cols-2 sm:gap-10 ">
+      <div className="mt-4 grid grid-cols-1 sm:mt-20 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 ">
         {mentors &&
           mentors.map((mentor) => <MentorCard key={mentor.id} {...mentor} />)}
       </div>

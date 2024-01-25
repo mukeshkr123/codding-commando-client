@@ -9,7 +9,7 @@ import { PaymentDetails } from "@/components/courses/payment-detail";
 import { MentorDetails } from "@/components/courses/mentor-details";
 import { ProgramCurricullumList } from "@/components/courses/program-curriculum-list";
 import { Loader2 } from "lucide-react";
-import { ErrorToast } from "@/components/error-toast";
+// import { ErrorToast } from "@/components/error-toast";
 
 const CoursePage = ({ params }) => {
   const [result, setResult] = useState(null);
@@ -19,7 +19,7 @@ const CoursePage = ({ params }) => {
       const { data } = await apiClient.get(`/course/${params.courseId}`);
       setResult(data?.course);
     } catch (error) {
-      ErrorToast(error);
+      // ErrorToast(error);
     } finally {
       setLoading(false);
     }

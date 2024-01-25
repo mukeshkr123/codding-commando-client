@@ -5,7 +5,7 @@ import { DataTable } from "@/components/dashboard/students/data-tables";
 import apiClient from "lib/api-client";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
 const MentorPage = () => {
@@ -24,7 +24,7 @@ const MentorPage = () => {
 
       setData(response.data?.students);
     } catch (error) {
-      toast.error("something went wrong");
+      // toast.error("something went wrong");
     } finally {
       setLoading(false);
     }

@@ -1,6 +1,6 @@
 "use client";
 
-import { ErrorToast } from "@/components/error-toast";
+// import { ErrorToast } from "@/components/error-toast";
 import LoadingAnimation from "@/components/shared/loading-animation";
 import apiClient from "lib/api-client";
 import React, { useEffect, useState } from "react";
@@ -23,7 +23,7 @@ export const PaymentList = () => {
       const { data } = await apiClient.get("/purchases", config);
       setData(data?.results);
     } catch (error) {
-      ErrorToast(error);
+      // ErrorToast(error);
     } finally {
       setIsLoading(false);
     }

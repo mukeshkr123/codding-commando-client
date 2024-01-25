@@ -14,7 +14,7 @@ import apiClient from "lib/api-client";
 import Image from "next/image";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
-import { ErrorToast } from "./error-toast";
+// import { ErrorToast } from "./error-toast";
 
 export function CourseSlider() {
   const [banners, setBanners] = React.useState([]);
@@ -25,7 +25,7 @@ export function CourseSlider() {
       const { data } = await apiClient.get("/banners");
       setBanners(data?.banners);
     } catch (error) {
-      ErrorToast(error);
+      // ErrorToast(error);
     } finally {
       setLoading(false);
     }
