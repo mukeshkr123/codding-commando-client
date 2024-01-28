@@ -71,7 +71,7 @@ export const ContactDetails = () => {
 
   return (
     <section>
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between gap-6 md:flex-row">
         <div className="flex items-center gap-4">
           <div className="relative">
             <BellRing className="h-9 w-9" />

@@ -12,7 +12,7 @@ export const Sidebar = () => {
             src="/dashboard-icon.svg"
             height={180}
             width={180}
-            alt="Codding commando"
+            alt="Coding commando"
           />
         </Link>
       </div>

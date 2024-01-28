@@ -31,7 +31,7 @@ export default function Navbar() {
           <Link href="/">
             <Image
               src="/assets/icons/logo.svg"
-              alt="Codding Commando"
+              alt="Coding Commando"
               height={150}
               width={180}
               className="w-[70%] "

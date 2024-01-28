@@ -35,7 +35,7 @@ const MobileNav = ({ navLinks, userAuth }) => {
             <div className="mb-14">
               <Image
                 src="/assets/icons/logo.svg"
-                alt="Codding Commando"
+                alt="Coding Commando"
                 height={150}
                 width={180}
               />

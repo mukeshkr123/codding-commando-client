@@ -19,7 +19,7 @@ const MentorPage = () => {
           Authorization: `Bearer ${userAuth?.accessToken}`,
         },
       };
-      const response = await apiClient.get("/mentors", config);
+      const response = await apiClient.get("/teams", config);
 
       setData(response.data?.mentors);
     } catch (error) {
