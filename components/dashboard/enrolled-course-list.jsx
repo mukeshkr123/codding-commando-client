@@ -63,7 +63,7 @@ export const EnrolledCourseList = () => {
           Your Courses
         </h2>
 
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-4 grid gap-y-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:px-8">
           {courses.map((course) => (
             <CourseCard
               key={course?._id}

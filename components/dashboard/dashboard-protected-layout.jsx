@@ -1,14 +1,36 @@
 "use client";
 
-import { fetchUserSession } from "GlobalRedux/slices/userSlice";
-import { redirect } from "next/navigation";
+import { fetchUserSession, logoutAction } from "GlobalRedux/slices/userSlice";
+import apiClient from "lib/api-client";
+import { redirect, usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { ErrorToast } from "../error-toast";
 
 const ProtectDashboardLayout = ({ children }) => {
   const { userAuth, userSession } = useSelector((state) => state?.user);
   const dispatch = useDispatch();
+
+  const pathname = usePathname();
+
+  // validate session
+  useEffect(() => {
+    const validateSession = async () => {
+      try {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${userAuth?.accessToken}`,
+          },
+        };
+        await apiClient.get("/validate-session", config);
+      } catch (error) {
+        dispatch(logoutAction());
+      }
+    };
+
+    if (userAuth && userAuth?.accessToken) {
+      validateSession();
+    }
+  }, [dispatch, userAuth, pathname]);
 
   useEffect(() => {
     if (!userAuth?.accessToken) {
@@ -17,11 +39,7 @@ const ProtectDashboardLayout = ({ children }) => {
 
     const checkUserSession = async () => {
       if (userAuth?.accessToken && !userSession) {
-        try {
-          dispatch(fetchUserSession(userAuth?.accessToken));
-        } catch (error) {
-          // ErrorToast(error);
-        }
+        dispatch(fetchUserSession(userAuth?.accessToken));
       }
     };
 

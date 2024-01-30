@@ -10,7 +10,9 @@ const SearchPage = () => {
       </div>
 
       <div>
-        <h2 className="pl-2 text-2xl font-medium text-slate-800">Courses</h2>
+        <h2 className="pl-2 text-2xl font-medium text-slate-800 xl:mb-4 xl:pl-6 xl:text-3xl">
+          Courses
+        </h2>
         <CourseList />
       </div>
     </div>
