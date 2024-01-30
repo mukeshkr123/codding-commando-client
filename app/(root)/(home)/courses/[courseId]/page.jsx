@@ -9,6 +9,7 @@ import { PaymentDetails } from "@/components/courses/payment-detail";
 import { MentorDetails } from "@/components/courses/mentor-details";
 import { ProgramCurricullumList } from "@/components/courses/program-curriculum-list";
 import { Loader2 } from "lucide-react";
+import { redirect } from "next/navigation";
 // import { ErrorToast } from "@/components/error-toast";
 
 const CoursePage = ({ params }) => {
@@ -38,7 +39,7 @@ const CoursePage = ({ params }) => {
   }
 
   if (!result) {
-    return null;
+    return redirect("/courses");
   }
 
   return (

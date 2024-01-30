@@ -44,7 +44,7 @@ export const SignUpForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     reset,
   } = useForm({
     resolver: yupResolver(signUpSchema),
@@ -70,6 +70,8 @@ export const SignUpForm = () => {
   useEffect(() => {
     reset();
   }, [registered, reset]);
+
+  console.log(isSubmitting);
 
   if (registered) {
     return <VerificationBox />;
@@ -122,6 +124,7 @@ export const SignUpForm = () => {
                 <button
                   className="mt-2 rounded-3xl bg-bg_pink px-10 py-2 font-bold text-white transition-transform hover:scale-105 focus:border-blue-300 focus:shadow-none focus:outline-none focus:ring xl:px-12"
                   type="submit"
+                  disabled={isSubmitting}
                   style={{ boxShadow: "1.5px 1.5px white" }}
                 >
                   SignUp

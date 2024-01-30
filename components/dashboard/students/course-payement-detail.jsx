@@ -47,7 +47,7 @@ export const CoursePaymentDetail = ({ studentData }) => {
         </div>
       ) : (
         <div className="mt-4 flex w-full justify-center">
-          <h1 className="text-base text-indigo-600">No Payment History Yet</h1>
+          <h1 className="text-base text-gray-600">No Payment History Yet</h1>
         </div>
       )}
     </Card>
