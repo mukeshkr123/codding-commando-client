@@ -84,7 +84,7 @@ export const DemoForm = () => {
               className="w-full rounded px-8 pb-8 pt-6 shadow-md xl:p-10"
             >
               <h1 className="mb-4 py-2 text-2xl font-bold text-white xl:text-4xl">
-                Reserver Your Seat{" "}
+                Reserve Your Seat{" "}
               </h1>
               <div className="flex w-full flex-col lg:flex-row lg:gap-12">
                 <div className="w-full lg:w-1/2">
