@@ -90,7 +90,7 @@ const InstallMentPriceForm = ({ initialData, courseId }) => {
         <p
           className={cn(
             "text-sm mt-2",
-            !initialData.installmentPrice && "text-slate-500 italic"
+            !initialData?.installmentPrice && "text-slate-500 italic"
           )}
         >
           {initialData?.installmentPrice

@@ -11,7 +11,7 @@ export const BuyProduct = ({ children, courseId, method }) => {
 
   const makePayment = async () => {
     if (!userAuth && !userAuth?.accessToken) {
-      router.push("/login");
+      router.push(`/purchase/${courseId}?method=${method}`);
       return;
     }
 
