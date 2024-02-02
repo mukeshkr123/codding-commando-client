@@ -50,7 +50,7 @@ const CoursePaymentPage = ({ params, searchParams }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting, isValid },
   } = useForm({
     resolver: zodResolver(formschema),
   });
@@ -105,7 +105,7 @@ const CoursePaymentPage = ({ params, searchParams }) => {
   return (
     <>
       <div
-        className={`relative h-full w-full bg-gray-200 py-4 ${
+        className={`relative h-full w-full bg-gray-200  md:py-4 ${
           inter.className
         } ${showOtpBox ? "blur-sm" : ""}`}
       >
@@ -154,7 +154,7 @@ const CoursePaymentPage = ({ params, searchParams }) => {
                 alt="Course banner"
                 width={1200}
                 height={800}
-                className="p-2"
+                className="md:p-2"
               />
               <div className="mt-6 flex w-full flex-col gap-1">
                 <h2 className="text-xl font-medium">{courseData?.title}</h2>
@@ -199,6 +199,7 @@ const CoursePaymentPage = ({ params, searchParams }) => {
               <Button
                 className="mt-5 bg-blue-500 py-6 text-lg font-bold text-white hover:bg-blue-400"
                 type="submit"
+                disabled={isSubmitting || !isValid}
               >
                 Complete Order <ArrowRight />
               </Button>

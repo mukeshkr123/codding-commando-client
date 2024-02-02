@@ -10,6 +10,7 @@ export const VerificationBox = ({ toggleOtpBox, token, courseId, method }) => {
   const [otp, setOtp] = useState("");
   const otpLength = 4;
   const router = useRouter();
+  const [isloading, setIsloading] = useState(false);
 
   const onOtpSubmit = async () => {
     const orderData = {
@@ -23,6 +24,7 @@ export const VerificationBox = ({ toggleOtpBox, token, courseId, method }) => {
     const razorpayKey = "rzp_live_7GoHndZWogG4iX"; // for live
 
     try {
+      setIsloading(true);
       const { data } = await apiClient.post(
         `/payment/create-order/${courseId}`,
         orderData
@@ -78,6 +80,8 @@ export const VerificationBox = ({ toggleOtpBox, token, courseId, method }) => {
       });
     } catch (error) {
       ErrorToast(error);
+    } finally {
+      setIsloading(false);
     }
   };
 
@@ -98,7 +102,7 @@ export const VerificationBox = ({ toggleOtpBox, token, courseId, method }) => {
         />
         <Button
           onClick={onOtpSubmit}
-          disabled={otp?.length !== otpLength}
+          disabled={otp?.length !== otpLength || isloading}
           className="mt-6 w-full bg-blue-500 py-3 text-lg font-semibold text-white hover:bg-blue-600 focus:border-blue-300 focus:outline-none focus:ring md:mt-8 md:py-6"
         >
           Verify
