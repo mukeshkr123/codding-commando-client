@@ -17,7 +17,6 @@ import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
 import { LayoutDashboard, ListChecks, ListStart, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
-// import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
 const CourseIdPage = ({ params }) => {
@@ -129,7 +128,7 @@ const CourseIdPage = ({ params }) => {
           </div>
           <div className="space-y-6">
             <PaymentDetails
-              initialData={courseData}
+              initialData={courseData?.paymentDetail}
               courseId={courseData?._id}
             />
             <div>
