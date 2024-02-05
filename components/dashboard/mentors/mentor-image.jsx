@@ -10,7 +10,7 @@ import apiClient from "lib/api-client";
 import { Input } from "@/components/ui/input";
 import { ErrorToast } from "@/components/error-toast";
 
-export const MentorImageForm = ({ initialData, mentorId }) => {
+export const MentorImageForm = ({ initialData, mentorId, onUpdateSucess }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
   const [image, setImage] = useState(null);
@@ -37,7 +37,7 @@ export const MentorImageForm = ({ initialData, mentorId }) => {
       await apiClient.patch(`/mentors/${mentorId}`, data, config);
       toast.success("Member updated");
       toggleEdit();
-      window.location.reload();
+      onUpdateSucess();
     } catch (error) {
       ErrorToast(error);
     } finally {

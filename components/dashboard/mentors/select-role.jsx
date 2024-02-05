@@ -7,7 +7,7 @@ import { ErrorToast } from "@/components/error-toast";
 import apiClient from "lib/api-client";
 import toast from "react-hot-toast";
 
-export function SelectRole({ initialData, mentorId }) {
+export function SelectRole({ initialData, mentorId, onUpdateSucess }) {
   const { userAuth } = useSelector((state) => state?.user);
   const [selectedRole, setSelectedRole] = useState(initialData?.role || null);
   const [isEditing, setIsEditing] = useState(false);
@@ -36,7 +36,7 @@ export function SelectRole({ initialData, mentorId }) {
       await apiClient.patch(`/mentors/${mentorId}`, value, config);
       toggleEdit();
       toast.success("Updated");
-      window.location.reload();
+      onUpdateSucess();
     } catch (error) {
       ErrorToast(error);
     }

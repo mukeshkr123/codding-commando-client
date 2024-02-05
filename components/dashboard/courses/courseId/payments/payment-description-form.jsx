@@ -27,7 +27,11 @@ const formSchema = z.object({
   }),
 });
 
-export const PaymentDescriptionForm = ({ initialData, courseId }) => {
+export const PaymentDescriptionForm = ({
+  initialData,
+  courseId,
+  onSuccess,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -60,7 +64,7 @@ export const PaymentDescriptionForm = ({ initialData, courseId }) => {
 
       toggleEdit();
 
-      window.location.reload();
+      onSuccess();
     } catch (error) {
       ErrorToast(error);
     }

@@ -7,11 +7,10 @@ import { MentorDescriptionForm } from "@/components/dashboard/mentors/descriptio
 import { MentorImageForm } from "@/components/dashboard/mentors/mentor-image";
 import { MentorNameForm } from "@/components/dashboard/mentors/mentor-name-form";
 import { SelectRole } from "@/components/dashboard/mentors/select-role";
-// import { ErrorToast } from "@/components/error-toast";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
 import { LayoutDashboard, Loader2 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const MentorIdPage = ({ params }) => {
@@ -19,7 +18,7 @@ const MentorIdPage = ({ params }) => {
   const [loading, setLoading] = useState(true);
   const { userAuth } = useSelector((state) => state?.user);
 
-  const fetchmentorData = async () => {
+  const fetchmentorData = useCallback(async () => {
     try {
       const config = {
         headers: {
@@ -37,11 +36,11 @@ const MentorIdPage = ({ params }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [userAuth?.accessToken, params.mentorId]);
 
   useEffect(() => {
     fetchmentorData();
-  }, []);
+  }, [userAuth?.accessToken, params.mentorId, fetchmentorData]);
 
   const requiredFields = [
     mentorData?.name,
@@ -55,6 +54,10 @@ const MentorIdPage = ({ params }) => {
   const completionText = `(${completedFields}/${totalFields})`;
 
   const isComplete = requiredFields.every(Boolean);
+
+  const handleUpdateSuccess = () => {
+    fetchmentorData();
+  };
 
   if (loading) {
     return (
@@ -92,22 +95,30 @@ const MentorIdPage = ({ params }) => {
             <MentorNameForm
               initialData={mentorData}
               mentorId={params.mentorId}
+              onUpdateSucess={handleUpdateSuccess}
             />
             <MentorDescriptionForm
               initialData={mentorData}
               mentorId={params.mentorId}
+              onUpdateSucess={handleUpdateSuccess}
             />
-            <SelectRole initialData={mentorData} mentorId={params.mentorId} />
+            <SelectRole
+              initialData={mentorData}
+              mentorId={params.mentorId}
+              onUpdateSucess={handleUpdateSuccess}
+            />
           </div>
           <div className="md:mt-12">
             <MentorImageForm
               initialData={mentorData}
               mentorId={params.mentorId}
+              onUpdateSucess={handleUpdateSuccess}
             />
             {mentorData?.role === "mentor" && (
               <AditionalDetailForm
                 initialData={mentorData}
                 mentorId={params.mentorId}
+                onUpdateSucess={handleUpdateSuccess}
               />
             )}
           </div>

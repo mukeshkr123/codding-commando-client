@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useSelector } from "react-redux";
 import apiClient from "lib/api-client";
 import { ErrorToast } from "@/components/error-toast";
+import toast from "react-hot-toast";
 
 const installmentSchema = z.object({
   enabledInstallement: z.boolean().default(false),
@@ -25,7 +26,7 @@ function InstallmentMode({ initialData, courseId, onSuccess }) {
 
   useEffect(() => {
     form.setValue("enabledInstallement", initialData?.enabledInstallement);
-  }, [initialData]);
+  }, []);
 
   const onSubmit = async (value) => {
     try {
@@ -39,7 +40,7 @@ function InstallmentMode({ initialData, courseId, onSuccess }) {
         value,
         config
       );
-      // window.location.reload();
+      toast.success("payment details updated");
       onSuccess();
     } catch (error) {
       ErrorToast(error);

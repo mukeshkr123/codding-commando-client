@@ -10,7 +10,7 @@ import apiClient from "lib/api-client";
 import { Input } from "@/components/ui/input";
 import { ErrorToast } from "@/components/error-toast";
 
-export const CourseBanner = ({ initialData, courseId }) => {
+export const CourseBanner = ({ initialData, courseId, onUpdateSucess }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
   const [image, setImage] = useState(null);
@@ -37,7 +37,7 @@ export const CourseBanner = ({ initialData, courseId }) => {
       await apiClient.patch(`/courses/update/${courseId}`, data, config);
       toast.success("Course updated");
       toggleEdit();
-      window.location.reload();
+      onUpdateSucess();
     } catch (error) {
       ErrorToast(error);
     } finally {

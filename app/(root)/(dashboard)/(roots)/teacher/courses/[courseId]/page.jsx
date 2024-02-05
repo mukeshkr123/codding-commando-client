@@ -16,7 +16,7 @@ import { StrategyForm } from "@/components/dashboard/courses/courseId/strategy/s
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
 import { LayoutDashboard, ListChecks, ListStart, Loader2 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const CourseIdPage = ({ params }) => {
@@ -24,7 +24,7 @@ const CourseIdPage = ({ params }) => {
   const [loading, setLoading] = useState(true);
   const { userAuth } = useSelector((state) => state?.user);
 
-  const fetchCourseData = async () => {
+  const fetchCourseData = useCallback(async () => {
     try {
       const config = {
         headers: {
@@ -37,15 +37,14 @@ const CourseIdPage = ({ params }) => {
       );
       setCourseData(data?.course);
     } catch (error) {
-      // toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
-  };
+  }, [params.courseId, userAuth?.accessToken]);
 
   useEffect(() => {
     fetchCourseData();
-  }, []);
+  }, [params.courseId, userAuth?.accessToken, fetchCourseData]);
 
   const requiredFields = [
     courseData?.title,
@@ -74,6 +73,10 @@ const CourseIdPage = ({ params }) => {
 
   const isComplete = requiredFields.every(Boolean);
 
+  const handleupdateSuccess = () => {
+    fetchCourseData();
+  };
+
   return (
     <>
       {!courseData?.isPublished && (
@@ -92,6 +95,7 @@ const CourseIdPage = ({ params }) => {
             disabled={!isComplete}
             courseId={params.courseId}
             isPublished={courseData?.isPublished}
+            onUpdateSucess={handleupdateSuccess}
           />
         </div>
         <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -101,18 +105,40 @@ const CourseIdPage = ({ params }) => {
               <h2 className="text-2xl">Customize your course</h2>
             </div>
 
-            <TitleForm initialData={courseData} courseId={courseData?._id} />
+            <TitleForm
+              initialData={courseData}
+              courseId={courseData?._id}
+              onUpdateSucess={handleupdateSuccess}
+            />
             <DescriptionForm
               initialData={courseData}
               courseId={courseData?._id}
+              onUpdateSucess={handleupdateSuccess}
             />
-            <CourseImage initialData={courseData} courseId={courseData?._id} />
-            <AboutForm initialData={courseData} courseId={courseData?._id} />
-            <ModeForm initialData={courseData} courseId={courseData?._id} />
-            <DurationForm initialData={courseData} courseId={courseData?._id} />
+            <CourseImage
+              initialData={courseData}
+              courseId={courseData?._id}
+              onUpdateSucess={handleupdateSuccess}
+            />
+            <AboutForm
+              initialData={courseData}
+              courseId={courseData?._id}
+              onUpdateSucess={handleupdateSuccess}
+            />
+            <ModeForm
+              initialData={courseData}
+              courseId={courseData?._id}
+              onUpdateSucess={handleupdateSuccess}
+            />
+            <DurationForm
+              initialData={courseData}
+              courseId={courseData?._id}
+              onUpdateSucess={handleupdateSuccess}
+            />
             <AssignMentorForm
               initialData={courseData}
               courseId={courseData?._id}
+              onUpdateSucess={handleupdateSuccess}
             />
 
             <div className="mt-6">
@@ -123,6 +149,7 @@ const CourseIdPage = ({ params }) => {
               <CourseBanner
                 initialData={courseData}
                 courseId={courseData?._id}
+                onUpdateSucess={handleupdateSuccess}
               />
             </div>
           </div>
@@ -130,6 +157,7 @@ const CourseIdPage = ({ params }) => {
             <PaymentDetails
               initialData={courseData?.paymentDetail}
               courseId={courseData?._id}
+              onUpdateSucess={handleupdateSuccess}
             />
             <div>
               <div className="flex items-center gap-x-2">
@@ -139,6 +167,7 @@ const CourseIdPage = ({ params }) => {
               <ProgramsForm
                 initialData={courseData}
                 courseId={courseData?._id}
+                onUpdateSucess={handleupdateSuccess}
               />
             </div>
             <div>
@@ -149,6 +178,7 @@ const CourseIdPage = ({ params }) => {
               <StrategyForm
                 initialData={courseData}
                 courseId={courseData?._id}
+                onUpdateSucess={handleupdateSuccess}
               />
             </div>
           </div>

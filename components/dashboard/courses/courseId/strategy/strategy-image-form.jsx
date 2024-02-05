@@ -10,7 +10,12 @@ import apiClient from "lib/api-client";
 import { Input } from "@/components/ui/input";
 import { ErrorToast } from "@/components/error-toast";
 
-export const StrategyImageForm = ({ initialData, courseId, strategyId }) => {
+export const StrategyImageForm = ({
+  initialData,
+  courseId,
+  strategyId,
+  onUpdateSucess,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
   const [image, setImage] = useState(null);
@@ -41,7 +46,7 @@ export const StrategyImageForm = ({ initialData, courseId, strategyId }) => {
       );
       toast.success("Course updated");
       toggleEdit();
-      window.location.reload();
+      onUpdateSucess();
     } catch (error) {
       ErrorToast(error);
     } finally {

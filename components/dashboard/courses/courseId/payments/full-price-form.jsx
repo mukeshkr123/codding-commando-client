@@ -2,10 +2,8 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Pencil } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -21,18 +19,17 @@ import apiClient from "lib/api-client";
 import { formatPrice } from "lib/format";
 import { cn } from "lib/utils";
 import { useSelector } from "react-redux";
+import { ErrorToast } from "@/components/error-toast";
 
 const formSchema = z.object({
   fullPrice: z.coerce.number(),
 });
 
-const FullPriceForm = ({ initialData, courseId }) => {
+const FullPriceForm = ({ initialData, courseId, onSuccess }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
   const toggleEdit = () => setIsEditing((current) => !current);
-
-  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -59,17 +56,11 @@ const FullPriceForm = ({ initialData, courseId }) => {
 
       toggleEdit();
 
-      window.location.reload();
+      onSuccess();
     } catch (error) {
-      toast.error("Something went wrong");
+      ErrorToast(error);
     }
   };
-
-  useEffect(() => {
-    if (isEditing) {
-      router.refresh();
-    }
-  }, [isEditing, router]);
 
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">

@@ -24,7 +24,7 @@ const formSchema = z.object({
   }),
 });
 
-export const MentorNameForm = ({ initialData, mentorId }) => {
+export const MentorNameForm = ({ initialData, mentorId, onUpdateSucess }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -48,7 +48,7 @@ export const MentorNameForm = ({ initialData, mentorId }) => {
       await apiClient.patch(`/mentors/${mentorId}`, values, config);
       toast.success("Member Updated");
       toggleEdit();
-      window.location.reload();
+      onUpdateSucess();
     } catch (error) {
       ErrorToast(error);
     }

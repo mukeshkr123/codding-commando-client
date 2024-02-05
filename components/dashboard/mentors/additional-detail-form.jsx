@@ -27,7 +27,11 @@ const formSchema = z.object({
   }),
 });
 
-export const AditionalDetailForm = ({ initialData, mentorId }) => {
+export const AditionalDetailForm = ({
+  initialData,
+  mentorId,
+  onUpdateSucess,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -53,7 +57,7 @@ export const AditionalDetailForm = ({ initialData, mentorId }) => {
       await apiClient.patch(`/mentors/${mentorId}`, values, config);
       toast.success("Member Updated");
       toggleEdit();
-      window.location.reload();
+      onUpdateSucess();
     } catch (error) {
       ErrorToast(error);
     }

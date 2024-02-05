@@ -23,6 +23,7 @@ export const StrategyDescriptionForm = ({
   initialData,
   courseId,
   strategyId,
+  onUpdateSucess,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
@@ -59,7 +60,7 @@ export const StrategyDescriptionForm = ({
       );
 
       toggleEdit();
-      window.location.reload();
+      onUpdateSucess();
     } catch (error) {
       toast.error("Something went wrong");
     }

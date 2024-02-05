@@ -24,7 +24,12 @@ const formSchema = z.object({
   }),
 });
 
-export const ProgramTitleForm = ({ initialData, courseId, programId }) => {
+export const ProgramTitleForm = ({
+  initialData,
+  courseId,
+  programId,
+  onUpdateSucess,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -54,7 +59,7 @@ export const ProgramTitleForm = ({ initialData, courseId, programId }) => {
       toast.success("Program updated");
 
       toggleEdit();
-      window.location.reload();
+      onUpdateSucess();
     } catch (error) {
       ErrorToast(error);
     }

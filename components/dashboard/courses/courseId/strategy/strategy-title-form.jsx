@@ -23,7 +23,12 @@ const formSchema = z.object({
   }),
 });
 
-export const StrategyTitleForm = ({ initialData, courseId, strategyId }) => {
+export const StrategyTitleForm = ({
+  initialData,
+  courseId,
+  strategyId,
+  onUpdateSucess,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -51,7 +56,7 @@ export const StrategyTitleForm = ({ initialData, courseId, strategyId }) => {
       );
 
       toggleEdit();
-      window.location.reload();
+      onUpdateSucess();
     } catch (error) {
       toast.error("Something went wrong");
     }
