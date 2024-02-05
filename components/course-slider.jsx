@@ -14,7 +14,6 @@ import apiClient from "lib/api-client";
 import Image from "next/image";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
-// import { ErrorToast } from "./error-toast";
 
 export function CourseSlider() {
   const [banners, setBanners] = React.useState([]);
@@ -25,7 +24,6 @@ export function CourseSlider() {
       const { data } = await apiClient.get("/banners");
       setBanners(data?.banners);
     } catch (error) {
-      // ErrorToast(error);
     } finally {
       setLoading(false);
     }
@@ -54,7 +52,7 @@ export function CourseSlider() {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-[82%] md:w-[92%]  "
+      className="max-h-[110px] w-[82%] sm:max-h-[200px] md:max-h-[250px] md:w-[92%] lg:max-h-[350px] xl:max-h-[450px] "
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
