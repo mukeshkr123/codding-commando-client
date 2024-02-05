@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import apiClient from "lib/api-client";
 import { cn } from "lib/utils";
 import { useSelector } from "react-redux";
+import { ErrorToast } from "@/components/error-toast";
 
 const formSchema = z.object({
   mode: z.string().min(1, {
@@ -26,7 +27,7 @@ const formSchema = z.object({
   }),
 });
 
-export const ModeForm = ({ initialData, courseId }) => {
+export const ModeForm = ({ initialData, courseId, onUpdateSucess }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -52,9 +53,9 @@ export const ModeForm = ({ initialData, courseId }) => {
       await apiClient.patch(`/courses/update/${courseId}`, values, config);
       toast.success("Course updated");
       toggleEdit();
-      window.location.reload();
+      onUpdateSucess();
     } catch (error) {
-      toast.error("Something went wrong");
+      ErrorToast(error);
     }
   };
 

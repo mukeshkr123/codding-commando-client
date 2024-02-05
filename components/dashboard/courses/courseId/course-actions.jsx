@@ -11,7 +11,12 @@ import ConfirmModal from "@/components/modals/confirm-modal";
 import { useConfettiStore } from "hooks/use-confetti-store";
 import { useSelector } from "react-redux";
 
-export const CourseActions = ({ disabled, courseId, isPublished }) => {
+export const CourseActions = ({
+  disabled,
+  courseId,
+  isPublished,
+  onUpdateSucess,
+}) => {
   const router = useRouter();
   const confetti = useConfettiStore();
   const [isLoading, setIsLoading] = useState(false);

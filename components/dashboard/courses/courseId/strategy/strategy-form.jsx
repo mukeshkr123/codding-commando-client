@@ -25,7 +25,7 @@ const formSchema = z.object({
   title: z.string().min(1),
 });
 
-export const StrategyForm = ({ initialData, courseId }) => {
+export const StrategyForm = ({ initialData, courseId, onUpdateSucess }) => {
   const [isCreating, setIsCreating] = useState(false);
   // const [isUpdating, setIsUpdating] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
@@ -59,7 +59,7 @@ export const StrategyForm = ({ initialData, courseId }) => {
       );
       toast.success("Program created");
       toggleCreating();
-      window.location.reload();
+      onUpdateSucess();
     } catch {
       toast.error("Something went wrong");
     }

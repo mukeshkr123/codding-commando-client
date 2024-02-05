@@ -23,6 +23,7 @@ export const ProgramDescriptionForm = ({
   initialData,
   courseId,
   programId,
+  onUpdateSucess,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
@@ -59,7 +60,7 @@ export const ProgramDescriptionForm = ({
       );
       toast.success("Program updated ");
       toggleEdit();
-      window.location.reload();
+      onUpdateSucess();
     } catch (error) {
       ErrorToast(error);
     }

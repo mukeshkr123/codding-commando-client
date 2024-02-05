@@ -21,7 +21,7 @@ import * as React from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
-export function AssignMentorForm({ initialData, courseId }) {
+export function AssignMentorForm({ initialData, courseId, onUpdateSucess }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
   const [mentors, setMentors] = React.useState([]);
@@ -89,7 +89,8 @@ export function AssignMentorForm({ initialData, courseId }) {
         config
       );
       toast.success("Mentor assigned ");
-      window.location.reload();
+      toggleEdit();
+      onUpdateSucess();
     } catch (error) {
       ErrorToast(error);
     }
@@ -111,7 +112,7 @@ export function AssignMentorForm({ initialData, courseId }) {
         config
       );
       toast.success("Mentor Unassigned successfully!");
-      window.location.reload();
+      onUpdateSucess();
     } catch (error) {
       ErrorToast(error);
     }

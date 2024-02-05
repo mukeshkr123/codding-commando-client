@@ -5,7 +5,6 @@ import { StrategyActions } from "@/components/dashboard/courses/courseId/strateg
 import { StrategyDescriptionForm } from "@/components/dashboard/courses/courseId/strategy/strategy-description-form";
 import { StrategyImageForm } from "@/components/dashboard/courses/courseId/strategy/strategy-image-form";
 import { StrategyTitleForm } from "@/components/dashboard/courses/courseId/strategy/strategy-title-form";
-// import { ErrorToast } from "@/components/error-toast";
 import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
 import { ArrowLeft, LayoutDashboard, Loader2 } from "lucide-react";
@@ -18,7 +17,7 @@ const StrategyIdPage = ({ params }) => {
   const [loading, setLoading] = useState(true);
   const { userAuth } = useSelector((state) => state?.user);
 
-  const fetchProgram = async () => {
+  const fetchStrategyData = async () => {
     try {
       const config = {
         headers: {
@@ -41,7 +40,7 @@ const StrategyIdPage = ({ params }) => {
   };
 
   useEffect(() => {
-    fetchProgram();
+    fetchStrategyData();
   }, []);
 
   const requiredFields = [
@@ -56,6 +55,10 @@ const StrategyIdPage = ({ params }) => {
   const completionText = `(${completedFields}/${totalFields})`;
 
   const isComplete = requiredFields.every(Boolean);
+
+  const handleUpdateSuccess = () => {
+    fetchStrategyData();
+  };
 
   if (loading) {
     return (
@@ -112,11 +115,13 @@ const StrategyIdPage = ({ params }) => {
                   initialData={strategy}
                   courseId={params.courseId}
                   strategyId={params.strategyId}
+                  onUpdateSucess={handleUpdateSuccess}
                 />
                 <StrategyImageForm
                   initialData={strategy}
                   courseId={params.courseId}
                   strategyId={params.strategyId}
+                  onUpdateSucess={handleUpdateSuccess}
                 />
               </div>
             </div>
@@ -125,6 +130,7 @@ const StrategyIdPage = ({ params }) => {
                 initialData={strategy}
                 courseId={params.courseId}
                 strategyId={params.strategyId}
+                onUpdateSucess={handleUpdateSuccess}
               />
             </div>
           </div>

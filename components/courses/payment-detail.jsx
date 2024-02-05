@@ -11,6 +11,7 @@ export const PaymentDetails = ({
   imageUrl,
   installments = "Three",
   courseId,
+  enabledInstallement,
 }) => {
   return (
     <div className="relative flex flex-col items-center justify-center bg-dark-purple px-4 py-12 text-white md:items-start md:px-8 md:text-start lg:px-16 xl:px-24">
@@ -52,13 +53,15 @@ export const PaymentDetails = ({
           <BuyProduct courseId={courseId} method="fullPrice">
             <PaymentCard price={fullPrice} desc="One Time" /> {/* Method 1 */}
           </BuyProduct>
-          <BuyProduct courseId={courseId} method="installment">
-            <PaymentCard
-              title={`Or Pay In ${installments} Easy Installments`}
-            />
-          </BuyProduct>
-
-          {/* Method 2 */}
+          {enabledInstallement && (
+            <>
+              <BuyProduct courseId={courseId} method="installment">
+                <PaymentCard
+                  title={`Or Pay In ${installments} Easy Installments`}
+                />
+              </BuyProduct>
+            </>
+          )}
         </div>
 
         <Link href="/demo" className="mt-10">

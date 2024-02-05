@@ -5,7 +5,6 @@ import { DataTable } from "@/components/dashboard/courses/data-tables";
 import apiClient from "lib/api-client";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
-// import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
 const CoursesPage = () => {
@@ -23,7 +22,6 @@ const CoursesPage = () => {
       const response = await apiClient.get("/courses", config);
       setData(response.data?.courses);
     } catch (error) {
-      // toast.error("something went wrong");
     } finally {
       setLoading(false);
     }

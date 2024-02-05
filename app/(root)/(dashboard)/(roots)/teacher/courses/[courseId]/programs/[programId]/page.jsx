@@ -9,7 +9,7 @@ import { IconBadge } from "@/components/icon-bagde";
 import apiClient from "lib/api-client";
 import { ArrowLeft, LayoutDashboard, Loader2 } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const ProgramId = ({ params }) => {
@@ -17,7 +17,7 @@ const ProgramId = ({ params }) => {
   const [loading, setLoading] = useState(true);
   const { userAuth } = useSelector((state) => state?.user);
 
-  const fetchProgram = async () => {
+  const fetchProgram = useCallback(async () => {
     try {
       const config = {
         headers: {
@@ -36,11 +36,11 @@ const ProgramId = ({ params }) => {
       // ErrorToast(error);
       setLoading(false);
     }
-  };
+  }, [params.programId, userAuth?.accessToken, params.courseId]);
 
   useEffect(() => {
     fetchProgram();
-  }, []);
+  }, [params.courseId, fetchProgram]);
 
   const requiredFields = [
     programData?.title,
@@ -52,6 +52,10 @@ const ProgramId = ({ params }) => {
 
   const completionText = `(${completedFields}/${totalFields})`;
   const isComplete = requiredFields.every(Boolean);
+
+  const onUpdateSucess = () => {
+    fetchProgram();
+  };
 
   if (loading) {
     return (
@@ -106,12 +110,14 @@ const ProgramId = ({ params }) => {
                 initialData={programData}
                 courseId={params.courseId}
                 programId={params.programId}
+                onUpdateSucess={onUpdateSucess}
               />
             </div>
             <ProgramDescriptionForm
               initialData={programData}
               courseId={params.courseId}
               programId={params.programId}
+              onUpdateSucess={onUpdateSucess}
             />
           </div>
         </div>

@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Pencil } from "lucide-react";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 import {
@@ -20,6 +19,7 @@ import { cn } from "lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 import apiClient from "lib/api-client";
 import { useSelector } from "react-redux";
+import { ErrorToast } from "@/components/error-toast";
 
 const formSchema = z.object({
   description: z.string().min(1, {
@@ -27,7 +27,11 @@ const formSchema = z.object({
   }),
 });
 
-export const PaymentDescriptionForm = ({ initialData, courseId }) => {
+export const PaymentDescriptionForm = ({
+  initialData,
+  courseId,
+  onSuccess,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -60,9 +64,9 @@ export const PaymentDescriptionForm = ({ initialData, courseId }) => {
 
       toggleEdit();
 
-      window.location.reload();
+      onSuccess();
     } catch (error) {
-      toast.error("Something went wrong");
+      ErrorToast(error);
     }
   };
 

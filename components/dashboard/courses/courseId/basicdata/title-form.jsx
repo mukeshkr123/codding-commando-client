@@ -17,8 +17,9 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ErrorToast } from "@/components/error-toast";
 
-export const TitleForm = ({ initialData, courseId }) => {
+export const TitleForm = ({ initialData, courseId, onUpdateSucess }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
 
@@ -48,9 +49,9 @@ export const TitleForm = ({ initialData, courseId }) => {
       await apiClient.patch(`/courses/update/${courseId}`, values, config);
       toast.success("Course updated");
       toggleEdit();
-      window.location.reload();
+      onUpdateSucess();
     } catch (error) {
-      toast.error("Something went wrong");
+      ErrorToast(error);
     }
   };
 

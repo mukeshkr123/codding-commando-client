@@ -10,7 +10,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
-export const CourseImage = ({ initialData, courseId }) => {
+export const CourseImage = ({ initialData, courseId, onUpdateSucess }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { userAuth } = useSelector((state) => state?.user);
   const [image, setImage] = useState(null);
@@ -37,7 +37,7 @@ export const CourseImage = ({ initialData, courseId }) => {
       await apiClient.patch(`/courses/update/${courseId}`, data, config);
       toast.success("Course updated");
       toggleEdit();
-      window.location.reload();
+      onUpdateSucess();
     } catch (error) {
       ErrorToast(error);
     } finally {
