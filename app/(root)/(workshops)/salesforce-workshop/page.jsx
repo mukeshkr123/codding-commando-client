@@ -1,38 +1,11 @@
-import Head from "next/head";
 // eslint-disable-next-line no-unused-vars
 import styles from "./style.css";
 
 export default function WorkshopPage() {
+  const originalPrice = 1499;
+  const finalPrice = 399;
   return (
     <>
-      <Head>
-        <title>SF-workshop | Coding Commando</title>
-        <meta charSet="UTF-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="description"
-          content="Join our Salesforce One-Day Workshop and master the fundamentals of Salesforce CRM. Learn from industry experts, explore hands-on exercises, and accelerate your career in Salesforce administration and customization."
-        />
-        <meta
-          name="keywords"
-          content="Salesforce workshop, Salesforce training, CRM fundamentals, Salesforce one day course, Salesforce administration, Salesforce customization"
-        />
-        {/* <link
-          href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;0,600;0,800;1,500;1,700;1,800&display=swap"
-          rel="stylesheet"
-        /> */}
-        <link
-          rel="icon"
-          type="image/x-icon"
-          href="/assets/workshop-img/tick.png"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        />
-        {/* <link rel="stylesheet" href="./style.css" /> */}
-      </Head>
       <header>
         <div className="parent_header">
           <div className="top_head">
@@ -41,7 +14,7 @@ export default function WorkshopPage() {
           <div>
             <p>
               <span className="salesforce_career">Salesforce</span>
-              <span>Career Kickstart Workshop</span>
+              <span> Career Kickstart Workshop</span>
             </p>
           </div>
         </div>
@@ -56,7 +29,7 @@ export default function WorkshopPage() {
         <div className="reserve_seat">
           <div className="reserve_seat_in">
             <p>
-              Grab Your Spot for ₹399 <span>₹1499</span>
+              Grab Your Spot for ₹{finalPrice} <span>₹{originalPrice}</span>
             </p>
           </div>
         </div>
@@ -64,7 +37,7 @@ export default function WorkshopPage() {
       <section className="limited">
         <div className="limited_seat">
           <div className="photo_parent">
-            <div className="photo">
+            <div className="">
               <iframe
                 width="420"
                 height="315"
@@ -73,7 +46,7 @@ export default function WorkshopPage() {
             </div>
           </div>
           <div className="information">
-            <div className="introduction">
+            <div className="">
               <p className="intro">Introduced By</p>
               <p className="name">Prateek Prasoon</p>
               <p className="founder">
@@ -96,38 +69,22 @@ export default function WorkshopPage() {
             <p>Who is eligible for this workshop?</p>
           </div>
           <div className="grids">
-            <div className="grids_content">
-              <img src="/assets/workshop-img/tick.png" alt="Coding Commando" />
-              <span>
-                <b>Job Seekers in IT:</b> Newcomers to the IT industry actively
-                seeking job opportunities.
-              </span>
-            </div>
-            <div className="grids_content">
-              <img src="/assets/workshop-img/tick.png" alt="Coding Commando" />
-              <span>
-                <b>Final-Year Students:</b> Students in their last year looking
-                to gain expertise in high-demand skills.{" "}
-              </span>
-            </div>
-            <div className="grids_content">
-              <img src="/assets/workshop-img/tick.png" alt="Coding Commando" />
-              <span>
-                <b>Career Changers:</b> Individuals with gaps in their IT
-                career, actively pursuing opportunities in Salesforce
-              </span>
-            </div>
-            <div className="grids_content">
-              <img src="/assets/workshop-img/tick.png" alt="Coding Commando" />
-              <span>
-                <b>Returning Professionals:</b> Housewives and others eager to
-                re-enter the IT industry and advance their careers.
-              </span>
-            </div>
+            {eligibilityCriteria.map((criteria, index) => (
+              <div key={index} className="grids_content">
+                <img
+                  src="/assets/workshop-img/tick.png"
+                  alt="Coding Commando"
+                />
+                <span>
+                  <b>{criteria.title}</b> {criteria.description}
+                </span>
+              </div>
+            ))}
           </div>
           <div className="program_bottom">
             <p>
-              Kickstart Your Salesforce Career at Just ₹399 <span>₹1499</span>
+              Kickstart Your Salesforce Career at Just ₹{finalPrice}{" "}
+              <span>₹{originalPrice}</span>
             </p>
           </div>
         </div>
@@ -138,46 +95,20 @@ export default function WorkshopPage() {
             <p>Benefits</p>
           </div>
           <div className="benifits_img">
-            <div className="images">
-              <img
-                className="benefits_img_in"
-                src="/assets/workshop-img/pen.png"
-                alt="Coding Commando"
-              />
-              <p className="image_content">
-                Learn the foundations of Salesforce from scratch
-              </p>
-            </div>
-            <div className="images">
-              <img
-                className="benefits_img_in"
-                src="/assets/workshop-img/start.png"
-                alt="Coding Commando"
-              />
-              <p className="image_content">
-                Understand the career opportunities in the Salesforce ecosystem
-              </p>
-            </div>
-            <div className="images">
-              <img
-                className="benefits_img_bulb"
-                src="/assets/workshop-img/Bulb.png"
-                alt="Coding Commando"
-              />
-              <p className="image_content">
-                Gain insights from real-world industry experiences
-              </p>
-            </div>
-            <div className="images">
-              <img
-                className="benefits_img_in"
-                src="/assets/workshop-img/video.png"
-                alt="Coding Commando"
-              />
-              <p className="image_content">
-                Interactive Q&A session to get your queries answered
-              </p>
-            </div>
+            {benefitItems.map((item, index) => (
+              <div key={index} className="images">
+                <img
+                  className={
+                    item.image.includes("Bulb")
+                      ? "benefits_img_bulb"
+                      : "benefits_img_in"
+                  }
+                  src={item.image}
+                  alt="Coding Commando"
+                />
+                <p className="image_content">{item.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -189,41 +120,17 @@ export default function WorkshopPage() {
             </p>
           </div>
           <div className="agenda_in">
-            <div className="agenda_content">
-              <img src="/assets/workshop-img/tick.png" alt="Coding Commando" />
-              <p>
-                <b>Salesforce Basics:</b> Understand the fundamentals of
-                Salesforce.
-              </p>
-            </div>
-            <div className="agenda_content">
-              <img src="/assets/workshop-img/tick.png" alt="Coding Commando" />
-              <p>
-                <b>IT Career Strategies:</b> Learn how to build a successful IT
-                career.{" "}
-              </p>
-            </div>
-            <div className="agenda_content">
-              <img src="/assets/workshop-img/tick.png" alt="Coding Commando" />
-              <p>
-                <b>Interactive Q&A:</b> Engage in live discussions and ask
-                questions.
-              </p>
-            </div>
-            <div className="agenda_content">
-              <img src="/assets/workshop-img/tick.png" alt="Coding Commando" />
-              <p>
-                <b>High-Paying IT Jobs:</b> Discover the path to high-paying
-                roles.
-              </p>
-            </div>
-            <div className="agenda_content">
-              <img src="/assets/workshop-img/tick.png" alt="Coding Commando" />
-              <p>
-                <b>Salesforce Career Path:</b> Explore Salesforce as a career
-                choice.{" "}
-              </p>
-            </div>
+            {agendaItems.map((item, index) => (
+              <div key={index} className="agenda_content">
+                <img
+                  src="/assets/workshop-img/tick.png"
+                  alt="Coding Commando"
+                />
+                <p>
+                  <b>{item.title}</b> {item.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -269,74 +176,16 @@ export default function WorkshopPage() {
             <p>Frequently Asked Questions</p>
           </div>
           <div className="faq_section">
-            <div className="faq_main_section">
-              <button className="accordion">
-                How can I join the workshop?{" "}
-              </button>
-              <div className="panel">
-                <ul>
-                  <li>
-                    To join, simply visit our website and click on the
-                    {"Register"} button for the workshop. Follow the
-                    instructions to complete the registration process.{" "}
-                  </li>
-                </ul>
+            {faqItems.map((item, index) => (
+              <div key={index} className="">
+                <button className="accordion">{item.question}</button>
+                <div className="panel">
+                  <ul>
+                    <li>{item.answer}</li>
+                  </ul>
+                </div>
               </div>
-            </div>
-            <div className="faq_main_section">
-              <button className="accordion">Is this a FREE Webinar?</button>
-              <div className="panel">
-                <ul>
-                  <li>
-                    No, this is not a free webinar. There is a fee associated
-                    with the workshop, which covers access to all the sessions,
-                    course materials, and support.
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="faq_main_section">
-              <button className="accordion">
-                Will I get the recording of the workshop?
-              </button>
-              <div className="panel">
-                <ul>
-                  <li>
-                    Yes, recordings of the workshop sessions will be made
-                    available to participants. You&apos;ll have access to these
-                    recordings for a certain period after the workshop ends.
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="faq_main_section">
-              <button className="accordion">
-                Will it be in English or Hindi or both?
-              </button>
-              <div className="panel">
-                <ul>
-                  <li>
-                    It will be a mix of Hindi plus English language so that
-                    everybody can take advantage of the same.
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="faq_main_section">
-              <button className="accordion">
-                Can I ask questions during the workshop?
-              </button>
-              <div className="panel">
-                <ul>
-                  <li>
-                    Absolutely! We encourage active participation. You can ask
-                    questions and interact with the instructors during
-                    designated Q&A sessions or through chat, depending on the
-                    format of the workshop.
-                  </li>
-                </ul>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -344,7 +193,7 @@ export default function WorkshopPage() {
         <section>
           <div className="reserve_seat">
             <div className="reserve_seat_in">
-              <p>Register Now Only For ₹399/-</p>
+              <p>Register Now Only For ₹{finalPrice}/-</p>
             </div>
           </div>
         </section>
@@ -372,3 +221,96 @@ export default function WorkshopPage() {
     </>
   );
 }
+
+const agendaItems = [
+  {
+    title: "Salesforce Basics:",
+    description: "Understand the fundamentals of Salesforce.",
+  },
+  {
+    title: "IT Career Strategies:",
+    description: "Learn how to build a successful IT career.",
+  },
+  {
+    title: "Interactive Q&A:",
+    description: "Engage in live discussions and ask questions.",
+  },
+  {
+    title: "High-Paying IT Jobs:",
+    description: "Discover the path to high-paying roles.",
+  },
+  {
+    title: "Salesforce Career Path:",
+    description: "Explore Salesforce as a career choice.",
+  },
+];
+
+const eligibilityCriteria = [
+  {
+    title: "Job Seekers in IT:",
+    description:
+      "Newcomers to the IT industry actively seeking job opportunities.",
+  },
+  {
+    title: "Final-Year Students:",
+    description:
+      "Students in their last year looking to gain expertise in high-demand skills.",
+  },
+  {
+    title: "Career Changers:",
+    description:
+      "Individuals with gaps in their IT career, actively pursuing opportunities in Salesforce.",
+  },
+  {
+    title: "Returning Professionals:",
+    description:
+      "Housewives and others eager to re-enter the IT industry and advance their careers.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "How can I join the workshop?",
+    answer:
+      'To join, simply visit our website and click on the "Register" button for the workshop. Follow the instructions to complete the registration process.',
+  },
+  {
+    question: "Is this a FREE Webinar?",
+    answer:
+      "No, this is not a free webinar. There is a fee associated with the workshop, which covers access to all the sessions, course materials, and support.",
+  },
+  {
+    question: "Will I get the recording of the workshop?",
+    answer:
+      "Yes, recordings of the workshop sessions will be made available to participants. You'll have access to these recordings for a certain period after the workshop ends.",
+  },
+  {
+    question: "Will it be in English or Hindi or both?",
+    answer:
+      "It will be a mix of Hindi plus English language so that everybody can take advantage of the same.",
+  },
+  {
+    question: "Can I ask questions during the workshop?",
+    answer:
+      "Absolutely! We encourage active participation. You can ask questions and interact with the instructors during designated Q&A sessions or through chat, depending on the format of the workshop.",
+  },
+];
+
+const benefitItems = [
+  {
+    image: "/assets/workshop-img/pen.png",
+    text: "Learn the foundations of Salesforce from scratch",
+  },
+  {
+    image: "/assets/workshop-img/start.png",
+    text: "Understand the career opportunities in the Salesforce ecosystem",
+  },
+  {
+    image: "/assets/workshop-img/Bulb.png",
+    text: "Gain insights from real-world industry experiences",
+  },
+  {
+    image: "/assets/workshop-img/video.png",
+    text: "Interactive Q&A session to get your queries answered",
+  },
+];
