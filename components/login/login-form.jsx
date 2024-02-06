@@ -36,7 +36,7 @@ export const LoginForm = () => {
 
   const { userAuth } = useSelector((state) => state?.user);
   if (userAuth !== undefined && userAuth) {
-    window.location.href = "/";
+    window.location.href = "/dashboard";
     // router.push("/");
   }
 
