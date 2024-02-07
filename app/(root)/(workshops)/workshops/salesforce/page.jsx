@@ -1,9 +1,46 @@
+"use client";
+
+import DetailsDialogBox from "@/components/workshops/Details-dialog-box";
 // eslint-disable-next-line no-unused-vars
 import styles from "./style.css";
+import { useEffect, useState } from "react";
+import apiClient from "lib/api-client";
+import { usePathname, useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { Loader2 } from "lucide-react";
 
 export default function WorkshopPage() {
-  const originalPrice = 1499;
-  const finalPrice = 399;
+  const [workshopData, setWorkshopData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  console.log(workshopData);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await apiClient.get(`${pathname}`);
+        setWorkshopData(data?.workshop);
+      } catch (error) {
+        toast.error("Something went wrong");
+        router.push("/");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [pathname, router]);
+
+  if (isLoading) {
+    return (
+      <div className="absolute right-0 top-0 flex h-full w-full items-center justify-center rounded-md">
+        <Loader2 className="h-16 w-16 animate-spin text-purple-950" />
+      </div>
+    );
+  }
+
   return (
     <>
       <header>
@@ -28,12 +65,16 @@ export default function WorkshopPage() {
       <section>
         <div className="reserve_seat">
           <div className="reserve_seat_in">
-            <p>
-              Grab Your Spot for ₹{finalPrice} <span>₹{originalPrice}</span>
-            </p>
+            <DetailsDialogBox pathname={pathname}>
+              <p>
+                Grab Your Spot for ₹{workshopData?.final_price}{" "}
+                <span>₹{workshopData?.original_price}</span>
+              </p>
+            </DetailsDialogBox>
           </div>
         </div>
       </section>
+
       <section className="limited">
         <div className="limited_seat">
           <div className="photo_parent">
@@ -83,8 +124,9 @@ export default function WorkshopPage() {
           </div>
           <div className="program_bottom">
             <p>
-              Kickstart Your Salesforce Career at Just ₹{finalPrice}{" "}
-              <span>₹{originalPrice}</span>
+              Kickstart Your Salesforce Career at Just ₹
+              {workshopData?.final_price}{" "}
+              <span>₹{workshopData?.original_price}</span>
             </p>
           </div>
         </div>
@@ -193,7 +235,9 @@ export default function WorkshopPage() {
         <section>
           <div className="reserve_seat">
             <div className="reserve_seat_in">
-              <p>Register Now Only For ₹{finalPrice}/-</p>
+              <DetailsDialogBox>
+                <p>Register Now Only For ₹{workshopData?.final_price}/-</p>
+              </DetailsDialogBox>
             </div>
           </div>
         </section>

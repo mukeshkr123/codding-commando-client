@@ -61,6 +61,7 @@ header {
   justify-content: center;
   align-items: center;
   padding: 6px 0;
+  cursor: pointer;
 }
 .reserve_seat_in p {
   color: #ffffff;

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const PaymentSuccessPage = ({
-  searchParams: { orderid, paymentid, accessToken },
+  searchParams: { orderid, paymentid, accessToken, ordertype },
 }) => {
   const setToken = useCallback(() => {
     if (accessToken) {
@@ -17,6 +17,8 @@ const PaymentSuccessPage = ({
   useEffect(() => {
     setToken();
   }, [setToken]);
+
+  console.log(ordertype);
 
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-gray-100">
@@ -41,11 +43,19 @@ const PaymentSuccessPage = ({
           </p>
         </div>
 
-        <Link href="/dashboard" target="_blank">
-          <Button className="mt-8 rounded-md bg-blue-500 px-4 py-2 transition duration-300 hover:bg-blue-600">
-            Go to Courses
-          </Button>
-        </Link>
+        {ordertype !== "workshop" ? (
+          <Link href="/dashboard" target="_blank">
+            <Button className="mt-8 rounded-md bg-blue-500 px-4 py-2 transition duration-300 hover:bg-blue-600">
+              Go to Courses
+            </Button>
+          </Link>
+        ) : (
+          <Link href="/">
+            <Button className="mt-8 rounded-md bg-blue-500 px-4 py-2 transition duration-300 hover:bg-blue-600">
+              Explore more
+            </Button>
+          </Link>
+        )}
       </div>
     </div>
   );
