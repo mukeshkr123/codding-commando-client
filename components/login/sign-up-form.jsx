@@ -71,8 +71,6 @@ export const SignUpForm = () => {
     reset();
   }, [registered, reset]);
 
-  console.log(isSubmitting);
-
   if (registered) {
     return <VerificationBox />;
   } else {

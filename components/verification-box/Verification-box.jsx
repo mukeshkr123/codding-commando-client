@@ -59,7 +59,6 @@ export const VerificationBox = ({ toggleOtpBox, token, courseId, method }) => {
               `/payment/${courseId}/verify`,
               responseData
             );
-            console.log(verifyResponse);
 
             if (verifyResponse?.data?.success === true) {
               router.push(

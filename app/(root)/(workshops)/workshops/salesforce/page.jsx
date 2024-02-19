@@ -15,8 +15,6 @@ export default function WorkshopPage() {
   const pathname = usePathname();
   const router = useRouter();
 
-  console.log(workshopData);
-
   useEffect(() => {
     const fetchData = async () => {
       try {

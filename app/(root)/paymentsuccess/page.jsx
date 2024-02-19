@@ -18,8 +18,6 @@ const PaymentSuccessPage = ({
     setToken();
   }, [setToken]);
 
-  console.log(ordertype);
-
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-gray-100">
       <div className="flex max-w-md flex-col items-center justify-center rounded-lg bg-white p-8 shadow-md">
