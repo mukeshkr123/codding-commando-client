@@ -17,6 +17,10 @@ const navLinks = [
     href: "/courses",
   },
   {
+    title: "Blog",
+    href: "/blog",
+  },
+  {
     title: "Contact Us",
     href: "/contact",
   },
@@ -40,8 +44,8 @@ export default function Navbar() {
         </div>
 
         {/* navitems  */}
-        <div className="hidden  md:flex">
-          <div className="flex   md:space-x-1 lg:space-x-10 2xl:space-x-12 ">
+        <div className="hidden md:flex">
+          <div className="flex md:space-x-1 lg:space-x-4 2xl:space-x-6 ">
             {navLinks.map((navItem) => (
               <NavLink
                 key={navItem.href}
