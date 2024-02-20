@@ -1,5 +1,5 @@
 import { LatestBlogItem } from "@/components/blogs/latest-blog-item";
-import OurBlogItem from "@/components/blogs/our-blog-item";
+import { OurBlogItem } from "@/components/blogs/our-blog-item";
 import { blogData } from "data/blog-data";
 
 const BlogsPage = () => {
