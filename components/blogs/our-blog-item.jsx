@@ -25,10 +25,12 @@ export const OurBlogItem = ({ slug, bgUrl, title, intro }) => {
     >
       {isHovered && (
         <div
-          className="absolute inset-0 rounded-lg"
+          className="absolute inset-0 rounded-lg transition-opacity duration-300"
           style={{
             backdropFilter: "blur(15px)",
             zIndex: -1,
+            opacity: 0.85, // Adjust the opacity as needed
+            transition: "opacity 0.3s ease", // Smooth opacity transition
           }}
         />
       )}
@@ -36,7 +38,7 @@ export const OurBlogItem = ({ slug, bgUrl, title, intro }) => {
       <div className="max-w-md pb-4 md:pb-6">
         <h3 className="sm:text-base">Our Blog</h3>
         <h2
-          className={`text-lg font-bold  ${
+          className={`text-lg font-bold ${
             isHovered
               ? "mb-2 mt-11 md:scale-105 md:transition-transform md:duration-300"
               : "mt-20"
@@ -46,7 +48,7 @@ export const OurBlogItem = ({ slug, bgUrl, title, intro }) => {
         </h2>
 
         <p
-          className={`absolute bottom-8 left-[71px] hidden -translate-x-1/2 text-base font-semibold underline md:flex ${
+          className={`absolute bottom-8 left-[70px] hidden -translate-x-1/2 text-base font-semibold underline md:flex ${
             isHovered
               ? "bottom-[150px] opacity-100 transition-all duration-300"
               : "bottom-0 opacity-0"

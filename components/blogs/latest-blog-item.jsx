@@ -25,14 +25,15 @@ export const LatestBlogItem = ({ slug, bgUrl, title, intro }) => {
     >
       {isHovered && (
         <div
-          className="absolute inset-0 rounded-lg"
+          className="absolute inset-0 rounded-lg transition-opacity duration-300"
           style={{
             backdropFilter: "blur(15px)",
             zIndex: -1,
+            opacity: 0.85,
+            transition: "opacity 0.3s ease",
           }}
         />
       )}
-
       <div className="max-w-md pb-4 md:pb-10">
         <h3 className="sm:text-base">Latest Blog</h3>
         <h2
@@ -53,7 +54,6 @@ export const LatestBlogItem = ({ slug, bgUrl, title, intro }) => {
         >
           {intro}
         </p>
-
         <p
           className={`absolute bottom-10 left-24 mt-4 hidden -translate-x-1/2 text-xl font-semibold underline md:flex ${
             isHovered

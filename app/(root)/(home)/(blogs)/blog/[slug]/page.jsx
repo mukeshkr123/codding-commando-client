@@ -55,7 +55,10 @@ const BlogdetailsPage = ({ params }) => {
               </p>
             ))}
             {section.imgUrl && (
-              <div className="relative w-full " style={{ aspectRatio: "15/7" }}>
+              <div
+                className="relative my-4 w-full "
+                style={{ aspectRatio: "15/7" }}
+              >
                 <Image
                   src={section?.imgUrl}
                   layout="fill"

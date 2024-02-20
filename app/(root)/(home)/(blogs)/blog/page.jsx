@@ -5,9 +5,20 @@ import { blogData } from "data/blog-data";
 const BlogsPage = () => {
   const latestPosts = blogData?.slice(0, 2);
   return (
-    <div className="h-full w-full">
-      <div className="bg-[url('/assets/blogs/blog-main.svg')] px-6 py-14 text-white lg:p-[130px]">
-        <div className="flex max-w-2xl flex-col gap-y-2.5">
+    <div className="h-full w-full bg-dark-purple pt-10">
+      <div className="relative px-6  py-14  text-white lg:p-[130px]">
+        <video
+          autoPlay
+          loop
+          muted
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/assets/video/blog2_1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-black opacity-30"></div>
+
+        <div className="relative z-10 flex max-w-2xl flex-col gap-y-2.5">
           <h3 className="text-base font-semibold md:text-lg">Blogs</h3>
           <h2 className="mt-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
             Coding Commando Blogs
@@ -18,6 +29,7 @@ const BlogsPage = () => {
           </p>
         </div>
       </div>
+
       <div className="bg-dark-purple">
         {/* Latest Blog */}
         <div className="flex flex-col justify-between gap-6 p-6 sm:p-12 md:p-14 lg:flex-row lg:p-20">
