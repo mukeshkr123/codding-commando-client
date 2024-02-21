@@ -34,23 +34,21 @@ export const OurBlogItem = ({ slug, bgUrl, title, intro }) => {
           }}
         />
       )}
-
       <div className="max-w-md pb-4 md:pb-6">
         <h3 className="sm:text-base">Our Blog</h3>
         <h2
           className={`text-lg font-bold ${
             isHovered
-              ? "mb-2 mt-11 md:scale-105 md:transition-transform md:duration-300"
-              : "mt-20"
+              ? "mb-2 mt-11 md:scale-105 md:transition-all md:duration-[600ms]"
+              : "mt-20 transition-all duration-500"
           }`}
         >
           {title}
         </h2>
-
         <p
-          className={`absolute bottom-8 left-[70px] hidden -translate-x-1/2 text-base font-semibold underline md:flex ${
+          className={`absolute bottom-0 left-[70px] hidden -translate-x-1/2 text-base font-semibold underline md:flex ${
             isHovered
-              ? "bottom-[150px] opacity-100 transition-all duration-300"
+              ? "bottom-[25px] opacity-100 transition-all duration-[600ms]"
               : "bottom-0 opacity-0"
           }`}
         >
