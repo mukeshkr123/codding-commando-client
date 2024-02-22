@@ -34,9 +34,10 @@ const SaleForceWorkshop = () => {
         <p className="text-sm  font-normal text-white md:text-lg">
           Master the Salesforce Domain with Industry Expert Prateek Prasoon!
         </p>
-        <button className="rounded-full border-b-[3px] bg-[#F5478E] px-6 py-1.5 font-semibold text-white lg:px-24  lg:text-[28px]">
+        <button className="rounded-full border-b-[3px] bg-[#F5478E] px-6 py-1.5 font-semibold text-white transition  duration-300 ease-in-out hover:scale-105 hover:border-[#F5478E] hover:bg-[#F5478E]/90 lg:px-24 lg:text-[28px]">
           Reserve Seat now for Rs 249/-
         </button>
+
         <div className="my-8 flex w-full flex-col items-center justify-center gap-10 md:flex-row">
           <Image
             src="/assets/workshops/prateek-prasoon.svg"
@@ -94,18 +95,18 @@ flex items-center justify-center rounded-full border-2 border-dashed border-[#5C
               </div>
             ))}
         </div>
-        <button className="rounded-3xl bg-[#F5478E] px-3 py-2.5 text-sm font-medium text-white sm:px-14 sm:py-3 sm:text-base md:my-4 lg:px-24 lg:text-2xl">
-          Kickstart your Salesforce Carrer at just Rs 249/-
+        <button className="rounded-3xl bg-[#F5478E] px-3 py-2.5 text-sm font-medium text-white transition duration-300 ease-in-out hover:scale-105 hover:bg-[#F5478E]/90 hover:opacity-90 sm:px-14 sm:py-3 sm:text-base md:my-4 lg:px-24 lg:text-2xl">
+          Kickstart your Salesforce Career at just Rs 249/-
         </button>
       </div>
 
       <div className="mx-4 flex max-w-4xl flex-col gap-8 py-6 text-center lg:mx-auto">
         <h1 className="mt-6 text-4xl font-bold text-white ">Benefits</h1>
-        <div className="mt-4 grid grid-cols-1 gap-y-10 lg:grid-cols-4 ">
+        <div className="mt-4 grid grid-cols-1 gap-y-10 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 ">
           {Benefits.map((benefit) => (
             <div
               key={benefit._id}
-              className="flex flex-col items-center gap-6 text-start"
+              className="flex flex-col  items-center gap-6 text-start"
             >
               <div className="flex h-24 w-24 items-center justify-center rounded-full  md:h-32 md:w-32">
                 <Image
@@ -115,7 +116,9 @@ flex items-center justify-center rounded-full border-2 border-dashed border-[#5C
                   height={70}
                 />
               </div>
-              <p className="text-white">{benefit.title}</p>
+              <p className="w-64 text-center text-white  md:w-44">
+                {benefit.title}
+              </p>
             </div>
           ))}
         </div>
@@ -123,7 +126,7 @@ flex items-center justify-center rounded-full border-2 border-dashed border-[#5C
 
       <div className="mx-2 mt-8 flex max-w-6xl flex-col items-center justify-center gap-6 rounded-3xl bg-white py-6 lg:mx-auto">
         <h1 className="text-3xl font-bold md:text-4xl">Agenda</h1>
-        <div className="mt-4 w-[90%] md:h-[520px] md:w-[80%]">
+        <div className="mt-4 w-[90%] md:h-[470px] md:w-[80%]">
           <Accordion
             type="single"
             collapsible
@@ -147,7 +150,7 @@ flex items-center justify-center rounded-full border-2 border-dashed border-[#5C
                       {agenda.title}
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="items-start px-8 text-sm font-normal md:px-10">
+                  <AccordionContent className="items-start px-8 text-sm font-normal md:px-10 lg:text-[15px]">
                     {agenda.description}
                   </AccordionContent>
                 </AccordionItem>
@@ -164,7 +167,7 @@ flex items-center justify-center rounded-full border-2 border-dashed border-[#5C
       "
       >
         <div className="m-4 w-full text-center">
-          <h2 className=" text-3xl font-bold text-white md:text-4xl">
+          <h2 className=" text-3xl font-bold text-white md:text-5xl">
             Meet Your <span className="text-[#F5478E] ">Instructor </span>
           </h2>
         </div>
@@ -211,7 +214,7 @@ flex items-center justify-center rounded-full border-2 border-dashed border-[#5C
                 <AccordionItem
                   key={faq._id}
                   value={`item-${faq._id}`}
-                  className="rounded-[25px] border border-[#4F4F4F] px-4 "
+                  className=" rounded-[25px] border border-[#4F4F4F] px-4 "
                 >
                   <AccordionTrigger className="text-base font-medium md:text-lg">
                     <div className="flex gap-2 text-start sm:gap-4">
@@ -234,7 +237,7 @@ flex items-center justify-center rounded-full border-2 border-dashed border-[#5C
             )}
           </Accordion>
         </div>
-        <button className="mx-4 mt-4 rounded-3xl bg-[#F5478E] py-2.5 text-xl font-semibold text-white md:mx-0 md:px-24  md:text-2xl">
+        <button className="mx-4 mt-4 rounded-3xl bg-[#F5478E] py-2.5 text-xl font-semibold text-white transition duration-300 ease-in-out hover:scale-105 hover:bg-[#F5478E]/90 hover:opacity-90 md:mx-0 md:px-24 md:text-2xl">
           Reserve My Seat Now!{" "}
         </button>
       </div>
