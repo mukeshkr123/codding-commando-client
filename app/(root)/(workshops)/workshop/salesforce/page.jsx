@@ -1,9 +1,12 @@
+"use client";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import WorkShopModal from "@/components/workshops/modal-form";
 import {
   Agendas,
   Benefits,
@@ -11,11 +14,23 @@ import {
   ProgramFor,
 } from "data/workshops/salesforce-data";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 const SaleForceWorkshop = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className="h-full w-full bg-dark-purple">
+      {showModal && (
+        <WorkShopModal
+          workshop="salesforce"
+          handleCloseModal={handleCloseModal}
+        />
+      )}
       <div
         className="m-auto flex w-full max-w-4xl flex-col items-center gap-4 py-10 text-center  sm:gap-6 lg:gap-8
       "
@@ -34,7 +49,10 @@ const SaleForceWorkshop = () => {
         <p className="text-sm  font-normal text-white md:text-lg">
           Master the Salesforce Domain with Industry Expert Prateek Prasoon!
         </p>
-        <button className="rounded-full border-b-[3px] bg-[#F5478E] px-6 py-1.5 font-semibold text-white transition  duration-300 ease-in-out hover:scale-105 hover:border-[#F5478E] hover:bg-[#F5478E]/90 lg:px-24 lg:text-[28px]">
+        <button
+          onClick={() => setShowModal(true)}
+          className="rounded-full border-b-[3px] bg-[#F5478E] px-6 py-1.5 font-semibold text-white transition  duration-300 ease-in-out hover:scale-105 hover:border-[#F5478E] hover:bg-[#F5478E]/90 lg:px-24 lg:text-[28px]"
+        >
           Reserve Seat now for Rs 249/-
         </button>
 
@@ -95,7 +113,10 @@ flex items-center justify-center rounded-full border-2 border-dashed border-[#5C
               </div>
             ))}
         </div>
-        <button className="rounded-3xl bg-[#F5478E] px-3 py-2.5 text-sm font-medium text-white transition duration-300 ease-in-out hover:scale-105 hover:bg-[#F5478E]/90 hover:opacity-90 sm:px-14 sm:py-3 sm:text-base md:my-4 lg:px-24 lg:text-2xl">
+        <button
+          onClick={() => setShowModal(true)}
+          className="rounded-3xl bg-[#F5478E] px-3 py-2.5 text-sm font-medium text-white transition duration-300 ease-in-out hover:scale-105 hover:bg-[#F5478E]/90 hover:opacity-90 sm:px-14 sm:py-3 sm:text-base md:my-4 lg:px-24 lg:text-2xl"
+        >
           Kickstart your Salesforce Career at just Rs 249/-
         </button>
       </div>
@@ -237,7 +258,10 @@ flex items-center justify-center rounded-full border-2 border-dashed border-[#5C
             )}
           </Accordion>
         </div>
-        <button className="mx-4 mt-4 rounded-3xl bg-[#F5478E] py-2.5 text-xl font-semibold text-white transition duration-300 ease-in-out hover:scale-105 hover:bg-[#F5478E]/90 hover:opacity-90 md:mx-0 md:px-24 md:text-2xl">
+        <button
+          onClick={() => setShowModal(true)}
+          className="mx-4 mt-4 rounded-3xl bg-[#F5478E] py-2.5 text-xl font-semibold text-white transition duration-300 ease-in-out hover:scale-105 hover:bg-[#F5478E]/90 hover:opacity-90 md:mx-0 md:px-24 md:text-2xl"
+        >
           Reserve My Seat Now!{" "}
         </button>
       </div>
