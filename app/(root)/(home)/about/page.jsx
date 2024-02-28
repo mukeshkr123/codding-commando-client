@@ -15,13 +15,9 @@ export default function AboutPage() {
             className=" flex h-[50%] w-full flex-col items-center justify-center  space-y-4 px-12 text-center md:space-y-6 xl:space-y-6
         "
           >
-            <Image
-              src="assets/font-shadow/making-sense.svg"
-              alt="Making Sense with 0 & 1"
-              height={200}
-              width={200}
-              className="w-full pb-4 pt-10 md:w-[60%] lg:w-[50%]"
-            />
+            <h2 className="mt-10 text-center text-4xl font-bold leading-[45px] sm:text-5xl sm:leading-[70px] md:mb-6 md:mt-32 md:text-7xl lg:text-[90px]">
+              Making Sense <br /> with 0 & 1
+            </h2>
             <p className="pb-2 text-base md:text-lg lg:w-[60%] xl:w-[50%] xl:text-xl">
               Your pathway to job-ready skills! Our cracked courses transform
               coding complexity into accessible expertise, preparing you for
@@ -47,19 +43,19 @@ export default function AboutPage() {
         <div
           className={` flex flex-col gap-4 py-4 md:w-1/2 lg:pr-8 xl:gap-8  `}
         >
-          <Image
-            src="/assets/font-shadow/mission.svg"
-            alt="Our Mission"
-            width={250}
-            height={200}
-          />
+          <h2 className="max-w-xs text-6xl font-bold leading-[70px] md:text-7xl md:leading-[80px]">
+            Our Mission
+          </h2>
+
           <p className="text-lg font-normal text-gray-800">
-            Our mission is to establish a tech environment. We garnish skills
-            and make students job-ready through its best courses under the
-            constant guidance of experienced industry experts. Spreading
-            awareness on the hot skills of the market and making people
-            understand its importance. Achieve the best goals with us through
-            training, courses, resume building exercises, and mock interviews.
+            Our objective is to promote an advanced technology ecosystem by
+            providing high-quality online classes. We provide students with
+            important skills, preparing them for employment, under the
+            supervision of seasoned industry specialists. We want to increase
+            awareness of in-demand talents and their importance in today&apos;s
+            economy. Work with us to attain your professional objectives through
+            customized online lessons, resume-building activities, and mock
+            interviews.
           </p>
         </div>
         <div className="mt-4  md:w-1/2 lg:mt-0  lg:flex lg:justify-end">
@@ -81,19 +77,17 @@ export default function AboutPage() {
           <div
             className={` flex flex-col gap-4 py-4 md:order-1 md:w-1/2 lg:pr-8 xl:gap-8 `}
           >
-            <Image
-              src="/assets/font-shadow/vision.svg"
-              alt={"Our  Vision"}
-              width={250}
-              height={200}
-            />
+            <h2 className="max-w-xs text-6xl font-bold leading-[70px] md:text-7xl md:leading-[80px]">
+              Our Vission
+            </h2>
 
             <p class Name="text-gray-800 text-lg font-normal">
-              Promoting tech environment and helping out the candidates in
-              cracking interviews. We want to expand the tech culture and
-              establish cultural exchange with industry experts. Provide the
-              best services in flexible mode and train coding enthusiasts to
-              crack interviews like a pro.
+              Through online classes, we help applicants acquire interview
+              skills while also promoting a lively tech ecosystem. Our objective
+              is to develop an innovative culture while also facilitating
+              information exchange with industry professionals. We provide
+              flexible online training to help coding enthusiasts conquer
+              interviews with confidence.
             </p>
           </div>
           <div className="mt-4 md:w-1/2 lg:mt-0 lg:flex ">
@@ -117,13 +111,9 @@ export default function AboutPage() {
           }}
         >
           <div className="flex w-full items-center justify-center py-8 md:py-8 lg:py-10 xl:py-12 ">
-            <Image
-              src="/assets/font-shadow/team.svg"
-              alt="Our Team"
-              width={200}
-              height={200}
-              className="w-[65%] sm:w-[60%] lg:w-[50%] xl:w-[35%]"
-            />
+            <h2 className=" text-6xl font-bold leading-[70px] md:text-7xl  md:leading-[80px] lg:text-8xl">
+              Our Team
+            </h2>
           </div>
           <TeamList />
         </div>

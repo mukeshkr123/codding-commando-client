@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { MentorCard } from "./card/mentor-card";
 import apiClient from "lib/api-client";
 import { useEffect, useState } from "react";
@@ -38,23 +37,11 @@ export const MeetMentor = () => {
         backgroundImage: 'url("assets/vector/mentor-bg-svg.svg")',
       }}
     >
-      <Image
-        src="/assets/font-shadow/meet-mentor-svg.svg"
-        alt="Meet Your Mentor"
-        height={200}
-        width={200}
-        className="hidden w-[90%] sm:flex xl:w-[58%]"
-      />
+      <h2 className=" text-center text-4xl font-bold leading-[45px] sm:text-5xl sm:leading-[60px] md:mb-6 md:text-7xl lg:text-7xl">
+        Meet Your Mentor
+      </h2>
 
-      <Image
-        src="/assets/font-shadow/meet-mentor-sm.svg"
-        alt="Meet Your Mentor"
-        height={200}
-        width={200}
-        className="w-[60%] sm:hidden"
-      />
-
-      <div className="mt-4 grid grid-cols-1 sm:mt-20 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 ">
+      <div className="mt-2 grid grid-cols-1 sm:mt-20 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 ">
         {mentors &&
           mentors.map((mentor) => <MentorCard key={mentor.id} {...mentor} />)}
       </div>

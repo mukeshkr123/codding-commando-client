@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { CourseList } from "@/components/courses/course-list";
 
 export default function CoursePage() {
@@ -19,38 +18,32 @@ export default function CoursePage() {
         ></div>
         <div className="h-full w-full">
           <div className="flex h-[50%] w-full flex-col items-center justify-center space-y-4 px-12 text-center md:space-y-6 xl:space-y-6">
-            <Image
-              src="/assets/font-shadow/unlock-text.svg"
-              alt="Making Sense with 0 & 1"
-              height={200}
-              width={200}
-              className="w-full pb-4 pt-10 md:w-[60%] lg:w-[50%]"
-            />
+            <h2 className="mt-6 max-w-3xl text-center text-[30px] font-bold leading-[45px] sm:text-5xl sm:leading-[70px] md:mb-6 md:mt-32 md:text-7xl  md:leading-[80px]">
+              Unlocking Minds Inspiring Futures
+            </h2>
             <p className="pb-2 text-base md:text-lg lg:w-[60%] xl:w-[50%] xl:text-xl">
-              Your pathway to job-ready skills! Our cracked courses transform
-              coding complexity into accessible expertise, preparing you for
-              in-demand jobs. Join us to bridge your ambitions with
-              opportunities.
+              Your route to job-ready skills! Our Salesforce training classes
+              reduce code complexity to manageable competence, preparing you for
+              high-demand employment. Join us now to connect your goals to
+              possibilities!
             </p>
           </div>
         </div>
       </section>{" "}
       <div
-        className="relative flex w-full flex-col items-center justify-center bg-cover bg-no-repeat py-10 xl:mt-4"
+        className="relative flex w-full flex-col items-center justify-center bg-cover bg-no-repeat "
         style={{
           backgroundImage: 'url("assets/vector/mentor-bg-svg.svg")',
         }}
       >
-        <div className="my-12 flex w-full items-center justify-center xl:my-20">
-          <Image
-            src="/assets/font-shadow/explore-course.svg"
-            alt="Explore Courses"
-            height={200}
-            width={400}
-            className="w-[90%] lg:w-[80%] xl:w-[60%]"
-          />
+        <div className="my-8 flex w-full items-center justify-center md:my-0  md:mb-10">
+          <h2 className="text-center text-[24px]  font-bold leading-[45px] sm:text-5xl sm:leading-[70px] md:mb-6 md:mt-32 md:text-7xl  md:leading-[80px]">
+            Explore Jobs Ready Skills
+          </h2>
         </div>
-        <CourseList />
+        <div className="mb-16">
+          <CourseList />
+        </div>
       </div>
     </div>
   );

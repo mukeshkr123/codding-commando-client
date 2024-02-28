@@ -67,19 +67,16 @@ export default async function HomePage() {
         <div className="flex flex-col items-center justify-center md:flex-row">
           <div className="md:w-1/2 md:pr-8">
             <div className="flex flex-col space-y-6 text-center md:text-left lg:space-y-12">
-              <Image
-                src="/assets/font-shadow/learn-from-svg.svg"
-                alt="Learn From Us"
-                height={200}
-                width={200}
-                className="w-[60%]"
-              />
+              <h2 className="text-start text-5xl font-bold leading-[60px] sm:text-6xl md:text-7xl lg:text-7xl">
+                Learn <br /> From Us
+              </h2>
               <p className="text-left text-base font-normal leading-6 text-gray-700 md:text-lg md:leading-7 lg:text-xl lg:leading-8  ">
-                We want to democratize coding education by reaching every corner
-                of the state, Bihar. Learn from the industry experts and
-                establish yourself in the field. Coding Commando focuses on
-                practical and fun learning. We impart knowledge as well as
-                skills. The learning process is liberal, and we promote both
+                We aim to democratize coding education by reaching every corner
+                of India, through our comprehensive online courses. Learn from
+                industry experts and establish yourself in the field with Coding
+                Commando. Our focus is on practical and fun learning, offering
+                online courses that impart both knowledge and skills. Our
+                learning process is liberal, promoting both online and offline
                 modes of education.
               </p>
             </div>
@@ -98,20 +95,9 @@ export default async function HomePage() {
       {/* Explore page */}
       <section className=" w-full bg-light-white xl:p-20">
         <div className="flex w-full flex-col items-center justify-center  space-y-8 md:space-y-10 xl:space-y-12">
-          <Image
-            src="/assets/font-shadow/explore-program-svg.svg"
-            alt="Explore Our Programs"
-            height={200}
-            width={200}
-            className="mb-10 hidden w-[75%] sm:flex"
-          />
-          <Image
-            src="/assets/font-shadow/explore-prgram-sm.svg"
-            alt="Explore Our Programs"
-            height={200}
-            width={200}
-            className="w-[55%] sm:hidden"
-          />
+          <h2 className="text-center text-4xl font-bold leading-[45px] sm:text-5xl sm:leading-[60px] md:mb-6 md:text-7xl lg:text-7xl">
+            Explore Our Programs
+          </h2>
           <CourseSlider />
         </div>
       </section>
@@ -119,13 +105,9 @@ export default async function HomePage() {
       {/* Choose us  */}
       <section className="bg-dark-purple px-8 text-white xl:px-20">
         <div className="flex flex-col items-center justify-center px-2 py-10 lg:py-12 ">
-          <Image
-            src="/assets/font-shadow/choose.svg"
-            alt="Choose Us"
-            height={200}
-            width={300}
-            className="mb-4 w-[80%] md:mb-0 md:w-[55%] md:py-4"
-          />
+          <h2 className="text-center text-3xl font-bold leading-[45px] sm:text-5xl sm:leading-[60px] md:mb-6 md:text-7xl lg:text-7xl">
+            Why Choose Us
+          </h2>
           <div className="mt-8  flex flex-col space-y-6 sm:flex-row sm:space-x-6 sm:space-y-0 lg:space-x-12 ">
             {chooseusData &&
               chooseusData.map((data) => (
@@ -155,13 +137,16 @@ export default async function HomePage() {
         {/* Training  */}
         <div className="w-full px-2 py-4 pb-10">
           <div className="flex flex-col items-center justify-center space-y-4">
-            <Image
+            {/* <Image
               src="/assets/font-shadow/training-svg.svg"
               alt="Our Training Process"
               width={200}
               height={200}
               className="mb-6 w-[85%] sm:w-[70%] md:mb-0 xl:py-8"
-            />
+            /> */}
+            <h2 className="text-center text-[26px] font-bold leading-[45px] sm:text-5xl sm:leading-[60px] md:mb-6 md:text-7xl lg:text-7xl">
+              Our Training Process
+            </h2>
             <div className="flex flex-col-reverse space-y-8 lg:flex-row lg:space-x-8 lg:space-y-0 lg:px-4 lg:pt-10">
               <div className="flex flex-col space-y-6 sm:w-full lg:w-[70%] lg:space-y-10 lg:pr-10">
                 {trainingData &&
