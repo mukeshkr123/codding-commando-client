@@ -8,6 +8,7 @@ import {
   PhoneCall,
   UserCheck,
   Users,
+  Sheet,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -51,6 +52,11 @@ const teacherRoutes = [
     icon: PhoneCall,
     label: "To Contact",
     href: "/teacher/contacts",
+  },
+  {
+    icon: Sheet,
+    label: "Workshops",
+    href: "/teacher/workshops",
   },
 ];
 
