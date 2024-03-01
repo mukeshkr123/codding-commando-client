@@ -21,6 +21,9 @@ module.exports = {
         "light-white": "#FBF5FC",
         bg_pink: "#F5478E",
       },
+      fontFamily: {
+        Poppins: ["Poppins", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
