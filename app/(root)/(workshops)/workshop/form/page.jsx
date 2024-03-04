@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { ErrorToast } from "@/components/error-toast";
 import toast from "react-hot-toast";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "next/navigation";
 
 const registerSchema = z.object({
   firstName: z.string().min(2, {
@@ -34,6 +35,10 @@ const registerSchema = z.object({
 });
 
 export default function WorkshopForm() {
+  const workshop = "salesforce";
+
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -41,19 +46,77 @@ export default function WorkshopForm() {
   } = useForm({
     resolver: zodResolver(registerSchema),
   });
+
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleCreateOrder = async (values) => {
+    try {
+      const {
+        data: { order, name, email, phone, price },
+      } = await apiClient.post(`/workshop/${workshop}/create-order`, values);
+
+      const options = {
+        key: "rzp_test_SsZQw7VSzw5bCq",
+        name: order?.notes?.paymentFor || workshop,
+        currency: order.currency,
+        amount: order.amount,
+        order_id: order.id,
+        prefill: { name, email, contact: phone },
+        handler: async function (response) {
+          const responseData = {
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_signature: response.razorpay_signature,
+            amount: price,
+            name,
+            email,
+            phone,
+          };
+
+          try {
+            const { data } = await apiClient.post(
+              `/workshop/${workshop}/verify-order`,
+              responseData
+            );
+
+            if (data.success) {
+              router.push(`/workshop/thank-you`);
+            }
+          } catch (error) {
+            console.error("Error verifying payment:", error);
+            ErrorToast("Payment verification failed. Please try again.");
+          }
+        },
+      };
+
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+
+      paymentObject.on("payment.failed", function () {
+        alert("Payment failed. Please try again. Contact support for help");
+      });
+    } catch (error) {
+      console.error("Error processing order:", error);
+      ErrorToast("Order processing failed. Please try again.");
+    }
+  };
 
   const onSubmit = async (registerData) => {
     setIsLoading(true);
     try {
       const { data } = await apiClient.post("/workshop/register", {
+        workshop,
         ...registerData,
       });
 
       console.log(data);
+
+      handleCreateOrder(data?.data);
+
       toast.success("Registered successfully");
     } catch (error) {
-      ErrorToast(error);
+      console.error("Error submitting form:", error);
+      ErrorToast("Failed to submit form. Please try again.");
     } finally {
       setIsLoading(false);
     }

@@ -79,11 +79,13 @@ const SalesForceWorkshop = () => {
                 </div>
               </div>
 
-              <div className="w-full rounded-full bg-gradient-to-b from-purple-600 to-purple-900 py-1.5">
-                <p className="text-center text-xl font-semibold text-white">
-                  Register Now For 99/-
-                </p>
-              </div>
+              <Link href="/workshop/form" className="w-full">
+                <div className="w-full rounded-full bg-gradient-to-b from-purple-600 to-purple-900 py-1.5">
+                  <p className="text-center text-xl font-semibold text-white">
+                    Register Now For 99/-
+                  </p>
+                </div>
+              </Link>
 
               <div className="">
                 <h3 className="max-w-[200px] text-start font-Poppins text-xl font-semibold text-[#F5478E] ">
@@ -227,11 +229,13 @@ const SalesForceWorkshop = () => {
               alt="Coding commando"
             />
 
-            <button className="mb-14 rounded-full bg-gradient-to-b from-purple-600 to-purple-900 py-2 lg:mb-0">
-              <p className="px-8 text-center text-xl font-semibold text-white">
-                Register Now For 99/-
-              </p>
-            </button>
+            <Link href="/workshop/form" className="">
+              <button className="mb-14 rounded-full bg-gradient-to-b from-purple-600 to-purple-900 py-2 lg:mb-0">
+                <p className="px-8 text-center text-xl font-semibold text-white">
+                  Register Now For 99/-
+                </p>
+              </button>
+            </Link>
           </div>
 
           <div className=" mt-6 flex flex-col justify-between gap-4 text-white">
