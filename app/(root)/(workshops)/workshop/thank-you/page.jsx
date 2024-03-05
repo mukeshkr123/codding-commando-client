@@ -1,5 +1,6 @@
 import React from "react";
 import { CheckCircleIcon } from "lucide-react";
+import Link from "next/link";
 
 const ThankyouPage = () => {
   return (
@@ -18,9 +19,11 @@ const ThankyouPage = () => {
         <p className="mb-4 text-gray-600">
           Ensure you join our WhatsApp community
         </p>
-        <button className="rounded-lg bg-green-500 px-4 py-2 text-white transition duration-300 ease-in-out hover:bg-green-600">
-          Join WhatsApp Community
-        </button>
+        <Link href="https://whatsapp.com/channel/0029VaMXf42GufJ0djguBA0j">
+          <button className="rounded-lg bg-green-500 px-4 py-2 text-white transition duration-300 ease-in-out hover:bg-green-600">
+            Join WhatsApp Community
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -4,21 +4,55 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const companies = [
-  "0",
-  "1",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "11",
-  "12",
-  "13",
-  "14",
+const newCompanies = [
+  {
+    _id: 1,
+    imageUrl: "/assets/workshops/companies/company-1.svg",
+  },
+  {
+    _id: 2,
+    imageUrl: "/assets/workshops/companies/company-2.svg",
+  },
+  {
+    _id: 3,
+    imageUrl: "/assets/workshops/companies/company-3.svg",
+  },
+  {
+    _id: 4,
+    imageUrl: "/assets/workshops/companies/company-4.svg",
+  },
+  {
+    _id: 5,
+    imageUrl: "/assets/workshops/companies/company-5.svg",
+  },
+  {
+    _id: 6,
+    imageUrl: "/assets/workshops/companies/company-6.svg",
+  },
+  {
+    _id: 7,
+    imageUrl: "/assets/workshops/companies/company-7.svg",
+  },
+  {
+    _id: 8,
+    imageUrl: "/assets/workshops/companies/company-8.svg",
+  },
+  {
+    _id: 9,
+    imageUrl: "/assets/workshops/companies/company-9.svg",
+  },
+  {
+    _id: 10,
+    imageUrl: "/assets/workshops/companies/company-10.svg",
+  },
+  {
+    _id: 11,
+    imageUrl: "/assets/workshops/companies/company-11.svg",
+  },
+  {
+    _id: 12,
+    imageUrl: "/assets/workshops/companies/company-12.svg",
+  },
 ];
 
 const SalesForceWorkshop = () => {
@@ -54,7 +88,7 @@ const SalesForceWorkshop = () => {
 
         <JobsWorldWide />
 
-        <h2 className="mt-36 text-center text-xl font-semibold text-white   sm:text-2xl md:text-3xl lg:text-5xl">
+        <h2 className="mt-16 text-center text-xl font-semibold text-white sm:text-2xl   md:text-3xl lg:mt-36 lg:text-5xl">
           Top Companies Hiring Salesforce Developers
         </h2>
 
@@ -110,10 +144,21 @@ const VideoSection = () => {
   }, [minutes, seconds]);
   return (
     <div className="mt-6 flex flex-col lg:mt-12 lg:flex-row ">
-      <div className="flex min-h-[200px]  w-full items-center justify-center rounded-lg bg-white">
-        Video Or Photo
+      <div className="flex  w-full items-end justify-end rounded-lg lg:w-[55%] ">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/EIYrhbBk7do?si=TD8XPS02SkL1cVoZ"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>{" "}
       </div>
-      <div className="mt-4 flex w-full items-center justify-center px-4 md:mt-2 lg:mt-0">
+      {/* <div className="flex min-h-[200px]  w-full items-center justify-center rounded-lg bg-white">
+        Video Or Photo
+      </div> */}
+      <div className="mt-4 flex w-full items-center justify-center px-4 md:mt-2 lg:mt-0 lg:w-[45%]">
         <div className=" flex max-w-md flex-col items-center justify-center gap-4 font-Poppins lg:gap-6">
           <div className="flex items-center justify-center gap-x-5 px-10 py-4">
             <div className="flex h-20 w-20 flex-col items-center justify-center gap-1 rounded-lg border border-[#F4F4F4]">
@@ -266,12 +311,16 @@ const JobsWorldWide = () => {
 
 const TopCompanies = () => {
   return (
-    <div className="mt-16 flex flex-wrap justify-center gap-5">
-      {companies.map((company, index) => (
-        <div
-          key={index}
-          className="h-[150px] w-[150px] rounded-md bg-[#D9D9D9]"
-        ></div>
+    <div className="mx-auto mt-16 flex max-w-6xl flex-wrap justify-center gap-6 ">
+      {newCompanies.map((company, index) => (
+        <div key={company._id} className="">
+          <Image
+            src={company?.imageUrl}
+            width={160}
+            height={160}
+            alt="Company icon"
+          />
+        </div>
       ))}
     </div>
   );
