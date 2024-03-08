@@ -156,7 +156,10 @@ const VideoSection = () => {
           allowfullscreen
         ></iframe>{" "} */}
         <video controls>
-          <source src="/assets/workshops/workshop-video.mp4" type="video/mp4" />
+          <source
+            src="https://coddingbucket.s3.ap-south-1.amazonaws.com/workshop-video.mp4"
+            type="video/mp4"
+          />
           Your browser does not support the video tag.
         </video>{" "}
       </div>
