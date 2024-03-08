@@ -14,7 +14,7 @@ const ThankyouPage = () => {
           You have successfully completed the registration process
         </p>
         <h2 className="mb-2 text-2xl font-bold text-gray-800">
-          Carrier Accelerated Webinar
+          3-Day Career Mapping Workshop{" "}
         </h2>
         <p className="mb-4 text-gray-600">
           Ensure you join our WhatsApp community

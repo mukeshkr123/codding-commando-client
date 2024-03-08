@@ -144,8 +144,9 @@ const VideoSection = () => {
   }, [minutes, seconds]);
   return (
     <div className="mt-6 flex flex-col lg:mt-12 lg:flex-row ">
-      <div className="flex  w-full items-end justify-end rounded-lg lg:w-[55%] ">
-        <iframe
+      {/* <div className="flex  w-full items-end justify-end rounded-lg lg:w-[55%] "> */}
+      <div className="flex px-2 lg:w-1/2 lg:pl-10">
+        {/* <iframe
           width="560"
           height="315"
           src="https://www.youtube.com/embed/EIYrhbBk7do?si=TD8XPS02SkL1cVoZ"
@@ -153,7 +154,11 @@ const VideoSection = () => {
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
-        ></iframe>{" "}
+        ></iframe>{" "} */}
+        <video controls>
+          <source src="/assets/workshops/workshop-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>{" "}
       </div>
       {/* <div className="flex min-h-[200px]  w-full items-center justify-center rounded-lg bg-white">
         Video Or Photo
@@ -181,13 +186,13 @@ const VideoSection = () => {
           <Link href="/workshop/form" className="w-full">
             <div className="w-full rounded-full bg-gradient-to-b from-purple-600 to-purple-900 py-1.5">
               <p className="text-center text-xl font-semibold text-white">
-                Register Now For 99/-
+                Register Now For 89/-
               </p>
             </div>
           </Link>
           <div className="">
-            <h3 className="max-w-[200px] text-start font-Poppins text-xl font-semibold text-[#F5478E] ">
-              3-Day Workshop from 8 March 2024{" "}
+            <h3 className="max-w-[250px] text-start font-Poppins text-xl font-semibold text-[#F5478E] ">
+              3-Day Workshop from 23rd March 2024{" "}
             </h3>
           </div>
         </div>
@@ -209,7 +214,7 @@ const CarrierMapping = () => {
             Day-01
           </span>{" "}
           <p className="text-base text-[#CCCCCC] md:text-lg">
-            Building a App in Salesforce
+            Org creation and Data Modelling{" "}
           </p>
         </div>
 
@@ -297,11 +302,11 @@ const JobsWorldWide = () => {
         </div>
         <div className="flex w-full flex-col items-center justify-center gap-1.5">
           <div className="flex text-2xl font-bold sm:text-3xl  md:text-5xl lg:text-7xl">
-            <span className="text-[#29F192]">6</span> <h3>LPA</h3>{" "}
+            <span className="text-[#29F192]">30</span> <h3>%</h3>{" "}
             <span className="text-[#29F192]">*</span>
           </div>
           <p className="px-2 text-center text-sm font-normal text-white  opacity-50 md:text-lg lg:text-xl">
-            Average fresher salesforce Salary
+            Higher salaries than professionals in other it domains
           </p>
         </div>
       </div>
@@ -343,7 +348,7 @@ const FooterWorkshop = () => {
         >
           <button className="mb-14 rounded-full bg-gradient-to-b from-purple-600 to-purple-900 py-2 lg:mb-0">
             <p className="px-8 text-center text-xl font-semibold text-white">
-              Register Now For 99/-
+              Register Now For 89/-
             </p>
           </button>
         </Link>

@@ -56,7 +56,7 @@ export default function WorkshopForm() {
       } = await apiClient.post(`/workshop/${workshop}/create-order`, values);
 
       const options = {
-        key: "rzp_test_SsZQw7VSzw5bCq",
+        key: "rzp_live_7GoHndZWogG4iX",
         name: order?.notes?.paymentFor || workshop,
         currency: order.currency,
         amount: order.amount,
@@ -118,10 +118,10 @@ export default function WorkshopForm() {
     <div className="flex h-screen items-center justify-center bg-slate-200">
       <div className="w-full max-w-2xl rounded-md bg-white p-8 py-6 shadow-lg md:p-10">
         <div className="flex flex-col gap-2">
-          <h1 className="text-center text-3xl font-semibold">
-            Register for workshop
+          <h1 className="text-center text-3xl font-bold">
+            Register for 3-Day Career Mapping Workshop
           </h1>
-          <p className="text-center">3-Day Career Mapping Workshop </p>
+          {/* <p className="text-center">3-Day Career Mapping Workshop </p> */}
         </div>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="mt-8 h-full w-full md:flex md:justify-between md:gap-4">
