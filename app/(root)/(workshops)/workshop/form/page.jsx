@@ -56,7 +56,7 @@ export default function WorkshopForm() {
       } = await apiClient.post(`/workshop/${workshop}/create-order`, values);
 
       const options = {
-        key: "rzp_test_SsZQw7VSzw5bCq",
+        key: "rzp_live_7GoHndZWogG4iX",
         name: order?.notes?.paymentFor || workshop,
         currency: order.currency,
         amount: order.amount,
