@@ -195,7 +195,7 @@ const VideoSection = () => {
           </Link>
           <div className="">
             <h3 className="max-w-[250px] text-start font-Poppins text-xl font-semibold text-[#F5478E] ">
-              3-Day Workshop from 23rd March 2024{" "}
+              3-Day Workshop from 29th to 31st March.
             </h3>
           </div>
         </div>
