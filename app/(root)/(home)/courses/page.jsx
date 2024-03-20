@@ -1,6 +1,11 @@
 import React from "react";
 import { CourseList } from "@/components/courses/course-list";
 
+export const metadata = {
+  title: "Salesforce Training Courses | Coding Commando",
+  description: "Get edge with Coding Commando's Salesforce training courses.",
+};
+
 export default function CoursePage() {
   return (
     <div className="h-full w-full bg-light-white">

@@ -4,6 +4,12 @@ import { chooseusData, trainingData } from "lib/data";
 import Image from "next/image";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Coding Commando- Salesforce Online Course, Full stack Online course",
+  description:
+    "Master Salesforce and Full Stack skills with Coding Commando's online courses",
+};
+
 export default async function HomePage() {
   return (
     <>

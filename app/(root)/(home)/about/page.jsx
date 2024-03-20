@@ -2,6 +2,12 @@ import { MeetMentor } from "@/components/shared/meet-mentor";
 import { TeamList } from "@/components/team";
 import Image from "next/image";
 
+export const metadata = {
+  title: "Online Classes at Coding Commando",
+  description:
+    "Know your coding potential with Coding Commando's online classes.",
+};
+
 export default function AboutPage() {
   return (
     <div className="h-full w-full">
