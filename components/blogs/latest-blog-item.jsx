@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-export const LatestBlogItem = ({ slug, bgUrl, title, intro }) => {
+export const LatestBlogItem = ({ slug, image, title, description }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -15,12 +15,12 @@ export const LatestBlogItem = ({ slug, bgUrl, title, intro }) => {
 
   return (
     <Link
-      href={`/blog/${slug}`}
+      href={slug}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="flex h-full max-h-[349px] flex-col gap-2.5 rounded-lg bg-no-repeat p-4 text-white transition-all duration-300 hover:backdrop-blur-xl sm:p-6 md:p-12 lg:w-full"
+      className="flex h-full max-h-[349px] flex-col gap-2.5 rounded-lg bg-cover bg-center bg-no-repeat p-4 text-white transition-all duration-300 hover:backdrop-blur-xl sm:p-6 md:p-12 lg:w-full"
       style={{
-        backgroundImage: `url(${bgUrl})`,
+        backgroundImage: `url(${image?.filePath?.replace("../public", "")})`,
       }}
     >
       {isHovered && (
@@ -37,7 +37,7 @@ export const LatestBlogItem = ({ slug, bgUrl, title, intro }) => {
       <div className="max-w-md pb-4 md:pb-10">
         <h3 className="sm:text-base">Latest Blog</h3>
         <h2
-          className={`mt-8 text-lg font-bold sm:text-xl md:text-2xl ${
+          className={`mt-8 line-clamp-2 text-lg font-bold sm:text-xl  md:text-2xl${
             isHovered
               ? "md:scale-105 md:transition-all md:duration-500"
               : "transition-all duration-500"
@@ -46,13 +46,13 @@ export const LatestBlogItem = ({ slug, bgUrl, title, intro }) => {
           {title}
         </h2>
         <p
-          className={`mt-4 text-sm sm:text-base md:text-lg ${
+          className={`mt-4 line-clamp-3 text-sm sm:text-base md:text-lg ${
             isHovered
               ? "md:scale-105 md:transition-all md:duration-500"
               : "transition-all duration-500"
           }`}
         >
-          {intro}
+          {description}
         </p>
         <p
           className={`absolute bottom-0 left-24 mt-4 hidden -translate-x-1/2 text-xl font-semibold underline md:flex ${

@@ -1,79 +1,48 @@
+import { allBlogs } from ".contentlayer/generated";
 import BlogLeftSidebar from "@/components/blogs/left-sidebar";
-import { blogData } from "data/blog-data";
-import Image from "next/image";
-import Link from "next/link";
+import RenderMdx from "@/components/blogs/render-mdx";
+import { format, parseISO } from "date-fns";
 import { redirect } from "next/navigation";
 
 const BlogdetailsPage = ({ params }) => {
-  const postSlug = params?.slug;
-  const post = blogData.find((blog) => blog.slug === postSlug);
+  const blog = allBlogs.find((blog) => blog._raw.flattenedPath === params.slug);
 
-  if (!post) {
-    redirect("/blog");
+  if (!blog) {
+    return redirect("/blogs");
   }
 
   return (
     <div className="h-full w-full overflow-hidden bg-dark-purple px-6 pb-12 pt-20 text-white sm:px-10 md:px-12 lg:flex lg:px-8">
-      <div className="flex w-full flex-col lg:pl-16 lg:pr-28">
+      <article className="flex w-full flex-col lg:pl-16 lg:pr-28">
         <div className="flex flex-col space-y-10 pb-4">
-          <Link href="/blog" className="text-sm text-slate-100 sm:text-base">
-            BLOG
-          </Link>
-          <h1 className="text-[32px] font-semibold lg:text-6xl">
-            {post?.title}
+          <span className="text-sm text-slate-100 sm:text-base">BLOG</span>
+          <h1 className="text-[32px] font-semibold md:text-6xl">
+            {blog.title}
           </h1>
-          <div className="flex gap-20 ">
-            <p className="text-sm sm:text-base">{post?.read_time}</p>
-            <p className="text-sm sm:text-base">{post?.postedDate}</p>
+          <div className="flex gap-20">
+            <p className="text-sm sm:text-base">{blog.readingTime?.text}</p>
+            <p className="text-sm sm:text-base">
+              {format(parseISO(blog.publishedAt), "LLLL d, yyyy")}
+            </p>
           </div>
         </div>
         <div
-          className="mt-2 h-1 w-full md:mb-4"
+          className="mb-4 mt-2 h-1 w-full "
           style={{
             background:
               "linear-gradient(90deg, #F9C8EE 0%, #F383D9 25%, #E2B781 50%, #9DF0AC 100%)",
           }}
         />
-        <div className="flex flex-col gap-4 py-8">
-          {post.descriptions.map((desc) => (
-            <p className="text-base font-medium text-[#A4A4A4]" key={desc?._id}>
-              {desc?.content}
-            </p>
-          ))}
-        </div>
-        {post.content_section.map((section) => (
-          <div key={section?._id} className="flex flex-col gap-6">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl">
-              {section?.title}
-            </h2>
-            {section.descriptions.map((desc) => (
-              <p
-                key={desc?._id}
-                className="text-base font-medium text-[#A4A4A4]"
-              >
-                {desc?.content}
-              </p>
-            ))}
-            {section.imgUrl && (
-              <div
-                className="relative my-4 w-full "
-                style={{ aspectRatio: "15/7" }}
-              >
-                <Image
-                  src={section?.imgUrl}
-                  layout="fill"
-                  objectFit="cover"
-                  alt={section?.title}
-                  className="h-full w-full rounded-lg object-cover"
-                />
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+
+        {/* RenderMdx  */}
+        <RenderMdx blog={blog} />
+      </article>
+      {/* TODO: add later role */}
       <BlogLeftSidebar
-        author={post?.written_by.author}
-        role={post?.written_by.role}
+        author={blog.author}
+        role={
+          "Managing Director – Health & Public Service, Social Services and Workforce & Talent Transformation"
+        }
       />
     </div>
   );

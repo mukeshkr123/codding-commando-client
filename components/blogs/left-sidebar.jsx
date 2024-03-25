@@ -1,9 +1,9 @@
-import { blogData } from "data/blog-data";
+import { allBlogs } from ".contentlayer/generated";
 import Link from "next/link";
 import React from "react";
 
 export default function BlogLeftSidebar({ author, role }) {
-  const recentPosts = blogData?.slice(0, 5);
+  const recentBlogs = allBlogs.slice(0, 5);
 
   return (
     <div className="mb-4 mt-8 flex  flex-col gap-y-10 lg:max-w-[26%] lg:p-6">
@@ -17,15 +17,20 @@ export default function BlogLeftSidebar({ author, role }) {
       <div className="h-full w-full items-center justify-center text-center lg:text-start">
         <h2 className="text-lg font-semibold">Recent Blogs</h2>
         <div className="mt-6 flex h-full w-full flex-col items-center gap-4">
-          {recentPosts.length > 0 &&
-            recentPosts.map((post) => (
+          {recentBlogs.length > 0 &&
+            recentBlogs.map((blog) => (
               <Link
-                href={`/blog/${post.slug}`}
-                key={post?._id}
-                className=" flex h-[150px] w-[250px] items-end rounded-lg p-3"
-                style={{ backgroundImage: `url(${post?.bgUrl})` }}
+                href={blog.url}
+                key={blog.url}
+                className=" flex h-[150px] w-[250px] items-end rounded-lg bg-cover bg-center bg-no-repeat p-3"
+                style={{
+                  backgroundImage: `url(${blog.image?.filePath?.replace(
+                    "../public",
+                    ""
+                  )})`,
+                }}
               >
-                <p className="text-base">{post?.title}</p>
+                <p className="text-base">{blog?.title}</p>
               </Link>
             ))}
         </div>
