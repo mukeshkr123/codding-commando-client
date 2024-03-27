@@ -14,10 +14,6 @@ const Blog = defineDocumentType(() => ({
       type: "date",
       required: true,
     },
-    updatedAt: {
-      type: "date",
-      required: true,
-    },
     description: {
       type: "string",
       required: true,

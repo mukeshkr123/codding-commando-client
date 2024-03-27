@@ -72,7 +72,7 @@ const Privacy = () => {
           </section>
         ))}
 
-        <h2 className="mb-3 mt-2 text-xl font-semibold">Contact Us</h2>
+        <h4 className="mb-3 mt-2 text-xl font-semibold">Contact Us</h4>
         <p>
           If you have any questions, concerns, or requests regarding this
           Privacy Policy, please contact us at{" "}

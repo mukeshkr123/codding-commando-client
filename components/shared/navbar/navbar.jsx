@@ -16,10 +16,10 @@ const navLinks = [
     title: "Our Courses",
     href: "/courses",
   },
-  // {
-  //   title: "Blog",
-  //   href: "/blog", // TODO: add later
-  // },
+  {
+    title: "Blog",
+    href: "/blogs", // TODO: add later
+  },
   {
     title: "Contact Us",
     href: "/contact",

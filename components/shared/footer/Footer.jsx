@@ -92,9 +92,9 @@ const Footer = () => {
         <div className="flex w-full flex-col gap-6 lg:flex-row">
           <FooterItem title="UseFull Links" items={UseFullLinks} />
           <div>
-            <h1 className="pb-2  text-lg font-semibold text-[#EBEBEB] ">
+            <h4 className="pb-2  text-lg font-semibold text-[#EBEBEB] ">
               Follow Links
-            </h1>
+            </h4>
             <div className="flex w-full gap-2 ">
               {FollowLinks &&
                 FollowLinks.map((link) => (
@@ -109,9 +109,9 @@ const Footer = () => {
           {/* <FooterItem title="Trending Courses" items={Courses} /> */}
 
           <div className="flex flex-col gap-1 lg:w-1/2">
-            <h1 className="pb-2 text-lg font-semibold text-[#EBEBEB]">
+            <h4 className="pb-2 text-lg font-semibold text-[#EBEBEB]">
               Trending Courses
-            </h1>
+            </h4>
             {links &&
               links?.map((item) => (
                 <Link
@@ -125,9 +125,9 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col gap-1 lg:w-1/2">
-            <h1 className="pb-2 text-lg font-semibold text-[#EBEBEB]">
+            <h4 className="pb-2 text-lg font-semibold text-[#EBEBEB]">
               Contact us
-            </h1>
+            </h4>
             <p className="text-sm  text-gray-600 sm:text-base">
               Shivpuri Rd, South{" "}
             </p>
@@ -147,7 +147,7 @@ const Footer = () => {
 const FooterItem = ({ title, items }) => {
   return (
     <div className="flex flex-col gap-1 lg:w-1/2">
-      <h1 className="pb-2  text-lg font-semibold text-[#EBEBEB] ">{title}</h1>
+      <h4 className="pb-2  text-lg font-semibold text-[#EBEBEB] ">{title}</h4>
       {items &&
         items.map((link) => (
           <Link

@@ -128,9 +128,9 @@ const CoursePage = ({ params }) => {
             backgroundImage: 'url("assets/vector/mentor-bg-svg.svg")',
           }}
         >
-          <h1 className="max-w-xs text-6xl font-semibold sm:max-w-4xl md:text-7xl xl:text-8xl ">
+          <h3 className="max-w-xs text-6xl font-semibold sm:max-w-4xl md:text-7xl xl:text-8xl ">
             Meet Your Mentor
-          </h1>
+          </h3>
           <MentorDetails mentors={result?.mentors} />
         </section>
       )}

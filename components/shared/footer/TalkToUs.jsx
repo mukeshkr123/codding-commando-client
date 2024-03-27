@@ -15,9 +15,9 @@ const TalkToUs = () => {
               className="w-[60%] md:w-[70%] "
             /> */}
 
-            <h2 className="text-center text-4xl font-bold leading-[45px] sm:text-5xl sm:leading-[60px] md:mb-6 md:text-7xl lg:text-7xl">
+            <h4 className="text-center text-4xl font-bold leading-[45px] sm:text-5xl sm:leading-[60px] md:mb-6 md:text-7xl lg:text-7xl">
               Talk To Us
-            </h2>
+            </h4>
           </div>
 
           <p className="text-base font-normal leading-normal text-white md:pl-0 md:text-lg">

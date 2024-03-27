@@ -101,9 +101,9 @@ export default async function HomePage() {
       {/* Explore page */}
       <section className=" w-full bg-light-white xl:p-20">
         <div className="flex w-full flex-col items-center justify-center  space-y-8 md:space-y-10 xl:space-y-12">
-          <h2 className="text-center text-4xl font-bold leading-[45px] sm:text-5xl sm:leading-[60px] md:mb-6 md:text-7xl lg:text-7xl">
+          <h4 className="text-center text-4xl font-bold leading-[45px] sm:text-5xl sm:leading-[60px] md:mb-6 md:text-7xl lg:text-7xl">
             Explore Our Programs
-          </h2>
+          </h4>
           <CourseSlider />
         </div>
       </section>
@@ -161,9 +161,9 @@ export default async function HomePage() {
                       key={training.title}
                       className="flex flex-col space-y-4"
                     >
-                      <h1 className=" py-2 text-2xl font-semibold leading-7 text-pink-500 lg:text-4xl">
+                      <h4 className=" py-2 text-2xl font-semibold leading-7 text-pink-500 lg:text-4xl">
                         {training.title}
-                      </h1>
+                      </h4>
                       <p className="text-base font-normal lg:text-lg">
                         {training.description}
                       </p>

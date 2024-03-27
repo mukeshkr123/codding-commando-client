@@ -45,10 +45,10 @@ export const TeamList = () => {
               width={150}
               height={150}
             />
-            <h1 className=" mt-4 text-xl font-bold md:text-2xl">
+            <span className=" mt-4 text-xl font-bold md:text-2xl">
               {" "}
               {member?.name}
-            </h1>
+            </span>
             <p className=" text-base md:text-lg">{member?.description}</p>
           </div>
         ))}

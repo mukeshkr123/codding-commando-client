@@ -239,9 +239,9 @@ const CarrierMapping = () => {
         </div>
       </div>
       <div className="mt-10 flex h-full w-full flex-col gap-x-5 lg:mt-0">
-        <h2 className="text-center text-xl font-semibold sm:text-xl md:text-2xl lg:text-3xl">
+        <h3 className="text-center text-xl font-semibold sm:text-xl md:text-2xl lg:text-3xl">
           Meet Your <span className="text-[#29F192]">Mentor</span>
-        </h2>
+        </h3>
         <div
           className="relative mt-8 flex flex-col gap-2 rounded-xl bg-[#d9d9d9] bg-opacity-[4%] px-8 py-6 font-Poppins shadow-lg
       "

@@ -37,9 +37,9 @@ export const MeetMentor = () => {
         backgroundImage: 'url("assets/vector/mentor-bg-svg.svg")',
       }}
     >
-      <h2 className=" text-center text-4xl font-bold leading-[45px] sm:text-5xl sm:leading-[60px] md:mb-6 md:text-7xl lg:text-7xl">
+      <h3 className=" text-center text-4xl font-bold leading-[45px] sm:text-5xl sm:leading-[60px] md:mb-6 md:text-7xl lg:text-7xl">
         Meet Your Mentor
-      </h2>
+      </h3>
 
       <div className="mt-2 grid grid-cols-1 sm:mt-20 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 ">
         {mentors &&
