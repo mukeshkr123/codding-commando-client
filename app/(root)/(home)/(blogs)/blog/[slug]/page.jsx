@@ -33,7 +33,7 @@ const BlogdetailsPage = ({ params }) => {
               "linear-gradient(90deg, #F9C8EE 0%, #F383D9 25%, #E2B781 50%, #9DF0AC 100%)",
           }}
         />
-
+/
         {/* RenderMdx  */}
         <RenderMdx blog={blog} />
       </article>
