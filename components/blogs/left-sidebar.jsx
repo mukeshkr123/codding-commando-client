@@ -24,10 +24,7 @@ export default function BlogLeftSidebar({ author, role }) {
                 key={blog.url}
                 className=" flex h-[150px] w-[250px] items-end rounded-lg bg-cover bg-center bg-no-repeat p-3"
                 style={{
-                  backgroundImage: `url(${blog.image?.filePath?.replace(
-                    "../public",
-                    ""
-                  )})`,
+                  backgroundImage: `url(${blog.image})`,
                 }}
               >
                 <p className="text-base">{blog?.title}</p>

@@ -8,16 +8,16 @@ const components = {
   Image: (props) => (
     // eslint-disable-next-line jsx-a11y/alt-text
     <Image
-      className="my-6 rounded-lg "
-      width="718"
-      height="404"
-      {...props}
+      className="my-8 rounded-lg"
+      width={985}
+      height={554}
       sizes="100vw"
+      {...props}
     />
   ),
   p: (props) => (
     <p
-      className="mb-4 text-base font-medium text-[#A4A4A4] md:text-lg"
+      className="mt-4 text-base font-normal text-[#A4A4A4] md:text-lg"
       {...props}
     />
   ),
@@ -29,13 +29,13 @@ const components = {
   ),
   h2: (props) => (
     <h2
-      className="mb-4 text-2xl font-normal md:text-3xl lg:text-4xl"
+      className="mt-12 text-2xl font-normal md:text-3xl lg:text-4xl"
       {...props}
     />
   ),
   h3: (props) => (
     <h3
-      className="mb-4 text-xl font-light md:text-2xl lg:text-3xl"
+      className="mb-4 mt-8 text-xl font-light md:text-2xl lg:text-3xl"
       {...props}
     />
   ),

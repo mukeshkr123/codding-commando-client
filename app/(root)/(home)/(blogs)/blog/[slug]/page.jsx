@@ -16,7 +16,7 @@ const BlogdetailsPage = ({ params }) => {
       <article className="flex w-full flex-col lg:pl-16 lg:pr-28">
         <div className="flex flex-col space-y-10 pb-4">
           <span className="text-sm text-slate-100 sm:text-base">BLOG</span>
-          <h1 className="text-[32px] font-semibold md:text-6xl">
+          <h1 className="text-3xl font-semibold text-white md:text-4xl lg:text-5xl lg:leading-[55px]">
             {blog.title}
           </h1>
           <div className="flex gap-20">
@@ -33,7 +33,6 @@ const BlogdetailsPage = ({ params }) => {
               "linear-gradient(90deg, #F9C8EE 0%, #F383D9 25%, #E2B781 50%, #9DF0AC 100%)",
           }}
         />
-        {/* Hello  */}
         {/* RenderMdx  */}
         <RenderMdx blog={blog} />
       </article>

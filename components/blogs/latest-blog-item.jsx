@@ -18,23 +18,17 @@ export const LatestBlogItem = ({ slug, image, title, description }) => {
       href={slug}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="flex h-full max-h-[349px] flex-col gap-2.5 rounded-lg bg-cover bg-center bg-no-repeat p-4 text-white transition-all duration-300 hover:backdrop-blur-xl sm:p-6 md:p-12 lg:w-full"
-      style={{
-        backgroundImage: `url(${image?.filePath?.replace("../public", "")})`,
-      }}
+      className="relative flex h-full max-h-[349px] flex-col gap-2.5 rounded-lg bg-cover bg-center bg-no-repeat p-4 text-white transition-all duration-300 hover:backdrop-blur-xl sm:p-6 md:p-12 lg:w-full"
     >
-      {isHovered && (
-        <div
-          className="absolute inset-0 rounded-lg transition-opacity duration-500"
-          style={{
-            backdropFilter: "blur(15px)",
-            zIndex: -1,
-            opacity: 0.85,
-            transition: "opacity 0.3s ease",
-          }}
-        />
-      )}
-      <div className="max-w-md pb-4 md:pb-10">
+      <div
+        className="absolute inset-0 rounded-lg bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: `url(${image})`,
+          filter: isHovered ? "blur(6px)" : "none",
+          transition: "filter 0.5s ease-in-out",
+        }}
+      />
+      <div className="z-10 max-w-md pb-4 md:pb-10">
         <h3 className="sm:text-base">Latest Blog</h3>
         <h2
           className={`mt-8 line-clamp-2 text-lg font-bold sm:text-xl  md:text-2xl${

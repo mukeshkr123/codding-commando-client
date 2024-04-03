@@ -18,26 +18,20 @@ export const OurBlogItem = ({ slug, image, title }) => {
       href={slug}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="flex h-[219px] flex-col gap-2.5 rounded-lg bg-cover bg-center bg-no-repeat p-4 text-white transition-all duration-300 hover:backdrop-blur-xl sm:p-6 md:p-8 lg:w-full"
-      style={{
-        backgroundImage: `url(${image?.filePath?.replace("../public", "")})`,
-      }}
+      className="relative flex h-[219px] flex-col gap-2.5 rounded-lg bg-cover bg-center bg-no-repeat p-4 text-white transition-all duration-300 hover:backdrop-blur-xl sm:p-6 md:p-8 lg:w-full"
     >
-      {isHovered && (
-        <div
-          className="absolute inset-0 rounded-lg transition-opacity duration-300"
-          style={{
-            backdropFilter: "blur(15px)",
-            zIndex: -1,
-            opacity: 0.85,
-            transition: "opacity 0.3s ease",
-          }}
-        />
-      )}
-      <div className="max-w-md pb-4 md:pb-6">
+      <div
+        className="absolute inset-0 rounded-lg bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: `url(${image})`,
+          filter: isHovered ? "blur(6px)" : "none",
+          transition: "filter 0.5s ease-in-out",
+        }}
+      />
+      <div className="z-10 max-w-md pb-4 md:pb-6">
         <h3 className="sm:text-base">Our Blog</h3>
         <h2
-          className={`text-lg font-bold ${
+          className={`line-clamp-2 text-lg font-bold ${
             isHovered
               ? "mb-2 mt-11 md:scale-105 md:transition-all md:duration-[600ms]"
               : "mt-20 transition-all duration-500"
