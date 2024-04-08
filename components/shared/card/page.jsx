@@ -54,7 +54,7 @@ export default async function HomePage() {
       </section>
       {/* Learn From Us  */}
       <section
-        className="shrink-0 bg-light-white  bg-opacity-[100%] bg-contain bg-no-repeat p-8 xl:px-20"
+        className="shrink-0  bg-light-white  bg-opacity-[100%] bg-contain bg-no-repeat p-8 xl:px-20"
         style={{
           backgroundImage: 'url("assets/vector/learn-bg-svg.svg")',
         }}
