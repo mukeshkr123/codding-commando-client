@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Accordion,
   AccordionContent,
@@ -6,9 +8,11 @@ import {
 } from "@/components/ui/accordion";
 import { InfiniteMovingCards } from "@/components/ui/infinity-moving-cards";
 import { OfferEnds } from "@/components/workshops/offer-end";
+import { SalesforcePopup } from "@/components/workshops/saleforce-popup";
 // eslint-disable-next-line camelcase
 import { Hanken_Grotesk } from "next/font/google";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const hanken = Hanken_Grotesk({
   subsets: ["latin"],
@@ -18,36 +22,23 @@ const hanken = Hanken_Grotesk({
 const programs = [
   {
     id: 1,
-    title: "BCA / MCA Graduates",
+    title:
+      "Students who just graduated and want to work in the Salesforce Industry and are having trouble finding jobs.",
   },
 
   {
     id: 2,
-    title: "BCA / MCA Graduates",
+    title:
+      "Students who are in their last year and are looking to get trained in highly demanded Salesforce skills.",
   },
   {
     id: 3,
-    title: "BCA / MCA Graduates",
+    title: "People who want to work in the IT Sector, even with career gaps.",
   },
   {
     id: 4,
-    title: "BCA / MCA Graduates",
-  },
-  {
-    id: 5,
-    title: "BCA / MCA Graduates",
-  },
-  {
-    id: 6,
-    title: "BCA / MCA Graduates",
-  },
-  {
-    id: 7,
-    title: "BCA / MCA Graduates",
-  },
-  {
-    id: 8,
-    title: "BCA / MCA Graduates",
+    title:
+      "Housewives looking to restart their careers in IT and actively searching for job opportunities.",
   },
 ];
 
@@ -193,16 +184,38 @@ const companies = [
 ];
 
 const Workshop = () => {
+  const [minutes, setMinutes] = useState(29);
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      } else {
+        if (minutes === 0 && seconds === 0) {
+          clearInterval(interval);
+        } else {
+          setMinutes(minutes - 1);
+          setSeconds(59);
+        }
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [minutes, seconds]);
+
   return (
     <div
       className={`relative w-full bg-[#050208] text-white ${hanken.className}`}
     >
+      <SalesforcePopup minutes={minutes} seconds={seconds} />
       <div className="pointer-events-none absolute right-0 top-0 z-0 ">
         <Image
           src="/assets/workshops/landing-1-bg.svg"
           alt="gradient"
           width={350}
           height={400}
+          className="w-[120px] sm:w-[180px] md:w-[250px] lg:w-[350px]"
         />
       </div>
 
@@ -212,6 +225,7 @@ const Workshop = () => {
           alt="gradient"
           width={350}
           height={400}
+          className="w-[120px] sm:w-[180px] md:w-[250px] lg:w-[350px]"
         />
       </div>
 
@@ -224,12 +238,12 @@ const Workshop = () => {
           career?
         </p>
 
-        <div className="mx-auto mt-4 flex w-full max-w-5xl flex-col items-center justify-center gap-y-8  sm:mt-8 md:mt-10 md:gap-y-12 lg:flex-row lg:gap-x-10">
+        <div className="mx-auto mt-4 flex w-full max-w-4xl flex-col items-center justify-center gap-y-8 sm:mt-8 md:mt-10 md:gap-y-12 lg:flex-row lg:gap-x-10">
           {/* Video  */}
-          <div className="flex h-[250px] w-[350px] items-center justify-center rounded-xl bg-white text-black sm:w-[420px] md:h-[287px] md:w-[511px]">
+          <div className="flex h-[250px] w-[350px] flex-1 items-center justify-center rounded-xl bg-white text-black sm:w-[420px] md:h-[287px] md:w-[511px]">
             Video or Photo
           </div>
-          <div className="flex flex-col justify-between gap-y-5  px-4 ">
+          <div className="flex flex-1 flex-col justify-between gap-y-5  px-4 ">
             <div className="flex gap-4">
               <div className="flex items-center justify-center rounded-[6px] border border-[#A100FF] px-5 py-2">
                 <span className="text-lg font-medium">4 April 2023</span>
@@ -245,15 +259,15 @@ const Workshop = () => {
               Discover Your Future In <br />
               IT With Our{" "}
             </h4>
-            <h3 className="text-3xl font-bold md:text-[42px]">
+            <h3 className="text-3xl font-bold md:text-[42px] md:leading-[45px]">
               3-Day Career Mapping Workshop{" "}
             </h3>
           </div>
         </div>
 
-        <OfferEnds />
+        <OfferEnds minutes={minutes} seconds={seconds} />
 
-        <div className="mx-auto max-w-sm sm:max-w-lg md:max-w-2xl  lg:max-w-4xl  xl:max-w-5xl">
+        <div className="mx-auto max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-6xl">
           <Image
             src="/assets/workshops/3-day-workshop.svg"
             alt="Workshop"
@@ -262,16 +276,24 @@ const Workshop = () => {
           />
         </div>
 
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-center gap-y-5">
+        <div className="mx-auto  flex max-w-5xl flex-col items-center justify-center gap-y-5">
           <RegisterButton paragraph={true} />
-          <p className="text-xl font-medium sm:text-2xl md:text-4xl">
+          <h4 className="py-4 text-center text-2xl font-semibold sm:text-3xl md:py-10 md:text-4xl lg:text-[42px]">
             Join now the growing in-demand skill
-          </p>
+          </h4>
         </div>
 
-        <div class="mx-auto flex max-w-5xl flex-col items-center justify-center gap-y-12">
-          <div class="mt-8 flex flex-col md:flex-row md:gap-x-8 lg:gap-x-12">
-            <div class="flex flex-col md:w-1/2 md:gap-y-8">
+        <div class="relative mx-auto flex max-w-6xl flex-col items-center justify-center gap-y-12 md:mt-4 ">
+          <div className="absolute hidden md:flex">
+            <Image
+              src="/assets/workshops/salesforce-bg.png"
+              width={750}
+              height={200}
+              alt="Salesforce"
+            />
+          </div>
+          <div class=" flex flex-col md:mt-8 md:flex-row md:gap-x-8 lg:gap-x-[350px]">
+            <div class="flex flex-col md:w-1/2 md:gap-y-10">
               <div class="flex flex-col items-center justify-center gap-2 px-6 py-4 text-center">
                 <span class="text-4xl font-bold md:text-6xl">
                   <span class="text-[#EA4468]">9.3+</span> Million
@@ -292,7 +314,7 @@ const Workshop = () => {
               </div>
             </div>
 
-            <div class="flex flex-col md:w-1/2 md:gap-y-8">
+            <div class="flex flex-col md:w-1/2 md:gap-y-10">
               <div class="flex flex-col items-center justify-center gap-2 px-6 py-4 text-center">
                 <span class="text-4xl font-bold md:text-6xl">
                   <span class="text-[#EA4468]">1.3+</span> Million
@@ -315,7 +337,7 @@ const Workshop = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-y-6  md:my-8">
+        <div className="flex flex-col gap-y-12  md:py-8 md:pt-20">
           <h3 className="text-center text-2xl font-semibold sm:text-3xl md:text-4xl lg:text-[42px]">
             Top Companies Hiring Salesforce Developers
           </h3>
@@ -327,19 +349,19 @@ const Workshop = () => {
           />
         </div>
 
-        <OfferEnds />
+        <OfferEnds minutes={minutes} seconds={seconds} />
 
-        <section className="my-12 rounded-[32px] bg-[#171123] py-8 md:py-14">
+        <section className="my-8 rounded-[32px] bg-[#171123] py-8 md:my-12 md:py-14">
           <div>
             <h3 className="text-center text-2xl font-bold sm:text-3xl lg:text-5xl">
               Who is this program for?
             </h3>
 
-            <div className="mx-auto mt-8 flex max-w-[54rem] flex-wrap justify-between gap-y-6 px-4  md:mt-16">
+            <div className="mx-auto mt-8 flex max-w-[56rem] flex-wrap justify-center gap-y-4 px-4 sm:gap-y-6  md:mt-16 md:justify-between">
               {programs &&
                 programs.map((program) => (
                   <div
-                    className="flex w-[400px] items-center gap-5 rounded-[65px] bg-[#221935] px-6 py-3 "
+                    className="flex w-[1000px] items-center gap-3 rounded-lg bg-[#221935] px-4 py-3 sm:gap-5 sm:rounded-xl sm:px-6 md:rounded-2xl lg:rounded-[65px]"
                     key={program.id}
                   >
                     <Image
@@ -355,7 +377,7 @@ const Workshop = () => {
           </div>
         </section>
 
-        <div className="mx-auto  flex max-w-[53rem] flex-col items-center justify-center gap-y-16 ">
+        <div className="mx-auto flex max-w-[53rem] flex-col items-center justify-center gap-y-10 md:gap-y-16 ">
           <h3 className="text-center text-3xl font-semibold">Benifits</h3>
 
           <div className="flex flex-wrap justify-center gap-y-7 sm:justify-between ">
@@ -383,11 +405,11 @@ const Workshop = () => {
               ))}
           </div>
         </div>
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-center gap-y-6">
+        <div className="mx-auto mt-4 flex max-w-5xl flex-col items-center justify-center gap-y-6 md:mt-12">
           <RegisterButton paragraph={true} />
         </div>
 
-        <div className="mx-auto my-16 max-w-sm  xl:max-w-7xl">
+        <div className="mx-auto my-6 max-w-sm md:my-14  xl:max-w-7xl">
           <h3 className="text-center text-4xl font-semibold md:text-[42px]">
             Meet your mentor
           </h3>
@@ -421,7 +443,7 @@ const Workshop = () => {
         </div>
 
         <div>
-          <h1 className="text-center text-4xl font-semibold md:text-[42px]">
+          <h1 className="px-4 text-center text-4xl font-semibold md:text-[42px]">
             Look what our student says
           </h1>
           <div className="mt-10 flex flex-wrap justify-center gap-6  md:mt-16 md:gap-8">
@@ -529,9 +551,9 @@ const Workshop = () => {
           </div>
         </div>
 
-        <OfferEnds />
+        <OfferEnds minutes={minutes} seconds={seconds} />
 
-        <section className="mx-auto mt-20 max-w-sm xl:max-w-[62rem] ">
+        <section className="mx-auto mt-10 max-w-sm md:mt-20 xl:max-w-[62rem] ">
           <h3 className="text-center text-3xl font-semibold md:text-[40px]">
             Questions generally asked about the workshop
           </h3>
@@ -595,7 +617,7 @@ export default Workshop;
 export function RegisterButton({ paragraph }) {
   return (
     <>
-      <button className="max-w-lg rounded-[9px] bg-[#A100FF] px-12 py-2.5 text-base font-medium text-black sm:text-lg md:text-2xl lg:text-[32px]">
+      <button className="max-w-lg rounded-[9px] bg-[#A100FF] px-12 py-4 text-base font-medium text-black sm:text-lg md:px-14 md:text-2xl lg:max-w-xl lg:text-[32px]">
         Register now for $299 <span>$ 999</span>
       </button>
       {paragraph && (
@@ -618,7 +640,7 @@ const faqs = [
   },
   {
     id: 2,
-    title: "Career Opportunities in the Salesforce Ecosystem",
+    title: "Career Opportunities in the Salesforce.",
     description:
       "Introduction to the comprehensive Salesforce course offered by Coding Comando. Special discount or bonuses for workshop attendees who enroll in the full course.",
   },
