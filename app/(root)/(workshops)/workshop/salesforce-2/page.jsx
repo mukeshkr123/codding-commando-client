@@ -380,7 +380,7 @@ const Workshop = () => {
         <div className="mx-auto flex max-w-[53rem] flex-col items-center justify-center gap-y-10 md:gap-y-16 ">
           <h3 className="text-center text-3xl font-semibold">Benifits</h3>
 
-          <div className="flex flex-wrap justify-center gap-y-7 sm:justify-between ">
+          <div className="flex flex-wrap justify-center gap-y-7 lg:justify-between ">
             {benefits &&
               benefits.map((benefit) => (
                 <div
@@ -409,11 +409,11 @@ const Workshop = () => {
           <RegisterButton paragraph={true} />
         </div>
 
-        <div className="mx-auto my-6 max-w-sm md:my-14  xl:max-w-7xl">
+        <div className="mx-auto my-6 max-w-sm sm:max-w-lg md:my-14  md:max-w-2xl lg:max-w-5xl xl:max-w-7xl ">
           <h3 className="text-center text-4xl font-semibold md:text-[42px]">
             Meet your mentor
           </h3>
-          <div className="flex flex-col items-center justify-center md:flex-row">
+          <div className="flex flex-col items-center justify-center lg:flex-row">
             <div className="flex-1  px-10">
               <Image
                 src="/assets/workshops/prateek-prasoon.png"
@@ -485,7 +485,7 @@ const Workshop = () => {
           </div>
         </div>
 
-        <div className="mt-8 flex w-full flex-col-reverse md:mt-16  md:flex-row">
+        <div className="mt-8 flex w-full flex-col-reverse md:mt-16  lg:flex-row">
           <div className=" flex flex-1 flex-col  justify-between gap-y-4  px-6 py-5 md:px-14">
             <h3 className="text-4xl font-semibold leading-[50px] md:text-[42px]">
               Unlock Bonuses worth{" "}
@@ -553,12 +553,12 @@ const Workshop = () => {
 
         <OfferEnds minutes={minutes} seconds={seconds} />
 
-        <section className="mx-auto mt-10 max-w-sm md:mt-20 xl:max-w-[62rem] ">
+        <section className="mx-auto mt-10 max-w-sm sm:max-w-lg md:mt-20 md:max-w-3xl xl:max-w-[62rem]">
           <h3 className="text-center text-3xl font-semibold md:text-[40px]">
             Questions generally asked about the workshop
           </h3>
 
-          <div className="mt-10 px-2 md:mt-20 md:w-[62rem]">
+          <div className="mt-10 w-full px-2 md:mt-20 xl:w-[62rem]">
             <Accordion
               type="single"
               collapsible
@@ -621,7 +621,7 @@ export function RegisterButton({ paragraph }) {
         Register now for $299 <span>$ 999</span>
       </button>
       {paragraph && (
-        <p className=" text-center text-sm font-normal sm:text-base md:text-[21px]">
+        <p className="   flex max-w-sm flex-col items-center text-center text-sm font-normal   sm:max-w-lg  sm:text-base md:max-w-xl md:text-[21px] lg:max-w-3xl xl:max-w-5xl">
           This Webinar is for all freshers who are looking for new opportunities
           in the Salesforce and for those who want to switch their career in the
           Salesforce

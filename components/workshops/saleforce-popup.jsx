@@ -1,8 +1,26 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 // import { OfferEnds } from "./offer-end";
 import Image from "next/image";
 
 export const SalesforcePopup = ({ minutes, seconds }) => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    setInterval(() => {
+      setShowPopup(false);
+    }, 10000);
+  }, []);
+
+  if (!showPopup) {
+    return null;
+  }
+
+  const handleClose = () => {
+    setShowPopup(false);
+  };
+
   return (
     <div className="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center backdrop-blur-md">
       <div className=" relative flex h-[420px]   w-[92vw] justify-between overflow-hidden rounded-[10px] bg-[#FFF2F2] text-black sm:w-[70vw] md:h-[58vh] md:w-[80vw] lg:h-[580px]">
@@ -95,7 +113,10 @@ export const SalesforcePopup = ({ minutes, seconds }) => {
           }}
         ></div>
 
-        <div className="absolute right-2 top-2 z-30 cursor-pointer lg:right-6 lg:top-6">
+        <div
+          className="absolute right-2 top-2 z-30 cursor-pointer lg:right-6 lg:top-6"
+          onClick={handleClose}
+        >
           <svg
             width="30"
             height="30"
