@@ -82,64 +82,57 @@ const benefits = [
 const students = [
   {
     id: 1,
-    name: "Akash Umang",
-    company: "@cloudprism",
+    name: "Mohit Kumar",
     description: [
-      "CRM software, systems, or applications is the new trend. Salesforce is that one platform where everything comes together to get one result.",
-      "CloudPrism's Salesforce Integration offers a one-stop shop for all the things you need in a Business process.",
+      "Thanks to this training, I smoothly transitioned from a developer to a Salesforce consultant.",
+      "The trainers were excellent, guiding me through basics and hands-on projects. Much gratitude to Coding Commando for enhancing my skills.",
     ],
-    profile: "/assets/workshops/profile-1.svg",
+    profile: "/assets/workshops/mohit.jpg",
   },
   {
     id: 2,
-    name: "Akash Umang",
-    company: "@cloudprism",
+    name: "Rishav kalay",
     description: [
-      "CRM software, systems, or applications is the new trend. Salesforce is that one platform where everything comes together to get one result.",
-      "CloudPrism's Salesforce Integration offers a one-stop shop for all the things you need in a Business process.",
+      "I had an excellent learning experience. The trainer offered relevant examples, and I thoroughly enjoyed the sessions.",
+      "My heartfelt thanks to the Coding Commando team for their unwavering support.",
     ],
-    profile: "/assets/workshops/profile-1.svg",
+    profile: "/assets/workshops/rishav-png.jpg",
   },
   {
     id: 3,
-    name: "Akash Umang",
-    company: "@cloudprism",
+    name: "Nitish Kumar",
     description: [
-      "CRM software, systems, or applications is the new trend. Salesforce is that one platform where everything comes together to get one result.",
-      "CloudPrism's Salesforce Integration offers a one-stop shop for all the things you need in a Business process.",
+      "Recently completed Salesforce training on Edureka and couldn't be happier. The overall experience was fantastic.",
+      " The course design aligns perfectly with industry standards, and the content delivery was exceptional.",
     ],
-    profile: "/assets/workshops/profile-1.svg",
+    profile: "/assets/workshops/Nitish.jpg",
   },
-  {
-    id: 4,
-    name: "Akash Umang",
-    company: "@cloudprism",
-    description: [
-      "CRM software, systems, or applications is the new trend. Salesforce is that one platform where everything comes together to get one result.",
-      "CloudPrism's Salesforce Integration offers a one-stop shop for all the things you need in a Business process.",
-    ],
-    profile: "/assets/workshops/profile-1.svg",
-  },
-  {
-    id: 5,
-    name: "Akash Umang",
-    company: "@cloudprism",
-    description: [
-      "CRM software, systems, or applications is the new trend. Salesforce is that one platform where everything comes together to get one result.",
-      "CloudPrism's Salesforce Integration offers a one-stop shop for all the things you need in a Business process.",
-    ],
-    profile: "/assets/workshops/profile-1.svg",
-  },
-  {
-    id: 6,
-    name: "Akash Umang",
-    company: "@cloudprism",
-    description: [
-      "CRM software, systems, or applications is the new trend. Salesforce is that one platform where everything comes together to get one result.",
-      "CloudPrism's Salesforce Integration offers a one-stop shop for all the things you need in a Business process.",
-    ],
-    profile: "/assets/workshops/profile-1.svg",
-  },
+  // {
+  //   id: 4,
+  //   name: "Nishanth Singh",
+  //   description: [
+  //     "Selected the Coding Commando Salesforce online course for my Salesforce admin certification journey, and it was the best decision. Trainees' expertise in Salesforce, providing practical examples from various domains, made the training exceptional.",
+  //     "The course content was meticulously structured with plenty of real-world examples, enabling learners to absorb concepts comfortably.",
+  //   ],
+  //   profile: "/assets/workshops/profile-1.svg",
+  // },
+  // {
+  //   id: 5,
+  //   name: "Vyash",
+  //   description: [
+  //     "I joined the workshop which was taught by Prateek sir. He assisted us with how to make a career in IT, how he faced challenges and now he is the owner of the company. Through his guidance I joined their course.",
+  //     "The result is fruitful because of the guidance of Prateek and trainers. I have landed a high paying job in a top mnc company. I am very thankful to these guys.",
+  //   ],
+  //   profile: "/assets/workshops/profile-1.svg",
+  // },
+  // {
+  //   id: 6,
+  //   name: "Vani Sudha",
+  //   description: [
+  //     "Trainers are very supportive and knowledgeable Good services with active Response.I would recommend coding commando to those students who want to make their career in IT.",
+  //   ],
+  //   profile: "/assets/workshops/profile-1.svg",
+  // },
 ];
 
 const companies = [
@@ -263,10 +256,10 @@ const Workshop = () => {
                 <div class="flex h-full flex-col justify-between">
                   <div class="mb-4 lg:mb-0">
                     <span class="mb-2 inline-block rounded-lg border border-purple-600 px-4 py-2 text-lg font-medium">
-                      4 April 2023
+                      26 to 28 April 2023
                     </span>
                     <span class="ml-4 inline-block rounded-lg border border-purple-600 px-4 py-2 text-lg font-medium">
-                      9:00 AM
+                      8:00 PM
                     </span>
                   </div>
                   <p class="text-lg font-normal lg:text-xl">
@@ -450,14 +443,18 @@ const Workshop = () => {
               </span>
               <div className="flex flex-col gap-y-6 text-lg font-light md:text-xl">
                 <p>
-                  Founder of CloudPrism Solutions With over 7 years of hands-on
-                  Salesforce expertise, Prateek has guided numerous individuals
-                  to successful careers in the tech industry.
+                  Meet Prateek, the visionary founder of CloudPrism Solutions,
+                  leveraging over 9 years of hands-on Salesforce expertise. With
+                  a passion for guiding individuals towards successful careers
+                  in the tech industry, Prateek has mentored numerous
+                  professionals, imparting invaluable knowledge and skills.
                 </p>
                 <p>
-                  Founder of CloudPrism Solutions With over 7 years of hands-on
-                  Salesforce expertise, Prateek has guided numerous individuals
-                  to successful careers in the tech industry.
+                  As the driving force behind Coding Commando EdTech, Prateek
+                  extends his impact further by providing various IT courses.
+                  Having personally taught over 5000 students throughout his
+                  illustrious career, he continues to inspire and empower
+                  aspiring tech enthusiasts to realize their full potential.
                 </p>
               </div>
             </div>
@@ -479,12 +476,13 @@ const Workshop = () => {
                   }}
                   className="h-[240px] w-[350px] rounded-[8px] border border-[#2E2E2E] px-8 py-4 shadow-md md:w-[396px]"
                 >
-                  <div className="flex items-center  gap-4">
+                  <div className="flex items-center gap-4 rounded-full">
                     <Image
                       src={student.profile}
-                      width={59}
-                      height={59}
+                      width={55}
+                      height={55}
                       alt="profile"
+                      className="rounded-full"
                     />
                     <div>
                       <span>{student.name}</span>
