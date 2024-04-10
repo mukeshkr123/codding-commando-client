@@ -1,4 +1,4 @@
-import { RegisterButton } from "app/(root)/(workshops)/workshop/salesforce-2/page";
+import { RegisterButton } from "app/(root)/(workshops)/workshop/salesforce/page";
 
 export function OfferEnds({ minutes, seconds }) {
   return (

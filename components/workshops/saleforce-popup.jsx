@@ -10,7 +10,7 @@ export const SalesforcePopup = ({ minutes, seconds }) => {
   useEffect(() => {
     setInterval(() => {
       setShowPopup(false);
-    }, 10000);
+    }, 20000);
   }, []);
 
   if (!showPopup) {
@@ -73,7 +73,7 @@ export const SalesforcePopup = ({ minutes, seconds }) => {
               className="flex rounded-[9px] px-12 py-3 font-medium lg:text-[32px]"
             >
               <p>Register now for $299 </p>
-              <span>$ 999</span>
+              <span className="line-through">$ 999</span>
             </button>
             <p>Offer ends in</p>
             <div className="mt-2 flex gap-6">

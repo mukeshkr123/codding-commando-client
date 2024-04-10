@@ -1,128 +1,190 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { InfiniteMovingCards } from "@/components/ui/infinity-moving-cards";
+import { OfferEnds } from "@/components/workshops/offer-end";
+import { SalesforcePopup } from "@/components/workshops/saleforce-popup";
+// eslint-disable-next-line camelcase
+import { Hanken_Grotesk } from "next/font/google";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const newCompanies = [
+const hanken = Hanken_Grotesk({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "500", "600", "700", "800", "900"],
+});
+
+const programs = [
   {
-    _id: 1,
-    imageUrl: "/assets/workshops/companies/company-1.svg",
+    id: 1,
+    title:
+      "Students who just graduated and want to work in the Salesforce Industry and are having trouble finding jobs.",
+  },
+
+  {
+    id: 2,
+    title:
+      "Students who are in their last year and are looking to get trained in highly demanded Salesforce skills.",
   },
   {
-    _id: 2,
-    imageUrl: "/assets/workshops/companies/company-2.svg",
+    id: 3,
+    title: "People who want to work in the IT Sector, even with career gaps.",
   },
   {
-    _id: 3,
-    imageUrl: "/assets/workshops/companies/company-3.svg",
-  },
-  {
-    _id: 4,
-    imageUrl: "/assets/workshops/companies/company-4.svg",
-  },
-  {
-    _id: 5,
-    imageUrl: "/assets/workshops/companies/company-5.svg",
-  },
-  {
-    _id: 6,
-    imageUrl: "/assets/workshops/companies/company-6.svg",
-  },
-  {
-    _id: 7,
-    imageUrl: "/assets/workshops/companies/company-7.svg",
-  },
-  {
-    _id: 8,
-    imageUrl: "/assets/workshops/companies/company-8.svg",
-  },
-  {
-    _id: 9,
-    imageUrl: "/assets/workshops/companies/company-9.svg",
-  },
-  {
-    _id: 10,
-    imageUrl: "/assets/workshops/companies/company-10.svg",
-  },
-  {
-    _id: 11,
-    imageUrl: "/assets/workshops/companies/company-11.svg",
-  },
-  {
-    _id: 12,
-    imageUrl: "/assets/workshops/companies/company-12.svg",
+    id: 4,
+    title:
+      "Housewives looking to restart their careers in IT and actively searching for job opportunities.",
   },
 ];
 
-const SalesForceWorkshop = () => {
-  return (
-    <main className="bg-[#0D0017]">
-      <div
-        className="mx-auto max-w-sm  py-4 md:max-w-2xl lg:max-w-4xl  lg:py-6 xl:max-w-7xl
-      "
-      >
-        <SaleforceHeader />
+const benefits = [
+  {
+    id: 1,
+    title: "Learn the foundations of Salesforce from scratch",
+    description:
+      "Session on Common UX Design Questions as a beginner, 9-11 PM Questions as a beginner, 9-11 PM Session on Common UX Design",
+  },
+  {
+    id: 2,
+    title: "Learn the foundations of Salesforce from scratch",
+    description:
+      "Session on Common UX Design Questions as a beginner, 9-11 PM Questions as a beginner, 9-11 PM Session on Common UX Design",
+  },
+  {
+    id: 3,
+    title: "Learn the foundations of Salesforce from scratch",
+    description:
+      "Session on Common UX Design Questions as a beginner, 9-11 PM Questions as a beginner, 9-11 PM Session on Common UX Design",
+  },
+  {
+    id: 4,
+    title: "Learn the foundations of Salesforce from scratch",
+    description:
+      "Session on Common UX Design Questions as a beginner, 9-11 PM Questions as a beginner, 9-11 PM Session on Common UX Design",
+  },
+];
 
-        <h1 className="mt-10 text-center text-3xl font-semibold text-white sm:text-4xl md:text-5xl lg:text-6xl">
-          Dreaming to transform your career in IT?
-        </h1>
+const students = [
+  {
+    id: 1,
+    name: "Akash Umang",
+    company: "@cloudprism",
+    description: [
+      "CRM software, systems, or applications is the new trend. Salesforce is that one platform where everything comes together to get one result.",
+      "CloudPrism's Salesforce Integration offers a one-stop shop for all the things you need in a Business process.",
+    ],
+    profile: "/assets/workshops/profile-1.svg",
+  },
+  {
+    id: 2,
+    name: "Akash Umang",
+    company: "@cloudprism",
+    description: [
+      "CRM software, systems, or applications is the new trend. Salesforce is that one platform where everything comes together to get one result.",
+      "CloudPrism's Salesforce Integration offers a one-stop shop for all the things you need in a Business process.",
+    ],
+    profile: "/assets/workshops/profile-1.svg",
+  },
+  {
+    id: 3,
+    name: "Akash Umang",
+    company: "@cloudprism",
+    description: [
+      "CRM software, systems, or applications is the new trend. Salesforce is that one platform where everything comes together to get one result.",
+      "CloudPrism's Salesforce Integration offers a one-stop shop for all the things you need in a Business process.",
+    ],
+    profile: "/assets/workshops/profile-1.svg",
+  },
+  {
+    id: 4,
+    name: "Akash Umang",
+    company: "@cloudprism",
+    description: [
+      "CRM software, systems, or applications is the new trend. Salesforce is that one platform where everything comes together to get one result.",
+      "CloudPrism's Salesforce Integration offers a one-stop shop for all the things you need in a Business process.",
+    ],
+    profile: "/assets/workshops/profile-1.svg",
+  },
+  {
+    id: 5,
+    name: "Akash Umang",
+    company: "@cloudprism",
+    description: [
+      "CRM software, systems, or applications is the new trend. Salesforce is that one platform where everything comes together to get one result.",
+      "CloudPrism's Salesforce Integration offers a one-stop shop for all the things you need in a Business process.",
+    ],
+    profile: "/assets/workshops/profile-1.svg",
+  },
+  {
+    id: 6,
+    name: "Akash Umang",
+    company: "@cloudprism",
+    description: [
+      "CRM software, systems, or applications is the new trend. Salesforce is that one platform where everything comes together to get one result.",
+      "CloudPrism's Salesforce Integration offers a one-stop shop for all the things you need in a Business process.",
+    ],
+    profile: "/assets/workshops/profile-1.svg",
+  },
+];
 
-        <div className="mt-8 rounded-2xl bg-[#d9d9d9] bg-opacity-[10%] py-1.5">
-          <h3 className="text-center text-base font-normal text-[#2AFF99] sm:text-lg md:text-2xl lg:text-3xl">
-            Are you a fresher, taking a career break or are you switching your
-            career?
-          </h3>
-        </div>
+const companies = [
+  {
+    id: 1,
+    imgUrl: "/assets/workshops/company-1.png",
+  },
+  {
+    id: 2,
+    imgUrl: "/assets/workshops/company-2.png",
+  },
+  {
+    id: 3,
+    imgUrl: "/assets/workshops/company-3.png",
+  },
+  {
+    id: 4,
+    imgUrl: "/assets/workshops/company-4.png",
+  },
+  {
+    id: 5,
+    imgUrl: "/assets/workshops/company-5.png",
+  },
+  {
+    id: 6,
+    imgUrl: "/assets/workshops/company-6.png",
+  },
+  {
+    id: 7,
+    imgUrl: "/assets/workshops/company-7.png",
+  },
+  {
+    id: 8,
+    imgUrl: "/assets/workshops/company-8.png",
+  },
+  {
+    id: 9,
+    imgUrl: "/assets/workshops/company-9.png",
+  },
+  {
+    id: 10,
+    imgUrl: "/assets/workshops/company-10.png",
+  },
+  {
+    id: 11,
+    imgUrl: "/assets/workshops/company-11.png",
+  },
+  {
+    id: 12,
+    imgUrl: "/assets/workshops/company-12.png",
+  },
+];
 
-        <h4 className="mt-4 text-center text-lg text-white opacity-50 sm:text-xl md:text-2xl lg:text-3xl">
-          Discover Your Future In IT With Our{" "}
-        </h4>
-        <h2 className="mt-3 text-center text-2xl font-semibold text-white sm:text-3xl  md:text-4xl lg:mt-6 lg:text-5xl">
-          3-Day Career Mapping Workshop{" "}
-        </h2>
-
-        <VideoSection />
-
-        <CarrierMapping />
-
-        <JobsWorldWide />
-
-        <h2 className="mt-16 text-center text-xl font-semibold text-white sm:text-2xl   md:text-3xl lg:mt-36 lg:text-5xl">
-          Top Companies Hiring Salesforce Developers
-        </h2>
-
-        <TopCompanies />
-
-        <FooterWorkshop />
-      </div>
-    </main>
-  );
-};
-
-export default SalesForceWorkshop;
-
-const SaleforceHeader = () => {
-  return (
-    <div className="flex w-full items-center justify-between">
-      <Image
-        src="/assets/icons/logo.svg"
-        width={160}
-        height={160}
-        alt="Coding commando"
-      />
-      <div className="rounded-full bg-[#d9d9d9] bg-opacity-[10%] px-6 py-1.5">
-        <Link href="/" passHref>
-          <span className="cursor-pointer text-lg font-medium text-white">
-            Visit Website
-          </span>
-        </Link>
-      </div>
-    </div>
-  );
-};
-
-const VideoSection = () => {
+const Workshop = () => {
   const [minutes, setMinutes] = useState(29);
   const [seconds, setSeconds] = useState(0);
 
@@ -142,231 +204,478 @@ const VideoSection = () => {
 
     return () => clearInterval(interval);
   }, [minutes, seconds]);
+
   return (
-    <div className="mt-6 flex flex-col lg:mt-12 lg:flex-row ">
-      {/* <div className="flex  w-full items-end justify-end rounded-lg lg:w-[55%] "> */}
-      <div className="flex px-2 lg:w-1/2 lg:pl-10">
-        {/* <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/EIYrhbBk7do?si=TD8XPS02SkL1cVoZ"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>{" "} */}
-        <video controls>
-          <source
-            src="https://coddingbucket.s3.ap-south-1.amazonaws.com/workshop-video.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>{" "}
+    <div
+      className={`relative w-full bg-[#050208] text-white ${hanken.className}`}
+    >
+      <SalesforcePopup minutes={minutes} seconds={seconds} />
+      <div className="pointer-events-none absolute right-0 top-0 z-0 ">
+        <Image
+          src="/assets/workshops/landing-1-bg.svg"
+          alt="gradient"
+          width={350}
+          height={400}
+          className="w-[120px] sm:w-[180px] md:w-[250px] lg:w-[350px]"
+        />
       </div>
-      {/* <div className="flex min-h-[200px]  w-full items-center justify-center rounded-lg bg-white">
-        Video Or Photo
-      </div> */}
-      <div className="mt-4 flex w-full items-center justify-center px-4 md:mt-2 lg:mt-0 lg:w-[45%]">
-        <div className=" flex max-w-md flex-col items-center justify-center gap-4 font-Poppins lg:gap-6">
-          <div className="flex items-center justify-center gap-x-5 px-10 py-4">
-            <div className="flex h-20 w-20 flex-col items-center justify-center gap-1 rounded-lg border border-[#F4F4F4]">
-              <p className="text-3xl font-semibold text-white">00</p>
-              <p className="text-sm text-slate-200">Hours</p>
+
+      <div className="pointer-events-none absolute left-0 top-0 z-0 -translate-y-10 rotate-0">
+        <Image
+          src="/assets/workshops/landing-2-bg.svg"
+          alt="gradient"
+          width={350}
+          height={400}
+          className="w-[120px] sm:w-[180px] md:w-[250px] lg:w-[350px]"
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto flex flex-col gap-y-6 overflow-hidden  pt-16 sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl">
+        <h1 className="mx-auto max-w-4xl text-center text-4xl font-semibold md:text-5xl lg:text-6xl">
+          Dreaming to transform your career in IT?
+        </h1>
+        <p className="text-center text-base font-light text-[#A100FF] md:text-2xl">
+          Are you a fresher, taking a carrer break or are you switching your
+          career?
+        </p>
+        <div class="mx-auto mt-4 max-w-5xl">
+          <div class="flex flex-col lg:flex-row">
+            <div class="mx-4 mb-4 rounded-lg md:mx-6 lg:mx-0 lg:mb-0 lg:mr-4 lg:flex-1">
+              <video controls class="w-full">
+                <source
+                  src="https://coddingbucket.s3.ap-south-1.amazonaws.com/workshop-video.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
             </div>
-            <div className="flex h-20 w-20 flex-col items-center justify-center gap-1 rounded-lg border border-[#F4F4F4]">
-              <p className="text-3xl font-semibold text-white">
-                {minutes < 10 ? `0${minutes}` : minutes}
-              </p>
-              <p className="text-sm text-slate-200">Mins</p>
-            </div>{" "}
-            <div className="flex h-20 w-20 flex-col items-center justify-center gap-1 rounded-lg border border-[#F4F4F4] ">
-              <p className="text-3xl font-semibold text-white">
-                {seconds < 10 ? `0${seconds}` : seconds}
-              </p>
-              <p className="text-sm text-slate-200">Seconds</p>
+            <div class=" lg:flex-1">
+              <div class="px-4 py-2 lg:px-6">
+                <div class="flex h-full flex-col justify-between">
+                  <div class="mb-4 lg:mb-0">
+                    <span class="mb-2 inline-block rounded-lg border border-purple-600 px-4 py-2 text-lg font-medium">
+                      4 April 2023
+                    </span>
+                    <span class="ml-4 inline-block rounded-lg border border-purple-600 px-4 py-2 text-lg font-medium">
+                      9:00 AM
+                    </span>
+                  </div>
+                  <p class="text-lg font-normal lg:text-xl">
+                    Workshop Language: English+Hindi
+                  </p>
+                  <h1 class="mb-2 text-xl font-bold text-slate-500 lg:m-1.5 lg:text-2xl">
+                    Discover Your Future In <br /> IT With Our
+                  </h1>
+                  <h3 class="text-3xl font-bold leading-tight lg:mt-1 lg:text-5xl">
+                    3-Day Career Mapping Workshop
+                  </h3>
+                </div>
+              </div>
             </div>
-          </div>{" "}
-          <Link href="/workshop/form" className="w-full">
-            <div className="w-full rounded-full bg-gradient-to-b from-purple-600 to-purple-900 py-1.5">
-              <p className="text-center text-xl font-semibold text-white">
-                Register Now For 89/-
-              </p>
+          </div>
+        </div>
+
+        <OfferEnds minutes={minutes} seconds={seconds} />
+
+        <div className="mx-auto max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-6xl">
+          <Image
+            src="/assets/workshops/3-day-workshop.svg"
+            alt="Workshop"
+            width={1300}
+            height={1000}
+          />
+        </div>
+
+        <div className="mx-auto  flex max-w-5xl flex-col items-center justify-center gap-y-5">
+          <RegisterButton paragraph={true} />
+          <h4 className="py-4 text-center text-2xl font-semibold sm:text-3xl md:py-10 md:text-4xl lg:text-[42px]">
+            Join now the growing in-demand skill
+          </h4>
+        </div>
+
+        <div class="relative mx-auto flex max-w-6xl flex-col items-center justify-center gap-y-12 md:mt-4 ">
+          <div className="absolute hidden md:flex">
+            <Image
+              src="/assets/workshops/salesforce-bg.png"
+              width={750}
+              height={200}
+              alt="Salesforce"
+            />
+          </div>
+          <div class=" flex flex-col md:mt-8 md:flex-row md:gap-x-8 lg:gap-x-[350px]">
+            <div class="flex flex-col md:w-1/2 md:gap-y-10">
+              <div class="flex flex-col items-center justify-center gap-2 px-6 py-4 text-center">
+                <span class="text-4xl font-bold md:text-6xl">
+                  <span class="text-[#EA4468]">9.3+</span> Million
+                </span>
+                <p class="text-lg font-normal text-[#AEAEAE] md:text-xl">
+                  Jobs worldwide
+                </p>
+              </div>
+
+              <div class="flex flex-col items-center justify-center gap-2 px-6 py-4 text-center">
+                <span class="text-4xl font-bold md:text-6xl">
+                  <span class="text-[#EA4468]">6</span> LPA
+                  <span class="text-[#EA4468]">*</span>
+                </span>
+                <p class="text-lg font-normal text-[#AEAEAE] md:text-xl">
+                  Average fresher Salesforce salary
+                </p>
+              </div>
             </div>
-          </Link>
-          <div className="">
-            <h3 className="max-w-[250px] text-start font-Poppins text-xl font-semibold text-[#F5478E] ">
-              3-Day Workshop from 29th to 31st March.
+
+            <div class="flex flex-col md:w-1/2 md:gap-y-10">
+              <div class="flex flex-col items-center justify-center gap-2 px-6 py-4 text-center">
+                <span class="text-4xl font-bold md:text-6xl">
+                  <span class="text-[#EA4468]">1.3+</span> Million
+                </span>
+                <p class="text-lg font-normal text-[#AEAEAE] md:text-xl">
+                  Upcoming jobs in India
+                </p>
+              </div>
+
+              <div class="flex flex-col items-center justify-center gap-2 px-6 py-4 text-center">
+                <span class="text-4xl font-bold md:text-6xl">
+                  <span class="text-[#EA4468]">40</span>%
+                  <span class="text-[#EA4468]">*</span>
+                </span>
+                <p class="text-lg font-normal text-[#AEAEAE] md:text-xl">
+                  Average fresher Salesforce salary
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-y-12  md:py-8 md:pt-20">
+          <h3 className="text-center text-2xl font-semibold sm:text-3xl md:text-4xl lg:text-[42px]">
+            Top Companies Hiring Salesforce Developers
+          </h3>
+          <InfiniteMovingCards
+            items={companies}
+            direction="right"
+            speed="normal"
+            pauseOnHover={false}
+          />
+        </div>
+
+        <OfferEnds minutes={minutes} seconds={seconds} />
+
+        <section className="my-8 rounded-[32px] bg-[#171123] py-8 md:my-12 md:py-14">
+          <div>
+            <h3 className="text-center text-2xl font-bold sm:text-3xl lg:text-5xl">
+              Who is this program for?
+            </h3>
+
+            <div className="mx-auto mt-8 flex max-w-[56rem] flex-wrap justify-center gap-y-4 px-4 sm:gap-y-6  md:mt-16 md:justify-between">
+              {programs &&
+                programs.map((program) => (
+                  <div
+                    className="flex w-[1000px] items-center gap-3 rounded-lg bg-[#221935] px-4 py-3 sm:gap-5 sm:rounded-xl sm:px-6 md:rounded-2xl lg:rounded-[65px]"
+                    key={program.id}
+                  >
+                    <Image
+                      src="/assets/icons/star.svg"
+                      alt="star"
+                      width={18}
+                      height={18}
+                    />
+                    <p className="text-base font-medium">{program.title}</p>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </section>
+
+        <div className="mx-auto flex max-w-[53rem] flex-col items-center justify-center gap-y-10 md:gap-y-16 ">
+          <h3 className="text-center text-3xl font-semibold">Benifits</h3>
+
+          <div className="flex flex-wrap justify-center gap-y-7 lg:justify-between ">
+            {benefits &&
+              benefits.map((benefit) => (
+                <div
+                  key={benefit.id}
+                  className="flex  h-[250px] w-[350px] flex-col items-center gap-y-3  rounded-[10px] bg-[#171123] bg-no-repeat p-6  md:h-[272px] md:w-[410px]"
+                  style={{
+                    backgroundImage: "url('/assets/workshops/benefit.png')",
+                  }}
+                >
+                  <Image
+                    src="/assets/icons/pencil-icon.svg"
+                    alt="pencil icon"
+                    width={56}
+                    height={48}
+                    className="pt-2"
+                  />
+                  <h4 className="mt-4 text-[19px]">{benefit.title}</h4>
+                  <p className="text-sm text-[#C0C0C0]">
+                    {benefit.description}
+                  </p>
+                </div>
+              ))}
+          </div>
+        </div>
+        <div className="mx-auto mt-4 flex max-w-5xl flex-col items-center justify-center gap-y-6 md:mt-12">
+          <RegisterButton paragraph={true} />
+        </div>
+
+        <div className="mx-auto my-6 max-w-sm sm:max-w-lg md:my-14  md:max-w-2xl lg:max-w-5xl xl:max-w-7xl ">
+          <h3 className="text-center text-4xl font-semibold md:text-[42px]">
+            Meet your mentor
+          </h3>
+          <div className="flex flex-col items-center justify-center lg:flex-row">
+            <div className="flex-1  px-10">
+              <Image
+                src="/assets/workshops/prateek-prasoon.png"
+                alt="Prateek"
+                width={559}
+                height={446}
+              />
+            </div>
+            <div className=" flex flex-1 flex-col gap-y-4 px-5  md:gap-y-8 md:pl-12 md:pr-20">
+              <span className="mt-8 text-3xl font-bold md:text-[39px]">
+                Prateek Prasoon
+              </span>
+              <div className="flex flex-col gap-y-6 text-lg font-light md:text-xl">
+                <p>
+                  Founder of CloudPrism Solutions With over 7 years of hands-on
+                  Salesforce expertise, Prateek has guided numerous individuals
+                  to successful careers in the tech industry.
+                </p>
+                <p>
+                  Founder of CloudPrism Solutions With over 7 years of hands-on
+                  Salesforce expertise, Prateek has guided numerous individuals
+                  to successful careers in the tech industry.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h1 className="px-4 text-center text-4xl font-semibold md:text-[42px]">
+            Look what our student says
+          </h1>
+          <div className="mt-10 flex flex-wrap justify-center gap-6  md:mt-16 md:gap-8">
+            {students &&
+              students.map((student) => (
+                <div
+                  key={student.id}
+                  style={{
+                    background:
+                      " linear-gradient(149.64deg, rgba(25, 25, 25, 0.77) 21.24%, rgba(14, 14, 14, 0.77) 105.43%);",
+                  }}
+                  className="h-[240px] w-[350px] rounded-[8px] border border-[#2E2E2E] px-8 py-4 shadow-md md:w-[396px]"
+                >
+                  <div className="flex items-center  gap-4">
+                    <Image
+                      src={student.profile}
+                      width={59}
+                      height={59}
+                      alt="profile"
+                    />
+                    <div>
+                      <span>{student.name}</span>
+                      <p>{student.company}</p>
+                    </div>
+                  </div>
+                  <div className="mt-3 flex flex-col gap-2">
+                    {student.description.map((desc, idx) => (
+                      <p
+                        key={idx}
+                        className="line-clamp-3
+                      text-[13.9px] font-normal text-[#ADADAD]"
+                      >
+                        {desc}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+
+        <div className="mt-8 flex w-full flex-col-reverse md:mt-16  lg:flex-row">
+          <div className=" flex flex-1 flex-col  justify-between gap-y-4  px-6 py-5 md:px-14">
+            <h3 className="text-4xl font-semibold leading-[50px] md:text-[42px]">
+              Unlock Bonuses worth{" "}
+              <span
+                style={{
+                  background:
+                    "linear-gradient(92.48deg, #CFA947 2.08%, #C053BB 31.29%);",
+                  WebkitTextFillColor: "transparent",
+                  WebkitBackgroundClip: "text",
+                }}
+              >
+                ₹10,000
+              </span>
+            </h3>
+            <div className="flex flex-col gap-2 text-lg font-light md:text-[22px]">
+              <div className="flex items-center gap-4">
+                <Image
+                  src="/assets/workshops/sign.png"
+                  width={40}
+                  height={40}
+                  alt="sign"
+                />
+                <p>
+                  Master design fundamentals with me in the do-it-along
+                  sessions.
+                </p>
+              </div>
+              <div className="flex items-center gap-4">
+                <Image
+                  src="/assets/workshops/sign.png"
+                  width={40}
+                  height={40}
+                  alt="sign"
+                />
+                <p>
+                  Master design fundamentals with me in the do-it-along
+                  sessions.
+                </p>
+              </div>
+            </div>
+            <h3 className="text-2xl sm:text-3xl md:text-[40px] md:leading-[50px]">
+              Get a Coding Commando{" "}
+              <span
+                style={{
+                  background:
+                    "linear-gradient(92.48deg, #CFA947 2.08%, #C053BB 31.29%);",
+                  WebkitTextFillColor: "transparent",
+                  WebkitBackgroundClip: "text",
+                }}
+              >
+                Certificate
+              </span>{" "}
+              upon completion
             </h3>
           </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const CarrierMapping = () => {
-  return (
-    <div className="mt-10 flex w-full flex-col gap-x-5 font-Poppins text-white lg:mt-12 lg:flex-row">
-      <div className="flex h-full w-full flex-col gap-2.5 ">
-        <h2 className="text-center text-lg font-semibold sm:text-xl md:text-2xl lg:text-3xl">
-          3-Days{" "}
-          <span className="text-[#29F192]"> Career Mapping Workshop</span>
-        </h2>
-        <div className="mt-4 flex items-center gap-4 rounded-xl bg-[#d9d9d9] bg-opacity-[4%] px-4 py-5 shadow-lg md:gap-6 lg:gap-8 lg:px-8">
-          <span className="text-lg font-semibold text-[#29F192] md:text-xl lg:text-2xl ">
-            Day-01
-          </span>{" "}
-          <p className="text-base text-[#CCCCCC] md:text-lg">
-            Org creation and Data Modelling{" "}
-          </p>
-        </div>
-
-        <div className="mt-4 flex items-center gap-4 rounded-xl bg-[#d9d9d9] bg-opacity-[4%] px-4 py-5 shadow-lg md:gap-6 lg:gap-8 lg:px-8">
-          <span className="text-lg font-semibold text-[#29F192] md:text-xl lg:text-2xl ">
-            Day-02
-          </span>{" "}
-          <p className="text-base text-[#CCCCCC] md:text-lg">
-            Building a App in Salesforce
-          </p>
-        </div>
-        <div className="mt-4  flex w-full items-center gap-4 rounded-xl bg-[#d9d9d9] bg-opacity-[4%] px-4 py-5 shadow-lg md:gap-6 lg:gap-8 lg:px-8">
-          <span className="  text-lg font-semibold text-[#29F192] md:text-xl lg:text-2xl ">
-            Day-03
-          </span>{" "}
-          <p className="text-sm text-[#CCCCCC] md:text-lg">
-            How to make a sound career in Salesforce
-          </p>
-        </div>
-      </div>
-      <div className="mt-10 flex h-full w-full flex-col gap-x-5 lg:mt-0">
-        <h3 className="text-center text-xl font-semibold sm:text-xl md:text-2xl lg:text-3xl">
-          Meet Your <span className="text-[#29F192]">Mentor</span>
-        </h3>
-        <div
-          className="relative mt-8 flex flex-col gap-2 rounded-xl bg-[#d9d9d9] bg-opacity-[4%] px-8 py-6 font-Poppins shadow-lg
-      "
-        >
-          <h3 className="text-xl font-semibold  text-[#29F192] md:text-2xl lg:text-3xl">
-            Prateek Prasoon
-          </h3>
-          <div className="z-10 mb-10 mt-2 flex max-w-[230px] flex-col gap-1 text-sm text-[#BDBDBD] sm:text-[15px] md:max-w-sm lg:mb-5  lg:mt-4">
-            <p>Founder Of CloudPrism Solutions</p>
-            <p>Founder Of Coding Commando</p>
-            <p className="mt-2  ">
-              Founder of CloudPrism Solutions With over 7 years of hands-on
-              Salesforce expertise, Prateek has guided numerous individuals to
-              successful careers in the tech industry.
-            </p>
-          </div>
-          <div className="absolute bottom-0 right-0 ">
+          <div className="flex-1 px-5">
             <Image
-              src="/assets/workshops/prateek-prasoon.svg"
-              alt="Prateek Prasoon"
-              height={200}
-              width={180}
+              src="/assets/workshops/certificate.png"
+              width={614}
+              height={427}
+              alt="Certificate"
             />
           </div>
         </div>
+
+        <OfferEnds minutes={minutes} seconds={seconds} />
+
+        <section className="mx-auto mt-10 max-w-sm sm:max-w-lg md:mt-20 md:max-w-3xl xl:max-w-[62rem]">
+          <h3 className="text-center text-3xl font-semibold md:text-[40px]">
+            Questions generally asked about the workshop
+          </h3>
+
+          <div className="mt-10 w-full px-2 md:mt-20 xl:w-[62rem]">
+            <Accordion
+              type="single"
+              collapsible
+              className="flex w-full flex-col gap-y-4"
+            >
+              {faqs &&
+                faqs.map((faq) => (
+                  <AccordionItem key={faq.id} value={faq.id}>
+                    <AccordionTrigger>
+                      <h4 className="text-base font-medium text-[#E0E0E0] md:text-[22px]">
+                        {faq.title}
+                      </h4>
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <p className="text-sm font-light text-[#A6A6A6] md:text-base">
+                        {faq.description}
+                      </p>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+            </Accordion>
+          </div>
+        </section>
+      </div>
+
+      <div className="mt-14 w-full bg-[#D9D9D91C]">
+        <div className="mx-auto flex max-w-5xl flex-col justify-between px-5 py-12 md:flex-row">
+          <div className="flex max-w-md flex-col gap-y-10">
+            <Image
+              src="/assets/icons/logo.svg"
+              width={180}
+              height={150}
+              alt="logo"
+            />
+            <div className="flex flex-col gap-2">
+              <span className=" text-[28px] font-bold">Contact Us</span>
+              <p className="text-base font-light leading-[29px] text-[#BDBDBD] md:text-[23px]">
+                Sandesh sadan near mamta apartment, south shivpuri Patna 800023
+              </p>
+            </div>
+          </div>
+          <div>
+            <div className="mt-4 text-base text-[#BDBDBD] md:mt-0 md:text-[21px]">
+              <p>+917870081711</p>
+              <p>join@codingcommando.in</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-const JobsWorldWide = () => {
-  return (
-    <div className="mt-14 flex h-full w-full flex-col gap-y-16 font-Poppins text-white lg:mt-20">
-      <div className="flex w-full justify-between">
-        <div className="flex w-full flex-col items-center justify-center gap-1.5">
-          <div className="flex text-2xl font-bold sm:text-3xl  md:text-5xl lg:text-7xl">
-            <span className="text-[#29F192]">9.3+</span> <h3>Million</h3>
-          </div>
-          <p className="text-sm font-normal text-white opacity-50 md:text-lg  lg:text-xl">
-            Jobs worldwide
-          </p>
-        </div>
-        <div className="flex w-full flex-col items-center justify-center gap-1.5">
-          <div className="flex text-2xl font-bold sm:text-3xl  md:text-5xl lg:text-7xl ">
-            <span className="text-[#29F192]">1.3+</span> <h3>Million</h3>
-          </div>
-          <p className="text-sm font-normal text-white opacity-50 md:text-lg  lg:text-xl">
-            Upcoming jobs in India
-          </p>
-        </div>
-      </div>
-      <div className="flex w-full justify-between">
-        <div className="flex w-full flex-col items-center justify-center gap-1.5">
-          <div className="flex text-2xl font-bold sm:text-3xl  md:text-5xl lg:text-7xl">
-            <span className="text-[#29F192]">6</span> <h3>LPA</h3>{" "}
-            <span className="text-[#29F192]">*</span>
-          </div>
-          <p className="px-2 text-center text-sm font-normal text-white opacity-50 md:text-lg lg:text-xl">
-            Average fresher salesforce Salary
-          </p>
-        </div>
-        <div className="flex w-full flex-col items-center justify-center gap-1.5">
-          <div className="flex text-2xl font-bold sm:text-3xl  md:text-5xl lg:text-7xl">
-            <span className="text-[#29F192]">30</span> <h3>%</h3>{" "}
-            <span className="text-[#29F192]">*</span>
-          </div>
-          <p className="px-2 text-center text-sm font-normal text-white  opacity-50 md:text-lg lg:text-xl">
-            Higher salaries than professionals in other it domains
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
+export default Workshop;
 
-const TopCompanies = () => {
+export function RegisterButton({ paragraph }) {
   return (
-    <div className="mx-auto mt-16 flex max-w-6xl flex-wrap justify-center gap-6 ">
-      {newCompanies.map((company, index) => (
-        <div key={company._id} className="">
-          <Image
-            src={company?.imageUrl}
-            width={160}
-            height={160}
-            alt="Company icon"
-          />
-        </div>
-      ))}
-    </div>
-  );
-};
-
-const FooterWorkshop = () => {
-  return (
-    <div className="mx-4 mt-16">
-      <div className="flex flex-col-reverse justify-between gap-y-6 md:flex-row">
-        <Image
-          src="/assets/icons/logo.svg"
-          width={160}
-          height={160}
-          alt="Coding commando"
-        />
-
-        <Link
-          href="/workshop/form"
-          className=" flex w-full justify-center md:justify-end"
-        >
-          <button className="mb-14 rounded-full bg-gradient-to-b from-purple-600 to-purple-900 py-2 lg:mb-0">
-            <p className="px-8 text-center text-xl font-semibold text-white">
-              Register Now For 89/-
-            </p>
-          </button>
+    <>
+      <button className="max-w-lg rounded-[9px] bg-[#A100FF] px-12 py-4 text-base font-medium text-black sm:text-lg md:px-14 md:text-2xl lg:max-w-xl lg:text-[32px]">
+        <Link href="/workshop/salesforce/register">
+          Register now for ₹299 <span className="line-through"> ₹ 999</span>
         </Link>
-      </div>
-
-      <div className=" mt-6 flex flex-col justify-between gap-4 text-white">
-        <div className="flex w-full max-w-xs flex-col gap-4">
-          <h3 className="text-2xl font-bold">Contact Us</h3>
-          <p>Sandesh sadan near mamta apartment, south shivpuri Patna 800023</p>
-        </div>
-        <div>
-          <p>+917870081711</p>
-          <p>join@codingcommando.in</p>
-        </div>
-      </div>
-    </div>
+      </button>
+      {paragraph && (
+        <p className="   flex max-w-sm flex-col items-center text-center text-sm font-normal   sm:max-w-lg  sm:text-base md:max-w-xl md:text-[21px] lg:max-w-3xl xl:max-w-5xl">
+          This Webinar is for all freshersr
+        </p>
+      )}
+    </>
   );
-};
+}
+
+const faqs = [
+  {
+    id: 1,
+    title: "Introduction to Salesforce",
+    description:
+      "Introduction to the comprehensive Salesforce course offered by Coding Comando. Special discount or bonuses for workshop attendees who enroll in the full course.",
+  },
+  {
+    id: 2,
+    title: "Career Opportunities in the Salesforce.",
+    description:
+      "Introduction to the comprehensive Salesforce course offered by Coding Comando. Special discount or bonuses for workshop attendees who enroll in the full course.",
+  },
+  {
+    id: 3,
+    title: "Building Blocks of Salesforce Knowledge",
+    description:
+      "Introduction to the comprehensive Salesforce course offered by Coding Comando. Special discount or bonuses for workshop attendees who enroll in the full course.",
+  },
+  {
+    id: 4,
+    title: "Q&A Session",
+    description:
+      "Introduction to the comprehensive Salesforce course offered by Coding Comando. Special discount or bonuses for workshop attendees who enroll in the full course.",
+  },
+  {
+    id: 5,
+    title: "Exclusive Offer: Unlock Full Salesforce Course",
+    description:
+      "Introduction to the comprehensive Salesforce course offered by Coding Comando. Special discount or bonuses for workshop attendees who enroll in the full course.",
+  },
+  {
+    id: 6,
+    title: "Exclusive Offer: Unlock Full Salesforce Course",
+    description:
+      "Introduction to the comprehensive Salesforce course offered by Coding Comando. Special discount or bonuses for workshop attendees who enroll in the full course.",
+  },
+];
