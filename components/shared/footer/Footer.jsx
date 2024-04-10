@@ -137,6 +137,9 @@ const Footer = () => {
             <p className="text-sm  text-gray-600 sm:text-base">
               Nagar, Patna, Bihar 800029
             </p>
+            <p className="font-Poppins  text-sm text-gray-600 sm:text-base">
+              +91 8002732847
+            </p>
           </div>
         </div>
       </div>

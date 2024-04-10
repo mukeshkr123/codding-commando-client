@@ -18,9 +18,7 @@ export const WorkshopColumns = [
         </Button>
       );
     },
-    cell: ({ row }) => (
-      <div>{`${row.original.firstName} ${row.original.lastName}`}</div>
-    ),
+    cell: ({ row }) => <div>{`${row.original.firstName}`}</div>,
   },
   {
     accessorKey: "email",
@@ -76,20 +74,6 @@ export const WorkshopColumns = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Workshop
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-  },
-  {
-    accessorKey: "profession",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Profession
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );

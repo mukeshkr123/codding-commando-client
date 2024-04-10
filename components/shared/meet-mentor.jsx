@@ -41,7 +41,8 @@ export const MeetMentor = () => {
         Meet Your Mentor
       </h3>
 
-      <div className="mt-2 grid grid-cols-1 sm:mt-20 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 ">
+      {/* <div className="mt-2 grid grid-cols-1 sm:mt-20 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 "> */}
+      <div className="mt-2 flex flex-wrap items-center justify-center">
         {mentors &&
           mentors.map((mentor) => <MentorCard key={mentor.id} {...mentor} />)}
       </div>

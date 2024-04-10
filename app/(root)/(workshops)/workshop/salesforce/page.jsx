@@ -34,10 +34,14 @@ const programs = [
   },
   {
     id: 3,
-    title: "People who want to work in the IT Sector, even with career gaps.",
+    title: "Aspirants who are willing to switch to a Job in the IT Industry.",
   },
   {
     id: 4,
+    title: "People who want to work in the IT Sector, even with career gaps.",
+  },
+  {
+    id: 5,
     title:
       "Housewives looking to restart their careers in IT and actively searching for job opportunities.",
   },
@@ -46,27 +50,32 @@ const programs = [
 const benefits = [
   {
     id: 1,
-    title: "Learn the foundations of Salesforce from scratch",
-    description:
-      "Session on Common UX Design Questions as a beginner, 9-11 PM Questions as a beginner, 9-11 PM Session on Common UX Design",
+    title: "Bonouses worth ₹10,000/-",
+    description: [
+      "Top 50 questions asked in Screening Interviews- ₹3999. Lifetime access to salesforce top community- ₹1999. Additional Hand-Picked Learning Resources- ₹3999",
+    ],
+    icon: "/assets/workshops/workshop-icon-1.svg",
   },
   {
     id: 2,
-    title: "Learn the foundations of Salesforce from scratch",
+    title: "Hacks from industry experts",
     description:
-      "Session on Common UX Design Questions as a beginner, 9-11 PM Questions as a beginner, 9-11 PM Session on Common UX Design",
+      "50 Expert Hacks to Land Your Dream Job and Boost Your Income.",
+    icon: "/assets/workshops/workshop-icon-2.svg",
   },
   {
     id: 3,
-    title: "Learn the foundations of Salesforce from scratch",
+    title: "Gain industry insights",
     description:
-      "Session on Common UX Design Questions as a beginner, 9-11 PM Questions as a beginner, 9-11 PM Session on Common UX Design",
+      "You will get Knowledge from Industry expert and founder of Salesforce consulting company",
+    icon: "/assets/workshops/workshop-icon-3.svg",
   },
   {
     id: 4,
-    title: "Learn the foundations of Salesforce from scratch",
+    title: "Certification upon completion",
     description:
-      "Session on Common UX Design Questions as a beginner, 9-11 PM Questions as a beginner, 9-11 PM Session on Common UX Design",
+      "You will get certification which will help you in standing out of the crowd.",
+    icon: "/assets/workshops/workshop-icon-4.svg",
   },
 ];
 
@@ -286,7 +295,7 @@ const Workshop = () => {
           />
         </div>
 
-        <div className="mx-auto  flex max-w-5xl flex-col items-center justify-center gap-y-5">
+        <div className="mx-auto  flex max-w-5xl flex-col items-center justify-center gap-y-5 ">
           <RegisterButton paragraph={true} />
           <h4 className="py-4 text-center text-2xl font-semibold sm:text-3xl md:py-10 md:text-4xl lg:text-[42px]">
             Join now the growing in-demand skill
@@ -395,18 +404,21 @@ const Workshop = () => {
               benefits.map((benefit) => (
                 <div
                   key={benefit.id}
-                  className="flex  h-[250px] w-[350px] flex-col items-center gap-y-3  rounded-[10px] bg-[#171123] bg-no-repeat p-6  md:h-[272px] md:w-[410px]"
+                  className="flex  h-[250px] w-[350px] flex-col justify-center  gap-y-3 rounded-[10px]  bg-[#171123] bg-no-repeat p-6 text-start  md:h-[272px] md:w-[410px]"
                   style={{
                     backgroundImage: "url('/assets/workshops/benefit.png')",
                   }}
                 >
-                  <Image
-                    src="/assets/icons/pencil-icon.svg"
-                    alt="pencil icon"
-                    width={56}
-                    height={48}
-                    className="pt-2"
-                  />
+                  <div className="flex w-full items-center justify-center">
+                    <Image
+                      src={benefit.icon}
+                      alt="pencil icon"
+                      width={75}
+                      height={48}
+                      className="pt-2"
+                    />
+                  </div>
+
                   <h4 className="mt-4 text-[19px]">{benefit.title}</h4>
                   <p className="text-sm text-[#C0C0C0]">
                     {benefit.description}
@@ -518,10 +530,7 @@ const Workshop = () => {
                   height={40}
                   alt="sign"
                 />
-                <p>
-                  Master design fundamentals with me in the do-it-along
-                  sessions.
-                </p>
+                <p>Top 50 questions asked in Screening Interviews- ₹3999</p>
               </div>
               <div className="flex items-center gap-4">
                 <Image
@@ -530,10 +539,16 @@ const Workshop = () => {
                   height={40}
                   alt="sign"
                 />
-                <p>
-                  Master design fundamentals with me in the do-it-along
-                  sessions.
-                </p>
+                <p>Lifetime access to salesforce top community- ₹1999</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <Image
+                  src="/assets/workshops/sign.png"
+                  width={40}
+                  height={40}
+                  alt="sign"
+                />
+                <p>Additional Hand-Picked Learning Resources- ₹3999</p>
               </div>
             </div>
             <h3 className="text-2xl sm:text-3xl md:text-[40px] md:leading-[50px]">
@@ -612,7 +627,7 @@ const Workshop = () => {
           </div>
           <div>
             <div className="mt-4 text-base text-[#BDBDBD] md:mt-0 md:text-[21px]">
-              <p>+917870081711</p>
+              <p>+91 8002732847</p>
               <p>join@codingcommando.in</p>
             </div>
           </div>
@@ -627,14 +642,16 @@ export default Workshop;
 export function RegisterButton({ paragraph }) {
   return (
     <>
-      <button className="max-w-lg rounded-[9px] bg-[#A100FF] px-12 py-4 text-base font-medium text-black sm:text-lg md:px-14 md:text-2xl lg:max-w-xl lg:text-[32px]">
+      <button className="max-w-lg rounded-[9px]  bg-[#A100FF] px-12 py-4 text-base font-medium text-black sm:text-lg md:px-14 md:text-2xl lg:max-w-xl lg:text-[32px]">
         <Link href="/workshop/salesforce/register">
-          Register now for ₹299 <span className="line-through"> ₹ 999</span>
+          Register now for ₹99 <span className="line-through"> ₹ 999</span>
         </Link>
       </button>
       {paragraph && (
         <p className="   flex max-w-sm flex-col items-center text-center text-sm font-normal   sm:max-w-lg  sm:text-base md:max-w-xl md:text-[21px] lg:max-w-3xl xl:max-w-5xl">
-          This Webinar is for all freshersr
+          This Webinar is for all freshers who are looking for new opportunities
+          in the Salesforce and for those who want to switch their career in the
+          Salesforce Industry.{" "}
         </p>
       )}
     </>
@@ -644,38 +661,31 @@ export function RegisterButton({ paragraph }) {
 const faqs = [
   {
     id: 1,
-    title: "Introduction to Salesforce",
+    title: "How can I join the workshop ?",
     description:
-      "Introduction to the comprehensive Salesforce course offered by Coding Comando. Special discount or bonuses for workshop attendees who enroll in the full course.",
+      "Yes,This will be a Free webinar ,where you will get a bonus worth Rs. Rs.10,000 which will help you to enhance your career",
   },
   {
     id: 2,
-    title: "Career Opportunities in the Salesforce.",
-    description:
-      "Introduction to the comprehensive Salesforce course offered by Coding Comando. Special discount or bonuses for workshop attendees who enroll in the full course.",
+    title: "Is this a FREE Webinar ?",
+    description: "No, this is a paid webinar priced with just  99  Rs.",
   },
   {
     id: 3,
-    title: "Building Blocks of Salesforce Knowledge",
+    title: "What will you learn in this 3 Day Salesforce Workshop ?",
     description:
-      "Introduction to the comprehensive Salesforce course offered by Coding Comando. Special discount or bonuses for workshop attendees who enroll in the full course.",
+      " You will learn about salesforce tools and High paying Jobs in salesforce, 50 hacks to crack interviews.",
   },
   {
     id: 4,
-    title: "Q&A Session",
+    title: "Will I get the recording of the workshop ?",
     description:
-      "Introduction to the comprehensive Salesforce course offered by Coding Comando. Special discount or bonuses for workshop attendees who enroll in the full course.",
+      "Come learn with us live! You'll understand better when you join in real-time. Sorry, no replays, but being there live is the best way to learn.",
   },
   {
     id: 5,
-    title: "Exclusive Offer: Unlock Full Salesforce Course",
+    title: "Will I get a certificate after completing a 3 day workshop?",
     description:
-      "Introduction to the comprehensive Salesforce course offered by Coding Comando. Special discount or bonuses for workshop attendees who enroll in the full course.",
-  },
-  {
-    id: 6,
-    title: "Exclusive Offer: Unlock Full Salesforce Course",
-    description:
-      "Introduction to the comprehensive Salesforce course offered by Coding Comando. Special discount or bonuses for workshop attendees who enroll in the full course.",
+      "Yes, You will receive a Workshop Completion Certificate from Coding Commando upon completing the 3 day workshop.",
   },
 ];

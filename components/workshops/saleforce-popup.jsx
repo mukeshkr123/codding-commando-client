@@ -3,13 +3,15 @@
 import React, { useEffect, useState } from "react";
 // import { OfferEnds } from "./offer-end";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export const SalesforcePopup = ({ minutes, seconds }) => {
   const [showPopup, setShowPopup] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setInterval(() => {
-      setShowPopup(false);
+      setShowPopup(true);
     }, 20000);
   }, []);
 
@@ -19,6 +21,10 @@ export const SalesforcePopup = ({ minutes, seconds }) => {
 
   const handleClose = () => {
     setShowPopup(false);
+  };
+
+  const handleClick = () => {
+    return router.push("/workshop/salesforce/register");
   };
 
   return (
@@ -38,28 +44,42 @@ export const SalesforcePopup = ({ minutes, seconds }) => {
               $10,000{" "}
             </span>
           </h3>
-          <div className="flex flex-col gap-y-3 text-sm font-light sm:text-base md:text-lg lg:text-[22px]">
+          <div className="flex flex-col gap-y-3 text-sm font-light sm:text-base md:text-lg ">
             <div className="flex items-center gap-4">
               <Image
                 src="/assets/workshops/sign.png"
-                width={40}
-                height={40}
+                width={25}
+                height={25}
                 alt="sign"
                 className=""
               />
               <p>
-                Master design fundamentals with me in the do-it-along sessions
+                Top 50 questions asked in Screening Interviews-{" "}
+                <span className="line-through">₹3999</span>
               </p>
             </div>
             <div className="flex items-center gap-4">
               <Image
                 src="/assets/workshops/sign.png"
-                width={40}
-                height={40}
+                width={25}
+                height={25}
                 alt="sign"
               />
               <p>
-                Master design fundamentals with me in the do-it-along sessions
+                Lifetime access to salesforce top community-{" "}
+                <span className="line-through">₹1999</span>
+              </p>
+            </div>
+            <div className="flex items-center gap-4">
+              <Image
+                src="/assets/workshops/sign.png"
+                width={25}
+                height={25}
+                alt="sign"
+              />
+              <p>
+                Additional Hand-Picked Learning Resources-{" "}
+                <span className="line-through">₹3999</span>
               </p>
             </div>
           </div>
@@ -71,9 +91,10 @@ export const SalesforcePopup = ({ minutes, seconds }) => {
                   "linear-gradient(91.28deg, #EDBB3A -64.96%, #E552DF 99.99%)",
               }}
               className="flex rounded-[9px] px-12 py-3 font-medium lg:text-[32px]"
+              onClick={handleClick}
             >
-              <p>Register now for $299 </p>
-              <span className="line-through">$ 999</span>
+              <p>Register now for ₹99 {"  "}</p>
+              <span className="pl-[8px] line-through"> ₹ 999</span>
             </button>
             <p>Offer ends in</p>
             <div className="mt-2 flex gap-6">
