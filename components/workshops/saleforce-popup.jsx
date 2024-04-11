@@ -12,7 +12,7 @@ export const SalesforcePopup = ({ minutes, seconds }) => {
   useEffect(() => {
     setInterval(() => {
       setShowPopup(true);
-    }, 20000);
+    }, 30000);
   }, []);
 
   if (!showPopup) {
@@ -94,7 +94,7 @@ export const SalesforcePopup = ({ minutes, seconds }) => {
               onClick={handleClick}
             >
               <p>Register now for ₹99 {"  "}</p>
-              <span className="pl-[8px] line-through"> ₹ 999</span>
+              <span className="pl-[8px] line-through"> ₹ 599</span>
             </button>
             <p>Offer ends in</p>
             <div className="mt-2 flex gap-6">
