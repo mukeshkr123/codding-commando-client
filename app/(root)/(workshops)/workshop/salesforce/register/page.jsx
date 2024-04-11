@@ -134,7 +134,7 @@ const RegisterPage = () => {
           </div>
           <h3 className="text-xl text-white">3-Day Career Mapping Workshop</h3>
           <div className="mt-3 pb-4 text-2xl font-semibold text-white">
-            <span>₹99</span> <span className="line-through">₹599</span>
+            <span>₹99</span> <span className="line-through">₹999</span>
           </div>
         </div>
 

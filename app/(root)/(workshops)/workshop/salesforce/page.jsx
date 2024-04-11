@@ -642,7 +642,7 @@ export function RegisterButton({ paragraph }) {
     <>
       <button className="max-w-lg rounded-[9px]  bg-[#A100FF] px-12 py-4 text-base font-medium text-black sm:text-lg md:px-14 md:text-2xl lg:max-w-xl lg:text-[32px]">
         <Link href="/workshop/salesforce/register">
-          Register now for ₹99 <span className="line-through"> ₹ 599</span>
+          Register now for ₹99 <span className="line-through"> ₹ 999</span>
         </Link>
       </button>
       {paragraph && (
