@@ -211,6 +211,25 @@ const Workshop = () => {
     <div
       className={`relative w-full bg-[#050208] text-white ${hanken.className}`}
     >
+      <div className="fixed bottom-0  z-30 flex w-full items-center bg-[#171123] p-3 sm:hidden">
+        <div className="flex-1">
+          <p className="text-xl font-bold">
+            ₹99 <span className="font-light line-through">₹999</span>
+          </p>
+          <p className="text-base font-light">
+            Offer ends in{" "}
+            <span className="font-bold">
+              {minutes}:{seconds}
+            </span>{" "}
+          </p>
+        </div>
+        <div className="flex-1">
+          <button className="w-full  rounded-[9px] bg-[#A100FF] py-2.5 text-lg font-medium text-black">
+            <Link href="/workshop/salesforce/register">Register Now</Link>
+          </button>
+        </div>
+      </div>
+
       <SalesforcePopup minutes={minutes} seconds={seconds} />
       <div className="pointer-events-none absolute right-0 top-0 z-0 ">
         <Image
