@@ -6,6 +6,26 @@ export const metadata = {
   title: "Online Classes at Coding Commando",
   description:
     "Know your coding potential with Coding Commando's online classes.",
+  alternates: {
+    canonical: "https://codingcommando.in/about",
+  },
+  openGraph: {
+    title: "Online Classes at Coding Commando",
+    description:
+      "Know your coding potential with Coding Commando's online classes.",
+    url: `https://codingcommando.in/about`,
+    siteName: "Coding Commando",
+    locale: "en_US",
+    type: "website",
+    images: "https://codingcommando.in/favicon.ico",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: "https://codingcommando.in/favicon.ico",
+    title: "Online Classes at Coding Commando",
+    description:
+      "Know your coding potential with Coding Commando's online classes.",
+  },
 };
 
 export default function AboutPage() {

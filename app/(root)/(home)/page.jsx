@@ -8,6 +8,28 @@ export const metadata = {
   title: "Coding Commando- Salesforce Online Course, Full stack Online course",
   description:
     "Master Salesforce and Full Stack skills with Coding Commando's online courses",
+  alternates: {
+    canonical: "https://codingcommando.in",
+  },
+  openGraph: {
+    title:
+      "Coding Commando- Salesforce Online Course, Full stack Online course",
+    description:
+      "Master Salesforce and Full Stack skills with Coding Commando's online courses",
+    url: `https://codingcommando.in`,
+    siteName: "Coding Commando",
+    locale: "en_US",
+    type: "website",
+    images: "https://codingcommando.in/favicon.ico",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: "https://codingcommando.in/favicon.ico",
+    title:
+      "Coding Commando- Salesforce Online Course, Full stack Online course",
+    description:
+      "Master Salesforce and Full Stack skills with Coding Commando's online courses",
+  },
 };
 
 export default async function HomePage() {

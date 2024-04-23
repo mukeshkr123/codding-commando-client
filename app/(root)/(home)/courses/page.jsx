@@ -4,6 +4,24 @@ import { CourseList } from "@/components/courses/course-list";
 export const metadata = {
   title: "Salesforce Training Courses | Coding Commando",
   description: "Get edge with Coding Commando's Salesforce training courses.",
+  alternates: {
+    canonical: "https://codingcommando.in/courses",
+  },
+  openGraph: {
+    title: "Salesforce Training Courses | Coding Commando",
+    description: "Get edge with Coding Commando's Salesforce training courses.",
+    url: `https://codingcommando.in/courses`,
+    siteName: "Coding Commando",
+    locale: "en_US",
+    type: "website",
+    images: "https://codingcommando.in/favicon.ico",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: "https://codingcommando.in/favicon.ico",
+    title: "Salesforce Training Courses | Coding Commando",
+    description: "Get edge with Coding Commando's Salesforce training courses.",
+  },
 };
 
 export default function CoursePage() {
